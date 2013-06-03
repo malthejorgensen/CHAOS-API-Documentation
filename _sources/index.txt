@@ -22,9 +22,9 @@ CHAOS API documentation
 
    overview
    concepts
-   Portal/Object
    JavaScript Portal Client/index
    PHP Portal Client/*
+   Portal/Object
 
 
 Indices and tables
