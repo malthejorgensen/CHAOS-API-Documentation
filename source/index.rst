@@ -3,30 +3,31 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to the CHAOS API documentation!
+CHAOS API documentation
 ===================================================
 
 .. highlight:: ruby
    :linenothreshold: 5
 
 
-.. image:: _static/chaoscommunity.png
-   :width: 150px
-   :align: right
-   :target: http://chaos-community.org
+..
+    .. image:: _static/chaoscommunity.png
+       :width: 150px
+       :align: right
+       :target: http://chaos-community.org
 
 
 .. If you don't want subsection within a page to show up you can use the
    :titlesonly: directive
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
    :glob:
+   :includehidden:
 
    Concepts/index
-   JavaScript Portal Client
    Portal/Object
+   JavaScript Portal Client/index
    PHP Portal Client/*
-   test
 
 
 Indices and tables
@@ -35,3 +36,6 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`search`
 
+.. raw:: html
+
+    <script type="text/javascript" src="http://livejs.com/live.js"></script>

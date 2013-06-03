@@ -1,6 +1,9 @@
 CHAOS.Portal PHP Client
 ==============================
 
+Member functions
+------------------------------
+
 .. php:namespace:: CHAOS\Portal\Client
 
 .. php:class:: PortalClient

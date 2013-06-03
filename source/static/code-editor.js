@@ -78,7 +78,7 @@ $(document).ready(function(event) {
         // Add Javascript evaluate button
         var codeButton = $('<div class="try-code"><button>Try!<\/button><\/div>');
         codeButton.children('button').click(codeEval(codeMirror, setup_code));
-        $parent.append(codeButton);
+        $parent.after(codeButton);
       }
     }
   });

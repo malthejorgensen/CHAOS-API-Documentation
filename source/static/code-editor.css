@@ -1,5 +1,6 @@
 /* Autoresize */
 /* http://codemirror.net/demo/resize.html */
+/* This auto-resizing needs HTML 5: <!doctype html> */
 .CodeMirror {
   border: 1px solid #eee;
   height: auto;

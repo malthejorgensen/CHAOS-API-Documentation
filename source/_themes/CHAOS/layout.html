@@ -1,0 +1,237 @@
+
+{%- set render_sidebar = (not embedded) and (not theme_nosidebar|tobool) and (sidebars != []) %}
+{%- set url_root = pathto('', 1) %}
+
+{%- if not embedded and docstitle %}
+  {%- set titlesuffix = " &mdash; "|safe + docstitle|e + " " + release|e %}
+{%- else %}
+  {%- set titlesuffix = "" %}
+{%- endif -%}
+
+{%- macro githublink() -%}
+    <a href="https://github.com/mongodb/{{theme_repo_name}}/blob/{{theme_branch}}/source/{{pagename}}.txt" target="_blank" title="Edit {{pagename}}.txt on GitHub">Edit this Page</a>
+{%- endmacro -%}
+
+{%- macro breadcrumb() %}
+    <div class="breadcrumb">
+      <ul>
+        {%- block rootrellink %}
+        {%- endblock %}
+        {%- for parent in parents %}
+          <li><a href="{{ parent.link|e }}">{{ parent.title }}</a><span class="bcpoint"> &gt; </span></li>
+          {% if loop.last %}<li>{{title}}</li>{% endif %}
+        {%- endfor %}
+        {%- block relbaritems %} {% endblock %}
+      </ul>
+    </div>
+{%- endmacro %}
+
+{%- macro sidebar() %}
+   {%- if render_sidebar %}
+       <div class="sphinxsidebar">
+         <div class="sphinxsidebarwrapper">
+           {%- if sidebars != None %}
+              {%- for sidebartemplate in sidebars %}
+                  {%- include sidebartemplate %}
+              {%- endfor %}
+            {%- else %}
+              Hallooo
+           {%- endif %}
+         </div>
+       </div>
+    {%- endif %}
+{%- endmacro -%}
+
+{%- macro script() %}
+   <script type="text/javascript">
+     var DOCUMENTATION_OPTIONS = {
+         URL_ROOT: '{{ url_root }}',
+         VERSION: '{{ version|e }}',
+         COLLAPSE_INDEX: false,
+         FILE_SUFFIX: '{{ '' if no_search_suffix else file_suffix }}',
+         HAS_SOURCE: {{ has_source|lower }},
+     };
+   </script>
+   {%- for scriptfile in script_files %}
+       <script type="text/javascript" src="{{ pathto(scriptfile, 1) }}"></script>
+   {%- endfor %}
+{%- endmacro -%}
+
+{%- macro css() %}
+   <link rel="stylesheet" href="{{ pathto('_static/' + style, 1) }}" type="text/css" />
+   <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
+   {%- for cssfile in css_files %}
+       <link rel="stylesheet" href="{{ pathto(cssfile, 1) }}" type="text/css" />
+   {%- endfor %}
+{%- endmacro -%}
+
+{%- macro render_nextprev() %}
+    <div class="nav-buttons">
+      <div class="button-row">
+        <div class="prev">
+        {%- if prev %}
+          <a href="{{ prev.link|e }}" title="Previous Section: {{ prev.title|striptags|e }}">&#8592; &nbsp; {{ prev.title|striptags|e }}</a>
+          <br>Previous
+        {%- endif %}
+        </div>
+        {%- if parents %}
+        <div class="up">
+          <a href="{{ parents[0].link|e }}" title="Parent Section: {{ parents[0].title|striptags|e }}" >&#8593;&nbsp; {{ parents[0].title|striptags|e }}</a>
+          <br>Up
+        </div>
+        {%- else %}
+        {# If the page has no parents -- let the Up navigation go back to the TOC #}
+        <div class="up">
+          {%- if pagename != 'index' %}
+          <a href="{{ pathto('index') }}" title="Root" >&#8593;&nbsp; Back to table of contents</a>
+          <!-- <a href="{{ url_root|e }}index.html" title="Root" >&#38;#8593;&#38;nbsp; Back to table of contents</a> -->
+          <br>Up
+          {%- endif %}
+        </div>
+        {%- endif %}
+        <div class="next">
+        {%- if next %}
+          <a href="{{ next.link|e }}" title="Next Section: {{ next.title|striptags|e }}">{{ next.title|striptags|e }} &nbsp;&#8594;</a>
+          <br>Next
+        {%- endif %}
+        </div>
+      </div>
+    </div>
+{%- endmacro -%}
+
+{% block doctype %}
+<!doctype html>
+{% endblock %}
+{% if theme_language == '' %}
+   <html>
+{%- else -%}
+   <html lang="{{theme_language}}">
+{%- endif %}
+
+<head>
+  {%- block htmltitle %}<title>{{ title|striptags|e }}{{ titlesuffix }}</title>{%- endblock -%}
+
+  <!-- <link rel="shortcut icon" href="http://media.mongodb.org/favicon.ico" /> -->
+  <!-- <meta name="robots" content="index" /> -->
+  <!-- <meta name="DC.Source" content="https://github.com/mongodb/{{theme_repo_name}}/blob/{{theme_branch}}/source/{{pagename}}.txt"/> -->
+  <meta http-equiv="Content-Type" content="text/html; charset={{ encoding }}" />
+  <meta name="release" content="{{release}}"/>
+
+  {%- if pagename == 'index' %}
+      <link rel="canonical" href="http://docs.mongodb.org/{{theme_project}}/" />
+  {%- else %}
+      <link rel="canonical" href="http://docs.mongodb.org/{{ theme_project }}/{{pagename}}" />
+  {%- endif -%}
+
+  {{ metatags }}
+  {{ css() }}
+
+  {%- if not embedded %}
+      {{ script() }}
+
+      {%- block googlecse_opensearch %}
+          <link rel="search" type="application/opensearchdescription+xml" href="http://docs.mongodb.org/osd.xml" title="MongoDB Help"/>
+      {%- endblock -%}
+
+      {%- if favicon %}
+          <link rel="shortcut icon" href="{{ pathto('_static/' + favicon, 1) }}"/>
+      {%- endif %}
+  {%- endif %}
+
+  {%- block linktags %}
+      {%- include "linktags.html" %}
+  {%- endblock -%}
+
+  {%- block extrahead %}{% endblock -%}
+
+  {%- block sitesearch %}
+      {%- if builder != 'singlehtml' %}
+          <script>
+            // (function() {
+            //    var cx = '017213726194841070573:WMX6838984';
+            //    var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
+            //    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+            //    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
+            // })();
+          </script>
+      {%- endif %}
+
+  {%- endblock -%}
+</head>
+<body>
+  {%- block content %}
+      <div id="main-column">
+        <!-- Logo -->
+        {%- block logo %}
+            <div id="logo">
+              <a href="http://chaos-community.org/"><img class="logo"
+                    src="http://chaos-community.org/img/chaoscommunity.png" alt="CHAOS Community Logo"/></a>
+            </div>
+        {%- endblock -%}
+
+        <!-- Main -->
+        {%- block document %}
+           {% block body %}{% endblock %}
+        {%- endblock %}
+
+        <!-- Bottom prev/next -->
+        {{- render_nextprev() -}}
+      </div>
+  {%- endblock %}
+
+  {%- block sidebar1 %} {# possible location for sidebar #} {% endblock %}
+  {%- block sidebar2 %}{{ sidebar() }}{% endblock %}
+  {# breadcrumb() #}
+
+  <!-- <div id="cse&#45;results"> -->
+  <!--   <gcse:searchresults linkTarget="_top"></gcse:searchresults> -->
+  <!-- </div> -->
+  <!--
+  -->
+
+  <!--
+  {%- block commnav -%}
+      <div id="top-right">
+        <div class="user-right">
+          <ul id="header-menu-bar" class="ajs-menu-bar">
+            <li class="normal"><a target="_blank" href="http://groups.google.com/group/mongodb-user">Forums</a></li>
+            <li class="normal"><a target="_blank" href="http://blog.mongodb.org/">Blog</a></li>
+            <li class="normal"><a href="http://www.mongodb.org/downloads">Download</a></li>
+            <li class="normal"><a href="http://docs.mongodb.org/ecosystem/drivers/">Drivers</a></li>
+            <li class="normal"><a href="http://www.10gen.com/events">Events</a></li>
+            <li class="normal last"><a class="last" href="http://docs.mongodb.org/manual/meta/translation">Translations</a></li>
+          </ul>
+        </div>
+      </div>
+  {%- endblock -%}
+
+  {%- block searchbox %}
+      <div class="search-db"><gcse:searchbox></gcse:searchbox></div>
+  {%- endblock %}
+
+  {%- block subnav %}
+      {%- if theme_project != 'about' %}
+          <div id="etp">
+            <ul>
+              <li>{{ githublink() }}</li>
+              <li><a href="http://github.com/mongodb/{{ theme_repo_name }}" target="_blank" title="Fork the documentation on GitHub and contribute.">GitHub</a></li>
+            </ul>
+          </div>
+      {%- endif %}
+  {%- endblock -%}
+
+  {%- block footer %}
+      <div class="footer">
+        <p>
+          {% trans copyright=copyright|e %}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }} {% endtrans %}
+          MongoDB&reg;, Mongo&reg;, and the leaf logo are registered trademarks of <a href="http://www.10gen.com/">10gen, Inc.</a>
+        </p>
+      </div>
+  {%- endblock %}
+
+  {%- block versionnav %}
+      {%- include "versionnav.html"%}
+  {%- endblock %}
+  -->
+</body>
+</html>

@@ -1,0 +1,16 @@
+{#
+    basic/page.html
+    ~~~~~~~~~~~~~~~
+
+    Master template for simple pages.
+
+    :copyright: Copyright 2007-2011 by the Sphinx team, see AUTHORS.
+    :license: BSD, see LICENSE for details.
+#}
+{%- extends "layout.html" -%}
+{% block body %}
+  {%- if parents -%}
+  <h3>{{ parents[0].title|striptags|e }}</h3>
+  {%- endif -%}
+  {{ body }}
+{% endblock %}
