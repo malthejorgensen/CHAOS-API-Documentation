@@ -89,8 +89,8 @@ function codeEval(codeMirror, setup_code) {
     var code = codeMirror.getValue();
 
     // http://aaronrussell.co.uk/legacy/check-if-an-element-exists-using-jquery/
-    if ($('#setup.code').length > 0) {
-      setup_code = $('#setup.code').data('codeMirror').getValue();
+    if ($('#setup-code').length > 0) {
+      setup_code = $('#setup-code').data('codeMirror').getValue();
     }
 
     // console.log(setup_code + code);

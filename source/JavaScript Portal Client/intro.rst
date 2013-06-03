@@ -10,6 +10,7 @@ The first thing we need to do is to instantiate the client.
 
 .. code-editor:: javascript
     :linenos:
+    :id: setup-code
 
     // Setup settings
     var ChaosSettings = {
