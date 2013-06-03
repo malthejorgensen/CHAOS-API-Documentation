@@ -14,7 +14,8 @@
 
 <div class="site-contents"><a {% if pagename == 'index' %}class="current"{%- endif -%} href="{{ pathto(master_doc) }}">{{ _('Table of contents') }}</a></div>
 
-{{ toctree( titles_only=1) }}
+{# toctree( titles_only=1) #}
+{{ toctree() }}
 
 <div class="site-index"><a {% if pagename == 'genindex' %}class="current"{%- endif -%} href="{{ pathto('genindex') }}">{{ _('Index') }}</a></div>
 

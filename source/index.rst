@@ -6,10 +6,6 @@
 CHAOS API documentation
 ===================================================
 
-.. highlight:: ruby
-   :linenothreshold: 5
-
-
 ..
     .. image:: _static/chaoscommunity.png
        :width: 150px
@@ -24,7 +20,8 @@ CHAOS API documentation
    :glob:
    :includehidden:
 
-   Concepts/index
+   overview
+   concepts
    Portal/Object
    JavaScript Portal Client/index
    PHP Portal Client/*

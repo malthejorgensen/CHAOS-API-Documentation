@@ -239,7 +239,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', 'CHAOSAPIDocumentation', u'CHAOS API Documentation',
-   u'Malthe Jørgensen, Andreas Røll Larsen', 'CHAOSAPIDocumentation', 'One line description of project.',
+   u'Malthe Jørgensen', 'CHAOSAPIDocumentation', 'One line description of project.',
    'Miscellaneous'),
 ]
 
@@ -254,3 +254,15 @@ texinfo_documents = [
 
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
+
+
+# Global reStructuredText definitions
+# http://stackoverflow.com/questions/9698702/custom-css-styles-in-sphinx
+#
+# Soft newlines |br| (non-paragraph newline)
+# http://docutils.sourceforge.net/FAQ.html#how-to-indicate-a-line-break-or-a-significant-newline
+rst_prolog = """
+.. |br| raw:: html
+
+   <br>
+"""
