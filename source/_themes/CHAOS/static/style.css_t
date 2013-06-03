@@ -11,9 +11,13 @@ pre {
 div.sphinxsidebar {
   /* background-color: white; */
   position: fixed;
-  left: 10px;
-  top: 10px;
+  /* left: 40px; */
+  left: 5%;
+  top: 120px;
+
   width: 150px;
+
+  padding-top: 20px;
 
   font-size: 12px;
 }
@@ -62,7 +66,7 @@ div.related, div.footer {
 a.headerlink {
   display: none;
 }
-h1:hover a.headerlink {
+h1:hover a.headerlink, h2:hover a.headerlink {
   display: inline;
 }
 
@@ -96,7 +100,12 @@ div#main-column {
   margin: 0 auto;
   max-width: 700px;
 
-  padding-top: 40px; 
+  padding-top: 120px;
+}
+
+div#main-column > h3 {
+  float: right;
+  line-height: 1em;
 }
 
 div#logo {
@@ -156,8 +165,26 @@ div#main-column div.highlight {
 }
 
 table.docutils {
+  /* border: 0 none rgba(0,0,0,0); */
+  border-width: 0;
+}
 
-  border-top: 1px solid black;
+table.docutils td {
+  border-width: 0;
+  font-size: 12px;
+  padding-right: 5px;
+}
+
+table.docutils th {
+  border-width: 0;
+  text-align: left;
+  font-size: 12px;
+}
+
+table.docutils tr:first-of-type th[colspan] {
+  border-bottom: 1px solid black;
+  font-size: 15px;
+  font-weight: normal;
 }
 
 /**** BEGIN copy from chaos-community.org ****/
