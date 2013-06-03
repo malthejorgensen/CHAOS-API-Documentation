@@ -1,5 +1,5 @@
 {#
-    CHAOS/pagenav.html
+    CHAOS/sidebar-menu.html
     ~~~~~~~~~~~~~~~~~~~
 
     Sphinx sidebar template: global table of contents.
@@ -11,9 +11,6 @@
   <!-- <a href="{{ pathto('index') }}">{{ shorttitle }}</a>{% if theme_project == 'manual' %} <span id="vn">{{version}}</span>{% endif %} -->
   {{ shorttitle }} {% if theme_project == 'manual' %} <span id="vn">{{version}}</span>{% endif %}
 </h3>
-<strong>Debug:</strong> <br>
-pagename: "{{ pagename }}" <br>
-<br>
 
 <div class="site-contents"><a {% if pagename == 'index' %}class="current"{%- endif -%} href="{{ pathto(master_doc) }}">{{ _('Table of contents') }}</a></div>
 
@@ -21,3 +18,8 @@ pagename: "{{ pagename }}" <br>
 
 <div class="site-index"><a {% if pagename == 'genindex' %}class="current"{%- endif -%} href="{{ pathto('genindex') }}">{{ _('Index') }}</a></div>
 
+<!--
+<strong>Debug:</strong> <br>
+pagename: "{{ pagename }}" <br>
+<br>
+-->
