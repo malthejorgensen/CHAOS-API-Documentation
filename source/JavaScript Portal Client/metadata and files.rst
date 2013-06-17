@@ -6,7 +6,7 @@ Grabbing a single object
 ------------------------
 In many cases it will makes sense to only request a single known object. Objects
 are identified by their GUID, and can be retrieved with
-`PortalClient.Object_GetByObjectGUID()`
+:code:`PortalClient.Object_GetByObjectGUID()`
 
 .. code-editor:: javascript
     :eval:
@@ -33,7 +33,7 @@ Files
 -----
 Files belonging to an object can be of different types -- video, audio, images
 and basically any other kind of file. The files can be found in the Files
-attribute of the objects in `serviceResult.MCM().Results()`: 
+attribute of the objects in :code:`serviceResult.MCM().Results()`: 
 
 .. code-editor:: javascript
     :eval:
