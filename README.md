@@ -13,6 +13,11 @@ Once you have install Sphinx, you can build the documentation with
 
 The docs will then be in `build/html`.
 
+Guide
+-----
+Sphinx uses reStructuredText (`.rst`) as markup language for its pages. A quick
+guide to reStructuredText can be found [here](http://docutils.sourceforge.net/docs/user/rst/quickref.html).
+
 PHP Portal Client documentation
 ----------------------------
 
@@ -33,7 +38,14 @@ Autogenerate the API documentation
     > mkdir docs
     > for f in $(find . -iname '*.php' -print0); do bf="$(basename $f)"; doxphp < $f | doxphp2sphinx > docs/$bf.rst; done
 
+Caveats
+-------
+
+ - restructuredText (`.rst`) does not support nested markup ([link](http://docutils.sourceforge.net/FAQ.html#is-nested-inline-markup-possible))
+ - To have a non-paragraph linebreak (single instead of double) use |br| ([link](http://docutils.sourceforge.net/FAQ.html#how-to-indicate-a-line-break-or-a-significant-newline))
+
 Credits
 -------
 Inspired by:
  - [MongoDB Manual](http://docs.mongodb.org/manual/contents/)
+
