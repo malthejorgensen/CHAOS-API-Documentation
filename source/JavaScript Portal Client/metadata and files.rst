@@ -172,7 +172,7 @@ Our object's metadata:
     ]
 
 Parsing XML with Javascript can be `tricky business`_. I recommend using a library
-such as jQuery. In the following example we are using jQuery_ 1.9.1 to parse and
+such as jQuery. In the following example we are using jQuery_ 1.7.1 to parse and
 retrieve data from the XML.
 
 .. _`tricky business`: http://stackoverflow.com/a/8412989/118608
