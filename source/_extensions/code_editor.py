@@ -52,8 +52,12 @@ def visit_code_editor_node(self, node):
     if 'id' in node and node['id']:
         id_attr = ' id="%s"' % node['id']
 
+    code_content = node.rawsource
+    code_content = code_content.replace('<', '&lt;');
+    code_content = code_content.replace('>', '&gt;');
+
     self.body.append('<pre%s><code class="%s">' % (id_attr, class_value) + \
-                                            node.rawsource + '</code></pre>\n')
+                                            code_content + '</code></pre>\n')
     raise nodes.SkipNode
 
 def depart_code_editor_node(self, node):

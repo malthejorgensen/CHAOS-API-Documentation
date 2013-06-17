@@ -64,7 +64,7 @@ attribute of the objects in `serviceResult.MCM().Results()`:
         tr += "<td>" + obj.Files[i].Filename + "</td>";
         tr += "<td>" + obj.Files[i].URL + "</td>";
         if (obj.Files[i].FormatType == "Image") {
-          tr += "<td><img src=\"" + obj.Files[i].URL + "\"></td>";
+          tr += '<td><img src="' + obj.Files[i].URL + '"></td>';
         } else {
           tr += "<td>No representation</td>";
         }
