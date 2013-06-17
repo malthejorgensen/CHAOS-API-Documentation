@@ -10,5 +10,6 @@ functions for searching and getting objects.
 
    intro
    metadata and files
-   member functions
+   errors
 
+   member functions

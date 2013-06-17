@@ -25,7 +25,9 @@ CHAOS v5 was released in November 2012. The primary change from v4 to v5 is that
 output is now guaranteed to be UTF-8.
 v6 is currently in development.
 
-*Note:* For v1-v5 there is no built-in way in CHAOS to obtain version
-information, and you have to know which version you are dealing with beforehand.
-In v6 the API will expose which versions are available.
+.. note::
+
+   For v1-v5 there is no built-in way in CHAOS to obtain version
+   information, and you have to know which version you are dealing with beforehand.
+   In v6 the API will expose which versions are available.
 

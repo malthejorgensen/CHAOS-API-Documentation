@@ -3,7 +3,7 @@
 
 <html lang="">
 
-<head><title>Setting up &mdash; CHAOS API v5 documentation v5</title><!-- <link rel="shortcut icon" href="http://media.mongodb.org/favicon.ico" /> -->
+<head><title>The Basics &mdash; CHAOS API v5 documentation v5</title><!-- <link rel="shortcut icon" href="http://media.mongodb.org/favicon.ico" /> -->
   <!-- <meta name="robots" content="index" /> -->
   <!-- <meta name="DC.Source" content="https://github.com/mongodb//blob//source/JavaScript Portal Client/intro.txt"/> -->
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -24,6 +24,7 @@
          HAS_SOURCE: true,
      };
    </script>
+   
        <script type="text/javascript" src="../_static/jquery.js"></script>
        <script type="text/javascript" src="../_static/underscore.js"></script>
        <script type="text/javascript" src="../_static/doctools.js"></script>
@@ -35,10 +36,11 @@
        <script type="text/javascript" src="http://cdn.jsdelivr.net/codemirror/3.0/mode/htmlmixed/htmlmixed.js"></script>
        <script type="text/javascript" src="../_static/CHAOS.Portal.Client.PortalClient.js"></script>
        <script type="text/javascript" src="../_static/code-editor.js"></script>
+       <script type="text/javascript" src="../_static/scrollspy.js"></script>
           <link rel="search" type="application/opensearchdescription+xml" href="http://docs.mongodb.org/osd.xml" title="MongoDB Help"/>
 <link rel="top" title="CHAOS API v5 documentation" href="../index.html" />
 <link rel="up" title="CHAOS.Portal JavaScript Client" href="index.html" />
-<link rel="next" title="Grabbing a single object" href="metadata and files.html" />
+<link rel="next" title="Using metadata and files" href="metadata and files.html" />
 <link rel="prev" title="CHAOS.Portal JavaScript Client" href="index.html" />
           <script>
             // (function() {
@@ -54,9 +56,51 @@
             <div id="logo">
               <a href="http://chaos-community.org/"><img class="logo"
                     src="http://chaos-community.org/img/chaoscommunity.png" alt="CHAOS Community Logo"/></a>
-            </div><!-- Main -->
-           <!--<h3>CHAOS.Portal JavaScript Client</h3>--><div class="section" id="setting-up">
-<h1>Setting up<a class="headerlink" href="#setting-up" title="Permalink to this headline">¶</a></h1>
+            </div><!-- Menu on left -->
+       <div class="sphinxsidebar">
+         <div class="sphinxsidebarwrapper">
+<h3>
+  <!-- <a href="../index.html">CHAOS API v5 documentation</a> -->
+  CHAOS API v5 documentation 
+</h3>
+
+<div class="site-contents"><a href="../index.html">Table of contents</a></div>
+
+
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">CHAOS overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts.html">CHAOS concepts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">CHAOS.Portal JavaScript Client</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">The Basics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up">Setting up</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#searching">Searching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="metadata and files.html">Using metadata and files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html">Error handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="member functions.html">Member functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../PHP Portal Client/member functions.html">CHAOS.Portal PHP Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Portal/Object.html">Portal.Object</a></li>
+</ul>
+
+
+<div class="site-index"><a href="../genindex.html">Index</a></div>
+
+<!--
+<strong>Debug:</strong> <br>
+pagename: "JavaScript Portal Client/intro" <br>
+<br>
+-->
+         </div>
+       </div>
+
+        <!-- Main -->
+           <!--<h3>CHAOS.Portal JavaScript Client</h3>--><div class="section" id="the-basics">
+<h1>The Basics<a class="headerlink" href="#the-basics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="setting-up">
+<h2>Setting up<a class="headerlink" href="#setting-up" title="Permalink to this headline">¶</a></h2>
 <p>Import the Javascript CHAOS.Portal Client into your site.</p>
 <div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;CHAOS.Portal.Client.PortalClient.js&quot;</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
 </pre></div>
@@ -94,7 +138,7 @@ order to do work when the session has been set up:</p>
 <p>Now we are ready to get some objects!</p>
 </div>
 <div class="section" id="searching">
-<h1>Searching<a class="headerlink" href="#searching" title="Permalink to this headline">¶</a></h1>
+<h2>Searching<a class="headerlink" href="#searching" title="Permalink to this headline">¶</a></h2>
 <p>The easiest way to retrieve some objects from a CHAOS database is to
 search. You can do this with the function
 <tt class="code docutils literal"><span class="pre">PortalClient.Object_GetBySearch()</span></tt></p>
@@ -240,6 +284,7 @@ Unfortunately this object has no relations.</p>
 <p>You are now ready to head on to the next section, which will teach you
 how to use files and metadata.</p>
 </div>
+</div>
 
 
 
@@ -255,46 +300,11 @@ how to use files and metadata.</p>
           <br>Up
         </div>
         <div class="next">
-          <a href="metadata and files.html" title="Next Section: Grabbing a single object">Grabbing a single object &nbsp;&#8594;</a>
+          <a href="metadata and files.html" title="Next Section: Using metadata and files">Using metadata and files &nbsp;&#8594;</a>
           <br>Next
         </div>
       </div>
     </div></div>  
-       <div class="sphinxsidebar">
-         <div class="sphinxsidebarwrapper">
-<h3>
-  <!-- <a href="../index.html">CHAOS API v5 documentation</a> -->
-  CHAOS API v5 documentation 
-</h3>
-
-<div class="site-contents"><a href="../index.html">Table of contents</a></div>
-
-
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../overview.html">CHAOS overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts.html">CHAOS concepts</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">CHAOS.Portal JavaScript Client</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="">Setting up</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#searching">Searching</a></li>
-<li class="toctree-l2"><a class="reference internal" href="metadata and files.html">Grabbing a single object</a></li>
-<li class="toctree-l2"><a class="reference internal" href="metadata and files.html#files">Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="member functions.html">Member functions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../PHP Portal Client/member functions.html">CHAOS.Portal PHP Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Portal/Object.html">Portal.Object</a></li>
-</ul>
-
-
-<div class="site-index"><a href="../genindex.html">Index</a></div>
-
-<!--
-<strong>Debug:</strong> <br>
-pagename: "JavaScript Portal Client/intro" <br>
-<br>
--->
-         </div>
-       </div>
   
 
   <!-- <div id="cse&#45;results"> -->

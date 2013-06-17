@@ -3,12 +3,12 @@
 
 <html lang="">
 
-<head><title>Member functions &mdash; CHAOS API v5 documentation v5</title><!-- <link rel="shortcut icon" href="http://media.mongodb.org/favicon.ico" /> -->
+<head><title>Error handling &mdash; CHAOS API v5 documentation v5</title><!-- <link rel="shortcut icon" href="http://media.mongodb.org/favicon.ico" /> -->
   <!-- <meta name="robots" content="index" /> -->
-  <!-- <meta name="DC.Source" content="https://github.com/mongodb//blob//source/JavaScript Portal Client/member functions.txt"/> -->
+  <!-- <meta name="DC.Source" content="https://github.com/mongodb//blob//source/JavaScript Portal Client/errors.txt"/> -->
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="release" content="v5"/>
-      <link rel="canonical" href="http://docs.mongodb.org//JavaScript Portal Client/member functions" />
+      <link rel="canonical" href="http://docs.mongodb.org//JavaScript Portal Client/errors" />
   
    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -40,8 +40,8 @@
           <link rel="search" type="application/opensearchdescription+xml" href="http://docs.mongodb.org/osd.xml" title="MongoDB Help"/>
 <link rel="top" title="CHAOS API v5 documentation" href="../index.html" />
 <link rel="up" title="CHAOS.Portal JavaScript Client" href="index.html" />
-<link rel="next" title="CHAOS.Portal PHP Client" href="../PHP Portal Client/member functions.html" />
-<link rel="prev" title="Error handling" href="errors.html" />
+<link rel="next" title="Member functions" href="member functions.html" />
+<link rel="prev" title="Using metadata and files" href="metadata and files.html" />
           <script>
             // (function() {
             //    var cx = '017213726194841070573:WMX6838984';
@@ -73,8 +73,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">CHAOS.Portal JavaScript Client</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="intro.html">The Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="metadata and files.html">Using metadata and files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="errors.html">Error handling</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Member functions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Error handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="member functions.html">Member functions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../PHP Portal Client/member functions.html">CHAOS.Portal PHP Client</a></li>
@@ -86,99 +86,105 @@
 
 <!--
 <strong>Debug:</strong> <br>
-pagename: "JavaScript Portal Client/member functions" <br>
+pagename: "JavaScript Portal Client/errors" <br>
 <br>
 -->
          </div>
        </div>
 
         <!-- Main -->
-           <!--<h3>CHAOS.Portal JavaScript Client</h3>--><div class="section" id="member-functions">
-<h1>Member functions<a class="headerlink" href="#member-functions" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="PortalClient">
-<em class="property">class </em><tt class="descname">PortalClient</tt><big>(</big><em>servicePath</em><span class="optional">[</span>, <em>clientGUID</em>, <em>autoCreateSession=true</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#PortalClient" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> (<em>string</em>) &#8211; URL of the CHAOS Portal service</li>
-<li><strong>clientGUID</strong> (<em>string</em>) &#8211; A GUID identifying this client service</li>
-<li><strong>autoCreateSession</strong> (<em>bool</em>) &#8211; Create session automatically</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
+           <!--<h3>CHAOS.Portal JavaScript Client</h3>--><div class="section" id="error-handling">
+<h1>Error handling<a class="headerlink" href="#error-handling" title="Permalink to this headline">¶</a></h1>
+<p>Let&#8217;s make a call that will return an error:</p>
+<pre><code class="language-javascript eval">client.SessionAcquired().Add(function(sender, sessionGUID) {
+  client.Object_GetBySearch(
+    showObjects                     // callback
+    , "*"                         // query
+    , "5906a41b-feae-48db-bfb7-714b3e105396" // schemas
+    , "da"                          // langCode
+    , null                          // sort
+    , ChaosSettings.accessPointGUID // accessPointGuid
+    , 0                             // pageIndex
+    , 3                             // pageSize
+  );
+});
 
-<p>The class of the Javascript client through which all communication with CHAOS
-Portal goes.</p>
-<dl class="function">
-<dt id="PortalClient.Folder_Get">
-<tt class="descclassname">PortalClient.</tt><tt class="descname">Folder_Get</tt><big>(</big><em>callback</em>, <em>id</em>, <em>folderTypeID</em>, <em>parentID</em><big>)</big><a class="headerlink" href="#PortalClient.Folder_Get" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
-<li><strong>callback</strong> (<em>function(serviceResult)</em>) &#8211; Function to be called with <cite>serviceResult</cite>.</li>
-<li><strong>id</strong> (<em>int</em>) &#8211; Folder ID</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
+function showObjects(serviceResult) {
+  if (serviceResult.WasSuccess() && serviceResult.MCM().WasSuccess()) {
+    var count = serviceResult.MCM().Count();
+    var totalcount = serviceResult.MCM().TotalCount();
+    alert("Got " + count + "/" + totalcount + " objects");
+    console.log(serviceResult.MCM().Results());
+  } else {
+    if (!serviceResult.WasSuccess()) {
+      alert("Portal error: " + serviceResult.Error());
+      console.log(serviceResult.Error());
+    } else if (!serviceResult.MCM().WasSuccess()) {
+      alert("MCM error: " + serviceResult.MCM().Error());
+      console.log(serviceResult.MCM().Error());
+    }
+  }
+}</code></pre>
+<p>Running this code you should get:
+<tt class="code docutils literal"><span class="pre">MCM</span> <span class="pre">error:</span> <span class="pre">The</span> <span class="pre">remote</span> <span class="pre">server</span> <span class="pre">returned</span> <span class="pre">an</span> <span class="pre">error:</span> <span class="pre">(400)</span> <span class="pre">Bad</span> <span class="pre">Request.</span></tt>
+Not much help there.</p>
+<p>Let&#8217;s have a more thorough look, by adding <tt class="code docutils literal"><span class="pre">MCM().Exception</span></tt> and
+<tt class="code docutils literal"><span class="pre">MCM().Stacktrace()</span></tt></p>
+<pre><code class="language-javascript eval">client.SessionAcquired().Add(function(sender, sessionGUID) {
+  client.Object_GetBySearch(
+    showObjects                     // callback
+    , "*"                         // query
+    , "5906a41b-feae-48db-bfb7-714b3e105396" // schemas
+    , "da"                          // langCode
+    , null                          // sort
+    , ChaosSettings.accessPointGUID // accessPointGuid
+    , 0                             // pageIndex
+    , 3                             // pageSize
+  );
+});
 
-<dl class="function">
-<dt id="PortalClient.Object_Get">
-<tt class="descclassname">PortalClient.</tt><tt class="descname">Object_Get</tt><big>(</big><em>callback</em>, <em>query</em>, <em>sort</em>, <em>accessPointGUID</em>, <em>pageIndex</em>, <em>pageSize</em><span class="optional">[</span>, <em>includeMetadata</em>, <em>includeFiles</em>, <em>includeObjectRelations</em>, <em>includeAccessPoints</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#PortalClient.Object_Get" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
-<li><strong>callback</strong> (<em>function(serviceResult)</em>) &#8211; Function to be called with <cite>serviceResult</cite>.</li>
-<li><strong>query</strong> (<em>string</em>) &#8211; Solr query to get objects by</li>
-<li><strong>sort</strong> (<em>bool</em>) &#8211; Can be <cite>null</cite></li>
-<li><strong>accessPointGUID</strong> (<em>string</em>) &#8211; GUID identifying the accessPoint and thus authenticating the call</li>
-<li><strong>pageIndex</strong> (<em>int</em>) &#8211; Which page to get in pagination</li>
-<li><strong>pageSize</strong> (<em>int</em>) &#8211; Size of each page in pagination</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<p>CHAOS paginates all result so you need to specify a page size (<cite>pageSize</cite>) and a
-page index (<cite>pageIndex</cite>) that specifies which page of objects should be
-returned.</p>
-<dl class="function">
-<dt id="PortalClient.Object_GetBySearch">
-<tt class="descclassname">PortalClient.</tt><tt class="descname">Object_GetBySearch</tt><big>(</big><em>callback</em>, <em>searchString</em>, <em>schemas</em>, <em>langCode</em>, <em>sort</em>, <em>accessPointGUID</em>, <em>pageIndex</em>, <em>pageSize</em><span class="optional">[</span>, <em>includeMetadata</em>, <em>includeFiles</em>, <em>includeObjectRelations</em>, <em>includeAccessPoints</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#PortalClient.Object_GetBySearch" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
-<li><strong>callback</strong> (<em>function(serviceResult)</em>) &#8211; Function to be called with <cite>serviceResult</cite>.</li>
-<li><strong>searchString</strong> (<em>string</em>) &#8211; Solr query to get objects by</li>
-<li><strong>schemas</strong> (<em>string|array</em>) &#8211; A string or an array of strings of the schemas to be searched</li>
-<li><strong>langCode</strong> (<em>string</em>) &#8211; The language code that should be used for search, e.g. <cite>da_dk</cite>, <cite>en_us</cite></li>
-<li><strong>sort</strong> (<em>bool</em>) &#8211; Can be <cite>null</cite></li>
-<li><strong>accessPointGUID</strong> (<em>string</em>) &#8211; GUID identifying the accessPoint thereby authenticating the call</li>
-<li><strong>pageIndex</strong> (<em>int</em>) &#8211; Which page to get in pagination</li>
-<li><strong>pageSize</strong> (<em>int</em>) &#8211; Size of each page in pagination</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
+function showObjects(serviceResult) {
+  if (serviceResult.WasSuccess() && serviceResult.MCM().WasSuccess()) {
+    var count = serviceResult.MCM().Count();
+    var totalcount = serviceResult.MCM().TotalCount();
+    alert("Got " + count + "/" + totalcount + " objects");
+    console.log(serviceResult.MCM().Results());
+  } else {
+    if (!serviceResult.WasSuccess()) {
+      alert("Portal error: " + serviceResult.Error());
+      console.log(serviceResult.Error());
+    } else if (!serviceResult.MCM().WasSuccess()) {
+      var err_msg = [
+        "Exception: " + serviceResult.MCM().Exception() + "\n\n",
+        "Message: " + serviceResult.MCM().Error() + "\n\n",
+        "Stacktrace: " + serviceResult.MCM().Stacktrace() + "\n"
+      ].join('');
+      alert(err_msg);
+    }
+  }
+}</code></pre>
+<p>Now that&#8217;s quite a mouthful! <br>
+Let&#8217;s have a closer look: Neither the message nor the exception type is useful.
+But from the stacktrace you should see is that there was an error in the request
+to Solr. So there&#8217;s probably something wrong with our search string.</p>
+<p>We are trying to search for <tt class="code docutils literal"><span class="pre">*</span></tt> – which is everything. This is not allowed on this
+particular field in the Solr index (you can assume that this is the case for
+most fields).</p>
+<p>In general CHAOS.Portal can give quite a large range of errors. Giving an
+accessPointGUID that is too short or too long typically results in a
+<tt class="code docutils literal"><span class="pre">System.ArgumentOutOfRangeException:</span> <span class="pre">Index</span> <span class="pre">and</span> <span class="pre">length</span> <span class="pre">must</span> <span class="pre">refer</span> <span class="pre">to</span> <span class="pre">a</span> <span class="pre">location</span>
+<span class="pre">within</span> <span class="pre">the</span> <span class="pre">string.</span></tt>
+But if the accessPointGUID contains invalid characters (non-hex: 0-F) it returns:
+<tt class="code docutils literal"><span class="pre">System.FormatException:</span> <span class="pre">Could</span> <span class="pre">not</span> <span class="pre">find</span> <span class="pre">any</span> <span class="pre">recognizable</span> <span class="pre">digits.</span></tt>
+In other words, the CHAOS.Portal error handling is not complete yet.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A basic rule of thumb is to check whether <tt class="code docutils literal"><span class="pre">TotalCount()</span></tt> is <tt class="code docutils literal"><span class="pre">null</span></tt>.
+This is usually indicates an error and in a production environment you should
+display something along the lines of &#8220;An error occurred when using CHAOS&#8221;.</p>
+</div>
+<p>I encourage you to explore and play around with the interface
+– Have fun!</p>
 </div>
 
 
@@ -187,7 +193,7 @@ returned.</p>
     <div class="nav-buttons">
       <div class="button-row">
         <div class="prev">
-          <a href="errors.html" title="Previous Section: Error handling">&#8592; &nbsp; Error handling</a>
+          <a href="metadata and files.html" title="Previous Section: Using metadata and files">&#8592; &nbsp; Using metadata and files</a>
           <br>Previous
         </div>
         <div class="up">
@@ -195,7 +201,7 @@ returned.</p>
           <br>Up
         </div>
         <div class="next">
-          <a href="../PHP Portal Client/member functions.html" title="Next Section: CHAOS.Portal PHP Client">CHAOS.Portal PHP Client &nbsp;&#8594;</a>
+          <a href="member functions.html" title="Next Section: Member functions">Member functions &nbsp;&#8594;</a>
           <br>Next
         </div>
       </div>
@@ -223,7 +229,7 @@ returned.</p>
       <div class="search-db"><gcse:searchbox></gcse:searchbox></div>
           <div id="etp">
             <ul>
-              <li><a href="https://github.com/mongodb//blob//source/JavaScript Portal Client/member functions.txt" target="_blank" title="Edit JavaScript Portal Client/member functions.txt on GitHub">Edit this Page</a></li>
+              <li><a href="https://github.com/mongodb//blob//source/JavaScript Portal Client/errors.txt" target="_blank" title="Edit JavaScript Portal Client/errors.txt on GitHub">Edit this Page</a></li>
               <li><a href="http://github.com/mongodb/" target="_blank" title="Fork the documentation on GitHub and contribute.">GitHub</a></li>
             </ul>
           </div>
@@ -234,7 +240,7 @@ returned.</p>
         </p>
       </div><script type="text/javascript">
 var versions = 
-var pagename = 'JavaScript Portal Client/member functions'
+var pagename = 'JavaScript Portal Client/errors'
 var stable = 'v'
 
 function vfnav() {

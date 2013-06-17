@@ -24,6 +24,7 @@
          HAS_SOURCE: true,
      };
    </script>
+   
        <script type="text/javascript" src="_static/jquery.js"></script>
        <script type="text/javascript" src="_static/underscore.js"></script>
        <script type="text/javascript" src="_static/doctools.js"></script>
@@ -35,6 +36,7 @@
        <script type="text/javascript" src="http://cdn.jsdelivr.net/codemirror/3.0/mode/htmlmixed/htmlmixed.js"></script>
        <script type="text/javascript" src="_static/CHAOS.Portal.Client.PortalClient.js"></script>
        <script type="text/javascript" src="_static/code-editor.js"></script>
+       <script type="text/javascript" src="_static/scrollspy.js"></script>
           <link rel="search" type="application/opensearchdescription+xml" href="http://docs.mongodb.org/osd.xml" title="MongoDB Help"/>
 <link rel="top" title="CHAOS API v5 documentation" href="index.html" />
 <link rel="next" title="CHAOS concepts" href="concepts.html" />
@@ -53,54 +55,7 @@
             <div id="logo">
               <a href="http://chaos-community.org/"><img class="logo"
                     src="http://chaos-community.org/img/chaoscommunity.png" alt="CHAOS Community Logo"/></a>
-            </div><!-- Main -->
-           <div class="section" id="chaos-overview">
-<h1>CHAOS overview<a class="headerlink" href="#chaos-overview" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="what-is-chaos">
-<h2>What is CHAOS?<a class="headerlink" href="#what-is-chaos" title="Permalink to this headline">¶</a></h2>
-<p>CHAOS is a database for media content. <br>
-CHAOS does not store the media itself but rather references (URLs) to the media
-and metadata (XML) about it.</p>
-<p>CHAOS is usually accessed through its webinterface CHAOS.Portal. There exists
-PHP and Javascript libraries that wrap the CHAOS.Portal API into simple function
-calls on Javascript or PHP objects.</p>
-<a class="reference internal image-reference" href="_images/chaos_org_chart.png"><img alt="Overview of the structure of CHAOS" src="_images/chaos_org_chart.png" style="height: 300px;" /></a>
-</div>
-<div class="section" id="api-versioning">
-<h2>API versioning<a class="headerlink" href="#api-versioning" title="Permalink to this headline">¶</a></h2>
-<p>The current version of CHAOS (as of March 2013) is v5.
-Tutorials (including this introduction) can be assumed to be written for v5
-unless otherwise noted.
-CHAOS v5 was released in November 2012. The primary change from v4 to v5 is that
-output is now guaranteed to be UTF-8.
-v6 is currently in development.</p>
-<p><em>Note:</em> For v1-v5 there is no built-in way in CHAOS to obtain version
-information, and you have to know which version you are dealing with beforehand.
-In v6 the API will expose which versions are available.</p>
-</div>
-</div>
-
-
-
-        <!-- Bottom prev/next -->
-    <div class="nav-buttons">
-      <div class="button-row">
-        <div class="prev">
-          <a href="index.html" title="Previous Section: CHAOS API documentation">&#8592; &nbsp; CHAOS API documentation</a>
-          <br>Previous
-        </div>
-        
-        <div class="up">
-          <a href="index.html" title="Root" >&#8593;&nbsp; Back to table of contents</a>
-          <!-- <a href="./index.html" title="Root" >&#38;#8593;&#38;nbsp; Back to table of contents</a> -->
-          <br>Up
-        </div>
-        <div class="next">
-          <a href="concepts.html" title="Next Section: CHAOS concepts">CHAOS concepts &nbsp;&#8594;</a>
-          <br>Next
-        </div>
-      </div>
-    </div></div>  
+            </div><!-- Menu on left -->
        <div class="sphinxsidebar">
          <div class="sphinxsidebarwrapper">
 <h3>
@@ -133,6 +88,58 @@ pagename: "overview" <br>
 -->
          </div>
        </div>
+
+        <!-- Main -->
+           <div class="section" id="chaos-overview">
+<h1>CHAOS overview<a class="headerlink" href="#chaos-overview" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-chaos">
+<h2>What is CHAOS?<a class="headerlink" href="#what-is-chaos" title="Permalink to this headline">¶</a></h2>
+<p>CHAOS is a database for media content. <br>
+CHAOS does not store the media itself but rather references (URLs) to the media
+and metadata (XML) about it.</p>
+<p>CHAOS is usually accessed through its webinterface CHAOS.Portal. There exists
+PHP and Javascript libraries that wrap the CHAOS.Portal API into simple function
+calls on Javascript or PHP objects.</p>
+<a class="reference internal image-reference" href="_images/chaos_org_chart.png"><img alt="Overview of the structure of CHAOS" src="_images/chaos_org_chart.png" style="height: 300px;" /></a>
+</div>
+<div class="section" id="api-versioning">
+<h2>API versioning<a class="headerlink" href="#api-versioning" title="Permalink to this headline">¶</a></h2>
+<p>The current version of CHAOS (as of March 2013) is v5.
+Tutorials (including this introduction) can be assumed to be written for v5
+unless otherwise noted.
+CHAOS v5 was released in November 2012. The primary change from v4 to v5 is that
+output is now guaranteed to be UTF-8.
+v6 is currently in development.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For v1-v5 there is no built-in way in CHAOS to obtain version
+information, and you have to know which version you are dealing with beforehand.
+In v6 the API will expose which versions are available.</p>
+</div>
+</div>
+</div>
+
+
+
+        <!-- Bottom prev/next -->
+    <div class="nav-buttons">
+      <div class="button-row">
+        <div class="prev">
+          <a href="index.html" title="Previous Section: CHAOS API documentation">&#8592; &nbsp; CHAOS API documentation</a>
+          <br>Previous
+        </div>
+        
+        <div class="up">
+          <a href="index.html" title="Root" >&#8593;&nbsp; Back to table of contents</a>
+          <!-- <a href="./index.html" title="Root" >&#38;#8593;&#38;nbsp; Back to table of contents</a> -->
+          <br>Up
+        </div>
+        <div class="next">
+          <a href="concepts.html" title="Next Section: CHAOS concepts">CHAOS concepts &nbsp;&#8594;</a>
+          <br>Next
+        </div>
+      </div>
+    </div></div>  
   
 
   <!-- <div id="cse&#45;results"> -->
