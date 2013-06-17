@@ -100,10 +100,11 @@ div.related, div.footer {
 }
 
 a.headerlink {
-  display: none;
+  display: inline;
+  visibility: hidden;
 }
 h1:hover a.headerlink, h2:hover a.headerlink {
-  display: inline;
+  visibility: visible;
 }
 
 div.toctree-wrapper li {
