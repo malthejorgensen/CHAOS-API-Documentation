@@ -51,10 +51,12 @@ specific they are:
    dedicated to that specific image should use the original (``Image Original``).
 3. **Format** and **FormatID** are very specific: for example ``Image JPEG 200x200``.
 
-*Note:* This hierarchy is still under discussion and is subject to change. Furthermore
-no current CHAOS database lives up to this standard and thus you should ask or
-check your data to find how these format specifications have been used in your
-particular database. 
+.. note::
+
+   This hierarchy is still under discussion and is subject to change. Furthermore
+   no current CHAOS database lives up to this standard and thus you should ask or
+   check your data to find how these format specifications have been used in your
+   particular database. 
 
 ===============  ========================================
           ``File`` properties

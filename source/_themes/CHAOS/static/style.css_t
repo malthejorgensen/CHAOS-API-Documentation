@@ -6,6 +6,32 @@ pre {
   margin-top: 0px;
   margin-bottom: 0px;
 }
+/* Note sections
+ * .. note::
+ */
+div.note {
+  /* background-color: #FFE6E6; */
+}
+div.note p.admonition-title {
+  display: none;
+}
+div.note p:before {
+  font-style: italic;
+  content: 'Note: ';
+  /* margin-right: 10px; */
+}
+div.note p {
+  /* http://alistapart.com/article/howtosizetextincss */
+  font-size: 0.9em; /* 0.9 times the font size of normal text */
+  /* display: inline; */
+  margin-left: 20px;
+  margin-right: 20px;
+  /* padding-left: 10px; */
+  padding: 6px;
+  background-color: #FFE6E6;
+  color: #666;
+  border-radius: 8px;
+}
 
 /* Navigation */
 div.sphinxsidebar {
