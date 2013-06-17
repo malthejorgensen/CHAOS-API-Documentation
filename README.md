@@ -1,12 +1,15 @@
 CHAOS API Documentation
 =======================
+The documentation can be viewed at <http://malthejorgensen.github.io/CHAOS-API-Documentation/>.
+
+Build
+-----
 The documentation is made with [Sphinx](http://sphinx-doc.org).
 To get Sphinx, make sure you have Python installed (with Distribute)
 and install it via `pip`
 
     > pip install sphinx
 
-#### Build
 Once you have install Sphinx, you can build the documentation with
 
     > make html
