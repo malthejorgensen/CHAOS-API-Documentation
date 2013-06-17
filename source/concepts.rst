@@ -126,7 +126,10 @@ which becomes
 
 inside the URL.
 
-So the full CHAOS request URL becomes: 
+So the full CHAOS request URL becomes: (*note that you can't copy this directly
+into the address bar as it contains linebreaks, here's a* link__ *though*)
+
+__ http://api.chaos-systems.com/v5/Object/Get?query=(GUID%3A00000000-0000-0000-0000-00004e040016)&accessPointGUID=C4C2B8DA-A980-11E1-814B-02CEA2621172&pageIndex=0&pageSize=1&includeFiles=true
 
 .. code-block:: none
 
