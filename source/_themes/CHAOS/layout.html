@@ -169,6 +169,9 @@
             </div>
         {%- endblock -%}
 
+        <!-- Menu on left -->
+        {%- block sidebar2 %}{{ sidebar() }}{% endblock %}
+
         <!-- Main -->
         {%- block document %}
            {% block body %}{% endblock %}
@@ -180,7 +183,6 @@
   {%- endblock %}
 
   {%- block sidebar1 %} {# possible location for sidebar #} {% endblock %}
-  {%- block sidebar2 %}{{ sidebar() }}{% endblock %}
   {# breadcrumb() #}
 
   <!-- <div id="cse&#45;results"> -->
