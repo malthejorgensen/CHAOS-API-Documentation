@@ -1,3 +1,7 @@
+==========
+The Basics
+==========
+
 Setting up
 ----------
 Import the Javascript CHAOS.Portal Client into your site.

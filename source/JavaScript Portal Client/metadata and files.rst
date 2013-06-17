@@ -1,3 +1,7 @@
+========================
+Using metadata and files
+========================
+
 Grabbing a single object
 ------------------------
 In many cases it will makes sense to only request a single known object. Objects
