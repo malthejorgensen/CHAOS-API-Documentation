@@ -5,10 +5,10 @@
 
 <head><title>Error handling &mdash; CHAOS API v5 documentation v5</title><!-- <link rel="shortcut icon" href="http://media.mongodb.org/favicon.ico" /> -->
   <!-- <meta name="robots" content="index" /> -->
-  <!-- <meta name="DC.Source" content="https://github.com/mongodb//blob//source/JavaScript Portal Client/errors.txt"/> -->
+  <!-- <meta name="DC.Source" content="https://github.com/mongodb//blob//source/PHP Portal Client/errors.txt"/> -->
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="release" content="v5"/>
-      <link rel="canonical" href="http://docs.mongodb.org//JavaScript Portal Client/errors" />
+      <link rel="canonical" href="http://docs.mongodb.org//PHP Portal Client/errors" />
   
    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -38,7 +38,7 @@
        <script type="text/javascript" src="../_static/scrollspy.js"></script>
           <link rel="search" type="application/opensearchdescription+xml" href="http://docs.mongodb.org/osd.xml" title="MongoDB Help"/>
 <link rel="top" title="CHAOS API v5 documentation" href="../index.html" />
-<link rel="up" title="CHAOS.Portal JavaScript Client" href="index.html" />
+<link rel="up" title="CHAOS.Portal PHP Client" href="index.html" />
 <link rel="next" title="Member functions" href="member functions.html" />
 <link rel="prev" title="Using metadata and files" href="metadata and files.html" />
           <script>
@@ -69,14 +69,14 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">CHAOS overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../concepts.html">CHAOS concepts</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">CHAOS.Portal JavaScript Client</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../JavaScript Portal Client/index.html">CHAOS.Portal JavaScript Client</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">CHAOS.Portal PHP Client</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="intro.html">The Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="metadata and files.html">Using metadata and files</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Error handling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="member functions.html">Member functions</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../PHP Portal Client/index.html">CHAOS.Portal PHP Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Portal/Object.html">Portal.Object</a></li>
 </ul>
 
@@ -90,83 +90,92 @@
 
 <!--
 <strong>Debug:</strong> <br>
-pagename: "JavaScript Portal Client/errors" <br>
+pagename: "PHP Portal Client/errors" <br>
 <br>
 -->
          </div>
        </div>
 
         <!-- Main -->
-           <!--<h3>CHAOS.Portal JavaScript Client</h3>--><div class="section" id="error-handling">
+           <!--<h3>CHAOS.Portal PHP Client</h3>--><div class="section" id="error-handling">
 <h1>Error handling<a class="headerlink" href="#error-handling" title="Permalink to this headline">¶</a></h1>
 <p>Let&#8217;s make a call that will return an error:</p>
-<pre><code class="language-javascript eval">client.SessionAcquired().Add(function(sender, sessionGUID) {
-  client.Object_GetBySearch(
-    showObjects                     // callback
-    , "*"                         // query
-    , "5906a41b-feae-48db-bfb7-714b3e105396" // schemas
-    , "da"                          // langCode
-    , null                          // sort
-    , ChaosSettings.accessPointGUID // accessPointGuid
-    , 0                             // pageIndex
-    , 3                             // pageSize
-  );
-});
+<pre><code class="language-php">&lt;?php
+$serviceResult = $client-&gt;Object()-&gt;GetSearchSchemas(
+  "*",       // search string
+  ["5906a41b-feae-48db-bfb7-714b3e105396"], // fields/schemas to search
+  "da",         // language code
+  $accessPointGUID,
+  0,            // pageIndex
+  10,           // pageSize
+  true,         // includeMetadata
+  true,         // includeFiles
+  true          // includeObjectRelations
+);
 
-function showObjects(serviceResult) {
-  if (serviceResult.WasSuccess() && serviceResult.MCM().WasSuccess()) {
-    var count = serviceResult.MCM().Count();
-    var totalcount = serviceResult.MCM().TotalCount();
-    alert("Got " + count + "/" + totalcount + " objects");
-    console.log(serviceResult.MCM().Results());
-  } else {
-    if (!serviceResult.WasSuccess()) {
-      alert("Portal error: " + serviceResult.Error());
-      console.log(serviceResult.Error());
-    } else if (!serviceResult.MCM().WasSuccess()) {
-      alert("MCM error: " + serviceResult.MCM().Error());
-      console.log(serviceResult.MCM().Error());
-    }
+
+if ($serviceResult-&gt;WasSuccess() && $serviceResult-&gt;MCM()-&gt;WasSuccess()) {
+  $count = $serviceResult-&gt;MCM()-&gt;Count();
+  $totalcount = $serviceResult-&gt;MCM()-&gt;TotalCount();
+  echo "Got " . $count . "/" . $totalcount . " objects&lt;br&gt;";
+
+  $object = $serviceResult-&gt;MCM()-&gt;Results()[0];
+  echo "Grabbed object (GUID): " . $object-&gt;GUID;
+} else {
+  if (!$serviceResult-&gt;WasSuccess()) {
+    echo "Portal error: " . $serviceResult-&gt;Error()-&gt;Message() . "&lt;br&gt;";
+  } else if (!$serviceResult-&gt;MCM()-&gt;WasSuccess()) {
+    echo "MCM error: " . $serviceResult-&gt;MCM()-&gt;Error()-&gt;Message() . "&lt;br&gt;";
   }
-}</code></pre>
+}
+?&gt;</code></pre>
 <p>Running this code you should get:
 <tt class="code docutils literal"><span class="pre">MCM</span> <span class="pre">error:</span> <span class="pre">The</span> <span class="pre">remote</span> <span class="pre">server</span> <span class="pre">returned</span> <span class="pre">an</span> <span class="pre">error:</span> <span class="pre">(400)</span> <span class="pre">Bad</span> <span class="pre">Request.</span></tt>
 Not much help there.</p>
-<p>Let&#8217;s have a more thorough look, by adding <tt class="code docutils literal"><span class="pre">MCM().Exception</span></tt> and
-<tt class="code docutils literal"><span class="pre">MCM().Stacktrace()</span></tt></p>
-<pre><code class="language-javascript eval">client.SessionAcquired().Add(function(sender, sessionGUID) {
-  client.Object_GetBySearch(
-    showObjects                     // callback
-    , "*"                         // query
-    , "5906a41b-feae-48db-bfb7-714b3e105396" // schemas
-    , "da"                          // langCode
-    , null                          // sort
-    , ChaosSettings.accessPointGUID // accessPointGuid
-    , 0                             // pageIndex
-    , 3                             // pageSize
-  );
-});
+<p>Let&#8217;s have a more thorough look, by adding <tt class="code docutils literal"><span class="pre">MCM()-&gt;Exception</span></tt> and
+<tt class="code docutils literal"><span class="pre">MCM()-&gt;Stacktrace()</span></tt></p>
+<pre><code class="language-php">&lt;?php
+$serviceResult = $client-&gt;Object()-&gt;GetSearchSchemas(
+  "*",       // search string
+  ["5906a41b-feae-48db-bfb7-714b3e105396"], // fields/schemas to search
+  "da",         // language code
+  $accessPointGUID,
+  0,            // pageIndex
+  10,           // pageSize
+  true,         // includeMetadata
+  true,         // includeFiles
+  true          // includeObjectRelations
+);
 
-function showObjects(serviceResult) {
-  if (serviceResult.WasSuccess() && serviceResult.MCM().WasSuccess()) {
-    var count = serviceResult.MCM().Count();
-    var totalcount = serviceResult.MCM().TotalCount();
-    alert("Got " + count + "/" + totalcount + " objects");
-    console.log(serviceResult.MCM().Results());
-  } else {
-    if (!serviceResult.WasSuccess()) {
-      alert("Portal error: " + serviceResult.Error());
-      console.log(serviceResult.Error());
-    } else if (!serviceResult.MCM().WasSuccess()) {
-      var err_msg = [
-        "Exception: " + serviceResult.MCM().Exception() + "\n\n",
-        "Message: " + serviceResult.MCM().Error() + "\n\n",
-        "Stacktrace: " + serviceResult.MCM().Stacktrace() + "\n"
-      ].join('');
-      alert(err_msg);
-    }
+if ($serviceResult-&gt;WasSuccess() && $serviceResult-&gt;MCM()-&gt;WasSuccess()) {
+  $count = $serviceResult-&gt;MCM()-&gt;Count();
+  $totalcount = $serviceResult-&gt;MCM()-&gt;TotalCount();
+  echo "Got " . $count . "/" . $totalcount . " objects&lt;br&gt;";
+
+  $object = $serviceResult-&gt;MCM()-&gt;Results()[0];
+  echo "Grabbed object (GUID): " . $object-&gt;GUID;
+} else {
+  if (!$serviceResult-&gt;WasSuccess()) {
+    echo "Portal error: " . $serviceResult-&gt;Error()-&gt;Message();
+  } else if (!$serviceResult-&gt;MCM()-&gt;WasSuccess()) {
+    $error = $serviceResult-&gt;MCM()-&gt;Error();
+
+    $err_msg = "Exception: " . $error-&gt;Name() . "&lt;br&gt;";
+    $err_msg .= "Message: " . $error-&gt;Message() . "&lt;br&gt;";
+    $err_msg .= "Stacktrace: &lt;pre&gt;" . $error-&gt;Stacktrace() . "&lt;/pre&gt;";
+    echo $err_msg;
   }
-}</code></pre>
+}
+?&gt;</code></pre>
+<p>If you run that you should get</p>
+<div class="code highlight-python"><pre>Exception: System.Net.WebException
+Message: The remote server returned an error: (400) Bad Request.
+Stacktrace:
+   at System.Net.HttpWebRequest.GetResponse()
+   at CHAOS.Index.Solr.Solr.SendRequest(SolrCoreConnection core, HttpMethod method, String command, String data)
+   at CHAOS.Index.Solr.Solr.Get[TReturnType](IQuery query)
+   at CHAOS.MCM.Module.ObjectModule.Get(ICallContext callContext, IQuery query, UUID accessPointGUID, Nullable`1 includeMetadata, Nullable`1 includeFiles, Nullable`1 includeObjectRelations, Nullable`1 includeAccessPoints)</pre>
+</div>
 <p>Now that&#8217;s quite a mouthful! <br>
 Let&#8217;s have a closer look: Neither the message nor the exception type is useful.
 But from the stacktrace you should see is that there was an error in the request
@@ -181,12 +190,6 @@ accessPointGUID that is too short or too long typically results in a
 But if the accessPointGUID contains invalid characters (non-hex: 0-F) it returns:
 <tt class="code docutils literal"><span class="pre">System.FormatException:</span> <span class="pre">Could</span> <span class="pre">not</span> <span class="pre">find</span> <span class="pre">any</span> <span class="pre">recognizable</span> <span class="pre">digits.</span></tt>
 In other words, the CHAOS.Portal error handling is not complete yet.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">A basic rule of thumb is to check whether <tt class="code docutils literal"><span class="pre">TotalCount()</span></tt> is <tt class="code docutils literal"><span class="pre">null</span></tt>.
-This is usually indicates an error and in a production environment you should
-display something along the lines of &#8220;An error occurred when using CHAOS&#8221;.</p>
-</div>
 <p>I encourage you to explore and play around with the interface
 – Have fun!</p>
 </div>
@@ -201,7 +204,7 @@ display something along the lines of &#8220;An error occurred when using CHAOS&#
           <br>Previous
         </div>
         <div class="up">
-          <a href="index.html" title="Parent Section: CHAOS.Portal JavaScript Client" >&#8593;&nbsp; CHAOS.Portal JavaScript Client</a>
+          <a href="index.html" title="Parent Section: CHAOS.Portal PHP Client" >&#8593;&nbsp; CHAOS.Portal PHP Client</a>
           <br>Up
         </div>
         <div class="next">
@@ -233,7 +236,7 @@ display something along the lines of &#8220;An error occurred when using CHAOS&#
       <div class="search-db"><gcse:searchbox></gcse:searchbox></div>
           <div id="etp">
             <ul>
-              <li><a href="https://github.com/mongodb//blob//source/JavaScript Portal Client/errors.txt" target="_blank" title="Edit JavaScript Portal Client/errors.txt on GitHub">Edit this Page</a></li>
+              <li><a href="https://github.com/mongodb//blob//source/PHP Portal Client/errors.txt" target="_blank" title="Edit PHP Portal Client/errors.txt on GitHub">Edit this Page</a></li>
               <li><a href="http://github.com/mongodb/" target="_blank" title="Fork the documentation on GitHub and contribute.">GitHub</a></li>
             </ul>
           </div>
@@ -244,7 +247,7 @@ display something along the lines of &#8220;An error occurred when using CHAOS&#
         </p>
       </div><script type="text/javascript">
 var versions = 
-var pagename = 'JavaScript Portal Client/errors'
+var pagename = 'PHP Portal Client/errors'
 var stable = 'v'
 
 function vfnav() {
