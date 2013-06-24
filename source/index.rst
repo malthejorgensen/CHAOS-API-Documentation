@@ -23,7 +23,7 @@ CHAOS API documentation
    overview
    concepts
    JavaScript Portal Client/index
-   PHP Portal Client/*
+   PHP Portal Client/index
    Portal/Object
 
 
