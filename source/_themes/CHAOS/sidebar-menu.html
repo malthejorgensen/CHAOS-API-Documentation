@@ -19,6 +19,11 @@
 
 <div class="site-index"><a {% if pagename == 'genindex' %}class="current"{%- endif -%} href="{{ pathto('genindex') }}">{{ _('Index') }}</a></div>
 
+<form action="{{ pathto('search') }}" method="get" class="search">
+  <input type="text" name="q" value="" />
+  <input type="submit" value="search" />
+</form>
+
 <!--
 <strong>Debug:</strong> <br>
 pagename: "{{ pagename }}" <br>

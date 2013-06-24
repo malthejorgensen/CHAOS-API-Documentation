@@ -58,6 +58,19 @@ div.sphinxsidebar {
   font-size: 12px;
 }
 
+div.sphinxsidebar form.search {
+  margin-top: 1em;
+}
+
+/* div.sphinxsidebar form.search input { */
+/*   display: inline; */
+/* } */
+div.sphinxsidebar form.search input[name='q'] {
+  font-size: 1em;
+  max-width: 100px;
+  width: 50px;
+}
+
 div.sphinxsidebar h3 {
   font-weight: 400;
   line-height: 1em;
