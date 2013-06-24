@@ -237,6 +237,19 @@ table.docutils tr:first-of-type th[colspan] {
   font-weight: normal;
 }
 
+dl {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+dl.class {
+  background-color: rgba(166, 102, 102, 0.2);
+}
+
+dl.function {
+  background-color: rgba(102, 102, 166, 0.2);
+}
+
 /**** BEGIN copy from chaos-community.org ****/
 body {   
 padding-top: 0px;
