@@ -5,18 +5,23 @@ var stable = 'v{{theme_stable}}';
 
 // Change URL on version change
 function vfnav() {
+
+    // If the pagename is "index" don't write anything
     var pn = pagename;
-    if ( pagename=='index' ) {
-        pn = '';
+    if (pagename=='index') {
+      pn = '';
     }
 
-    var v = $(this).children("option:selected").attr('value');
+    // Get selected version in the version <select>
+    var new_version = $(this).children("option:selected").attr('value');
+    var new_dir = versions[new_version].directory_name;
+    var current_dir = versions['{{version}}'].directory_name;
 
-    var uri = '/' + v + '/' + pn;
-    if ( (v==0) || (v==stable) ) {
-        uri = '/manual/' + pn;
-    }
-    window.location.href = uri;
+    var current_url = window.location.href;
+
+    // Replace first occurence of this version's dir with the selected version's
+    // dir in the URL
+    window.location.href = current_url.replace(current_dir, new_dir);
 }
 
 $(document).ready(function() {
@@ -25,16 +30,20 @@ $(document).ready(function() {
         var s = $("<select/>");
         var o = '<option/>';
 
-        $.each(versions, function(index, version) {
-            // Create an <option> for each version
-            $(o, {value: version.name, text: version.name}).appendTo(s);
-        });
+        for (name in versions) {
+          // Create an <option> for each version
+          var option_text = name;
+          if (versions[name].current) {
+            option_text += ' (current)';
+          }
+          $(o, {value: name, text: option_text}).appendTo(s);
+        }
 
         return(s);
     });
 
     // Setup URL change on version <select>
     $("#vn select").bind('change', vfnav);
-    $('#vn select').val('v{{version|e}}');
+    $('#vn select').val('{{version|e}}');
 });
 </script>
