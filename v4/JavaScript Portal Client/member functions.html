@@ -18,7 +18,7 @@
    <script type="text/javascript">
      var DOCUMENTATION_OPTIONS = {
          URL_ROOT: '../',
-         VERSION: 'v5',
+         VERSION: 'v4',
          COLLAPSE_INDEX: false,
          FILE_SUFFIX: '.html',
          HAS_SOURCE: true,
@@ -60,7 +60,7 @@
          <div class="sphinxsidebarwrapper">
 <h3>
   <!-- <a href="../index.html">CHAOS API</a> -->
-  CHAOS API <span id="vn">v5</span>
+  CHAOS API <span id="vn">v4</span>
 </h3>
 
 <div class="site-contents"><a href="../index.html">Table of contents</a></div>
@@ -242,27 +242,32 @@ returned.</p>
       </div>
 
   --><script type="text/javascript">
-var versions = [
-  { "name": "v5", "branchname": "master", "current": true },
-  { "name": "v4", "branchname": "v4" }
-];
+var versions = {
+ "v5": { "branch_name": "master", "directory_name": "current", "current": true },
+ "v4": { "branch_name": "v4", "directory_name": "v4" }
+};
 var pagename = 'JavaScript Portal Client/member functions';
 var stable = 'v';
 
 // Change URL on version change
 function vfnav() {
+
+    // If the pagename is "index" don't write anything
     var pn = pagename;
-    if ( pagename=='index' ) {
-        pn = '';
+    if (pagename=='index') {
+      pn = '';
     }
 
-    var v = $(this).children("option:selected").attr('value');
+    // Get selected version in the version <select>
+    var new_version = $(this).children("option:selected").attr('value');
+    var new_dir = versions[new_version].directory_name;
+    var current_dir = versions['v4'].directory_name;
 
-    var uri = '/' + v + '/' + pn;
-    if ( (v==0) || (v==stable) ) {
-        uri = '/manual/' + pn;
-    }
-    window.location.href = uri;
+    var current_url = window.location.href;
+
+    // Replace first occurence of this version's dir with the selected version's
+    // dir in the URL
+    window.location.href = current_url.replace(current_dir, new_dir);
 }
 
 $(document).ready(function() {
@@ -271,17 +276,21 @@ $(document).ready(function() {
         var s = $("<select/>");
         var o = '<option/>';
 
-        $.each(versions, function(index, version) {
-            // Create an <option> for each version
-            $(o, {value: version.name, text: version.name}).appendTo(s);
-        });
+        for (name in versions) {
+          // Create an <option> for each version
+          var option_text = name;
+          if (versions[name].current) {
+            option_text += ' (current)';
+          }
+          $(o, {value: name, text: option_text}).appendTo(s);
+        }
 
         return(s);
     });
 
     // Setup URL change on version <select>
     $("#vn select").bind('change', vfnav);
-    $('#vn select').val('vv5');
+    $('#vn select').val('v4');
 });
 </script>
 </body>
