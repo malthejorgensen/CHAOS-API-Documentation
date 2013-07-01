@@ -10,6 +10,7 @@ from sh import git
 parser = argparse.ArgumentParser()
 parser.add_argument('--stash', action='store_true', help='Stash before changing to gh-pages')
 parser.add_argument('--commit', action='store_true', help='Whether the auto-generated docs should be committed')
+parser.add_argument('--push-gh-pages', action='store_true', help='Push to Github Pages')
 args = parser.parse_args()
 
 versions = json.load(open('versions.json'))
@@ -40,6 +41,7 @@ for name, options in versions.items():
         # sphinx.main(['sphinx-build', '-b', 'html', '-a', '-E', 'source', 'tmp/current'])
         dir_names.append(options['directory_name'])
     except:
+        raise
         print 'Could not check out branch "' + options['branch_name'] + '".'
         exit()
 
@@ -66,9 +68,13 @@ except:
     # print 'Could not checkout gh-pages'
     # exit()
 
-if args.commit:
+if args.commit or args.push_gh_pages:
     # Commit new version
     git.add(dir_names)
     git.commit(m='Auto-generated docs %s' % time_str)
+
+if args.push_gh_pages:
+    # Commit new version
+    git.push(['origin', 'gh-pages'])
 
 # git.checkout('master')
