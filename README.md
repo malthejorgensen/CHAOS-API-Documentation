@@ -10,6 +10,13 @@ and install it via `pip`
 
     > pip install sphinx
 
+You can install all dependencies automatically with
+
+    > pip install -r requirements.txt
+
+**Note:** Please do not add `distribute` to requirements.txt, as this
+breaks our _drone.io_ continous integration for the documentation.
+
 Once you have install Sphinx, you can build the documentation with
 
     > make html
