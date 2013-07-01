@@ -8,9 +8,6 @@
   {%- set titlesuffix = "" %}
 {%- endif -%}
 
-{%- macro githublink() -%}
-    <a href="https://github.com/mongodb/{{theme_repo_name}}/blob/{{theme_branch}}/source/{{pagename}}.txt" target="_blank" title="Edit {{pagename}}.txt on GitHub">Edit this Page</a>
-{%- endmacro -%}
 
 {%- macro breadcrumb() %}
     <div class="breadcrumb">
@@ -216,8 +213,6 @@
       {%- if theme_project != 'about' %}
           <div id="etp">
             <ul>
-              <li>{{ githublink() }}</li>
-              <li><a href="http://github.com/mongodb/{{ theme_repo_name }}" target="_blank" title="Fork the documentation on GitHub and contribute.">GitHub</a></li>
             </ul>
           </div>
       {%- endif %}
@@ -232,9 +227,9 @@
       </div>
   {%- endblock %}
 
-  {%- block versionnav %}
-      {%- include "versionnav.html"%}
-  {%- endblock %}
   -->
+{%- block versionnav %}
+    {%- include "versionnav.html"%}
+{%- endblock %}
 </body>
 </html>

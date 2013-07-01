@@ -9,7 +9,7 @@
 #}
 <h3>
   <!-- <a href="{{ pathto('index') }}">{{ shorttitle }}</a>{% if theme_project == 'manual' %} <span id="vn">{{version}}</span>{% endif %} -->
-  {{ shorttitle }} {% if theme_project == 'manual' %} <span id="vn">{{version}}</span>{% endif %}
+  {{ shorttitle }} <span id="vn">{{version}}</span>
 </h3>
 
 <div class="site-contents"><a {% if pagename == 'index' %}class="current"{%- endif -%} href="{{ pathto(master_doc) }}">{{ _('Table of contents') }}</a></div>

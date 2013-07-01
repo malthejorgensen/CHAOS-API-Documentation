@@ -1,0 +1,4 @@
+[
+  { "name": "v5", "branchname": "master", "current": true },
+  { "name": "v4", "branchname": "v4" }
+]

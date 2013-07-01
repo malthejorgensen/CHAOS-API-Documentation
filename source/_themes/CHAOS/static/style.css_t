@@ -71,6 +71,10 @@ div.sphinxsidebar form.search input[name='q'] {
   width: 50px;
 }
 
+span#vn select {
+  width: auto;
+}
+
 div.sphinxsidebar h3 {
   font-weight: 400;
   line-height: 1em;
