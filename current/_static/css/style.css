@@ -1,0 +1,203 @@
+@import url(http://fonts.googleapis.com/css?family=PT+Sans);
+
+body {
+  padding-bottom: 20px;
+  background-image: url('../img/light_wool.png');
+  background-repeat:repeat;
+}
+
+/* Custom container */
+.container-narrow {
+  padding-top: 20px;
+  margin: 0 auto;
+  max-width: 700px;
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+.container-narrow1 {
+  padding-top: 0px;
+  margin: 0 auto;
+  max-width: 700px;
+}
+.table-style {
+  max-width: 300;
+}
+/* Main marketing message and sign up button */
+.jumbotron {
+  margin: 60px 0;
+  text-align: left;
+}
+.jumbotron1 {
+  margin: 0px 0;
+  padding-left: 130px;
+  padding-top: 0px;
+}
+.jumbotron h1 {
+  font-size: 66px;
+  line-height: 1;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 60px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body {
+  padding-bottom: 40px;
+  color: #5a5a5a;
+}
+
+
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+/* Center align the text within the three columns below the carousel */
+.marketing .span4 {
+  text-align: center;
+}
+.marketing h2 {
+  font-weight: normal;
+}
+.marketing .span4 p {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* Featurettes
+------------------------- */
+
+.featurette-divider {
+  margin: 80px 0; /* Space out the Bootstrap <hr> more */
+}
+.featurette {
+  padding-top: 50px; /* Vertically center images part 1: add padding above and below text. */
+  overflow: hidden; /* Vertically center images part 2: clear their floats. */
+}
+.featurette-image {
+  margin-top: -10px; /* Vertically center images part 3: negative margin up the image the same amount of the padding to center it. */
+}
+
+/* Give some space on the sides of the floated elements so text doesn't run right into it. */
+.featurette-image.pull-left {
+  margin-right: 40px;
+}
+.featurette-image.pull-right {
+  margin-left: 40px;
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-size: 60px;
+  font-weight: 100;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+/* ADDED BY MALTHE */
+div.centered {
+  text-align: center;
+}
+div.code-introductions {
+  /* font-family: Lato; */
+  font-family: 'PT Sans';
+  display: table;
+  width: 78%; /* 100%; */
+  margin: 0 auto;
+  /* height: 60px; */
+  /* background-color: #E5E5E5; */
+  /* background-color: #F0F0F0; */
+  /* background-color:rgba(230,230,230,0.25); */
+  background-image: -webkit-linear-gradient(top,       #DDDDDD, #EEEEEE); /* For Chrome and Safari */
+  background-image:    -moz-linear-gradient(top,       #DDDDDD, #EEEEEE); /* For old Fx (3.6 to 15) */
+  background-image:     -ms-linear-gradient(top,       #DDDDDD, #EEEEEE); /* For pre-releases of IE 10*/
+  background-image:      -o-linear-gradient(top,       #DDDDDD, #EEEEEE); /* For old Opera (11.1 to 12.0) */
+  background-image:         linear-gradient(to bottom, #EEEEEE 0%, #DDD 20%, #EEEEEE 100%); /* Standard syntax; must be last */
+  background-image:         linear-gradient(to bottom, rgba(238,238,238,0) 0%, rgba(221,221,221,100) 20%, rgba(238,238,238,20) 100%); /* Standard syntax; must be last */
+
+  border-radius: 25px;
+
+  /* padding: 5px; */
+}
+
+div.code-introductions ul {
+  display: table-row;
+}
+div.code-introductions ul li {
+  display: table-cell;
+  width: 33%;
+  height: 78%; /*100%;*/
+  vertical-align: top; /* middle; */
+  text-align: center;
+
+  border-left-width: 1px;
+  border-left-style: solid;
+  /* border-left-color: #CCCCCC; */
+  border-left-color: #DDD;
+
+  border-right-width: 1px;
+  border-right-style: solid;
+  /* border-right-color: black; */
+  border-right-color: #AAAAAA;
+
+  border-top: 1px solid #AAAAAA;
+  border-bottom: 1px solid #AAAAAA;
+
+}
+
+div.code-introductions ul li:first-child {
+  border-radius: 25px 0px 0px 25px;
+  border-left-color: #AAA;
+  /* border-left-color: black; */
+  /* border-left: none; */
+}
+div.code-introductions ul li:last-child {
+  border-radius: 0px 25px 25px 0px;
+}
+
+div.code-introductions ul li a {
+  display: block;
+  /* width:100%; */
+  /* height:100%; */
+  padding: 10px;
+}
+
+div.code-introductions ul li a:hover {
+  text-decoration: none;
+  background-image: linear-gradient(to bottom, rgba(230,230,230,100) 0%, rgba(200,200,200,100) 20%, rgba(230,230,230,20) 100%); /* Standard syntax; must be last */
+}
+div.code-introductions ul li:first-child a:hover {
+  background-image: linear-gradient(to bottom, rgba(230,230,230,100) 0%, rgba(200,200,200,100) 20%, rgba(230,230,230,20) 100%); /* Standard syntax; must be last */
+  border-radius: 25px 0px 0px 25px;
+}
+div.code-introductions ul li:last-child a:hover {
+  background-image: linear-gradient(to bottom, rgba(230,230,230,100) 0%, rgba(200,200,200,100) 20%, rgba(230,230,230,20) 100%); /* Standard syntax; must be last */
+  border-radius: 0px 25px 25px 0px;
+}
+
+div.code-introductions h5 {
+  line-height: 14px;
+  font-size:   14px;
+  margin: 0;
+  margin-bottom: 5px;
+  font-weight: normal;
+  text-align: center;
+}
+div.code-introductions p {
+  font-size:   13px;
+  line-height: 14px;
+  margin: 0;
+  color: #333;
+}

@@ -1,0 +1,288 @@
+
+<!doctype html>
+
+<html lang="">
+
+<head><title>Member functions &mdash; CHAOS API v5</title><!-- <link rel="shortcut icon" href="http://media.mongodb.org/favicon.ico" /> -->
+  <!-- <meta name="robots" content="index" /> -->
+  <!-- <meta name="DC.Source" content="https://github.com/mongodb/CHAOS-API-Documentation/blob/master/source/JavaScript Portal Client/member functions.txt"/> -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="release" content="v5"/>
+      <link rel="canonical" href="http://docs.mongodb.org//JavaScript Portal Client/member functions" />
+  
+   <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+       <link rel="stylesheet" href="http://cdn.jsdelivr.net/codemirror/3.0/codemirror.css" type="text/css" />
+       <link rel="stylesheet" href="../_static/code-editor.css" type="text/css" />
+      
+   <script type="text/javascript">
+     var DOCUMENTATION_OPTIONS = {
+         URL_ROOT: '../',
+         VERSION: 'v5',
+         COLLAPSE_INDEX: false,
+         FILE_SUFFIX: '.html',
+         HAS_SOURCE: true,
+     };
+   </script>
+   
+       <script type="text/javascript" src="../_static/jquery.js"></script>
+       <script type="text/javascript" src="../_static/underscore.js"></script>
+       <script type="text/javascript" src="../_static/doctools.js"></script>
+       <script type="text/javascript" src="http://cdn.jsdelivr.net/codemirror/3.0/codemirror.js"></script>
+       <script type="text/javascript" src="http://cdn.jsdelivr.net/codemirror/3.0/mode/javascript/javascript.js"></script>
+       <script type="text/javascript" src="http://cdn.jsdelivr.net/codemirror/3.0/mode/css/css.js"></script>
+       <script type="text/javascript" src="http://cdn.jsdelivr.net/codemirror/3.0/mode/xml/xml.js"></script>
+       <script type="text/javascript" src="http://cdn.jsdelivr.net/codemirror/3.0/mode/htmlmixed/htmlmixed.js"></script>
+       <script type="text/javascript" src="../_static/CHAOS.Portal.Client.PortalClient.js"></script>
+       <script type="text/javascript" src="../_static/code-editor.js"></script>
+       <script type="text/javascript" src="../_static/scrollspy.js"></script>
+          <link rel="search" type="application/opensearchdescription+xml" href="http://docs.mongodb.org/osd.xml" title="MongoDB Help"/>
+<link rel="top" title="CHAOS API" href="../index.html" />
+<link rel="up" title="CHAOS.Portal JavaScript Client" href="index.html" />
+<link rel="next" title="CHAOS.Portal PHP Client" href="../PHP Portal Client/index.html" />
+<link rel="prev" title="Error handling" href="errors.html" />
+          <script>
+            // (function() {
+            //    var cx = '017213726194841070573:WMX6838984';
+            //    var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
+            //    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+            //    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
+            // })();
+          </script></head>
+<body>
+      <div id="main-column">
+        <!-- Logo -->
+            <div id="logo">
+              <a href="http://chaos-community.org/"><img class="logo"
+                    src="http://chaos-community.org/img/chaoscommunity.png" alt="CHAOS Community Logo"/></a>
+            </div><!-- Menu on left -->
+       <div class="sphinxsidebar">
+         <div class="sphinxsidebarwrapper">
+<h3>
+  <!-- <a href="../index.html">CHAOS API</a> -->
+  CHAOS API <span id="vn">v5</span>
+</h3>
+
+<div class="site-contents"><a href="../index.html">Table of contents</a></div>
+
+
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">CHAOS overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts.html">CHAOS concepts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">CHAOS.Portal JavaScript Client</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">The Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metadata and files.html">Using metadata and files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html">Error handling</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Member functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../PHP Portal Client/index.html">CHAOS.Portal PHP Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Portal/Object.html">Portal.Object</a></li>
+</ul>
+
+
+<div class="site-index"><a href="../genindex.html">Index</a></div>
+
+<form action="../search.html" method="get" class="search">
+  <input type="text" name="q" value="" />
+  <input type="submit" value="search" />
+</form>
+
+<!-- Edit this page on Github -->
+<a class="edit-github" href="https://github.com/malthejorgensen/CHAOS-API-Documentation/blob/master/source/JavaScript Portal Client/member functions.rst" target="_blank" title="Edit JavaScript Portal Client/member functions.txt on GitHub">
+  Edit this Page
+</a>
+
+<!--
+<strong>Debug:</strong> <br>
+pagename: "JavaScript Portal Client/member functions" <br>
+<br>
+-->
+         </div>
+       </div>
+
+        <!-- Main -->
+           <!--<h3>CHAOS.Portal JavaScript Client</h3>--><div class="section" id="member-functions">
+<h1>Member functions<a class="headerlink" href="#member-functions" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="PortalClient">
+<em class="property">class </em><tt class="descname">PortalClient</tt><big>(</big><em>servicePath</em><span class="optional">[</span>, <em>clientGUID</em>, <em>autoCreateSession=true</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#PortalClient" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>string</em>) &#8211; URL of the CHAOS Portal service</li>
+<li><strong>clientGUID</strong> (<em>string</em>) &#8211; A GUID identifying this client service</li>
+<li><strong>autoCreateSession</strong> (<em>bool</em>) &#8211; Create session automatically</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p>The class of the Javascript client through which all communication with CHAOS
+Portal goes.</p>
+<dl class="function">
+<dt id="PortalClient.Folder_Get">
+<tt class="descclassname">PortalClient.</tt><tt class="descname">Folder_Get</tt><big>(</big><em>callback</em>, <em>id</em>, <em>folderTypeID</em>, <em>parentID</em><big>)</big><a class="headerlink" href="#PortalClient.Folder_Get" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>callback</strong> (<em>function(serviceResult)</em>) &#8211; Function to be called with <cite>serviceResult</cite>.</li>
+<li><strong>id</strong> (<em>int</em>) &#8211; Folder ID</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="PortalClient.Object_Get">
+<tt class="descclassname">PortalClient.</tt><tt class="descname">Object_Get</tt><big>(</big><em>callback</em>, <em>query</em>, <em>sort</em>, <em>accessPointGUID</em>, <em>pageIndex</em>, <em>pageSize</em><span class="optional">[</span>, <em>includeMetadata</em>, <em>includeFiles</em>, <em>includeObjectRelations</em>, <em>includeAccessPoints</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#PortalClient.Object_Get" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>callback</strong> (<em>function(serviceResult)</em>) &#8211; Function to be called with <cite>serviceResult</cite>.</li>
+<li><strong>query</strong> (<em>string</em>) &#8211; Solr query to get objects by</li>
+<li><strong>sort</strong> (<em>bool</em>) &#8211; Can be <cite>null</cite></li>
+<li><strong>accessPointGUID</strong> (<em>string</em>) &#8211; GUID identifying the accessPoint and thus authenticating the call</li>
+<li><strong>pageIndex</strong> (<em>int</em>) &#8211; Which page to get in pagination</li>
+<li><strong>pageSize</strong> (<em>int</em>) &#8211; Size of each page in pagination</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p>CHAOS paginates all result so you need to specify a page size (<cite>pageSize</cite>) and a
+page index (<cite>pageIndex</cite>) that specifies which page of objects should be
+returned.</p>
+<dl class="function">
+<dt id="PortalClient.Object_GetBySearch">
+<tt class="descclassname">PortalClient.</tt><tt class="descname">Object_GetBySearch</tt><big>(</big><em>callback</em>, <em>searchString</em>, <em>schemas</em>, <em>langCode</em>, <em>sort</em>, <em>accessPointGUID</em>, <em>pageIndex</em>, <em>pageSize</em><span class="optional">[</span>, <em>includeMetadata</em>, <em>includeFiles</em>, <em>includeObjectRelations</em>, <em>includeAccessPoints</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#PortalClient.Object_GetBySearch" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>callback</strong> (<em>function(serviceResult)</em>) &#8211; Function to be called with <cite>serviceResult</cite>.</li>
+<li><strong>searchString</strong> (<em>string</em>) &#8211; Solr query to get objects by</li>
+<li><strong>schemas</strong> (<em>string|array</em>) &#8211; A string or an array of strings of the schemas to be searched</li>
+<li><strong>langCode</strong> (<em>string</em>) &#8211; The language code that should be used for search, e.g. <cite>da_dk</cite>, <cite>en_us</cite></li>
+<li><strong>sort</strong> (<em>bool</em>) &#8211; Can be <cite>null</cite></li>
+<li><strong>accessPointGUID</strong> (<em>string</em>) &#8211; GUID identifying the accessPoint thereby authenticating the call</li>
+<li><strong>pageIndex</strong> (<em>int</em>) &#8211; Which page to get in pagination</li>
+<li><strong>pageSize</strong> (<em>int</em>) &#8211; Size of each page in pagination</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+
+        <!-- Bottom prev/next -->
+    <div class="nav-buttons">
+      <div class="button-row">
+        <div class="prev">
+          <a href="errors.html" title="Previous Section: Error handling">&#8592; &nbsp; Error handling</a>
+          <br>Previous
+        </div>
+        <div class="up">
+          <a href="index.html" title="Parent Section: CHAOS.Portal JavaScript Client" >&#8593;&nbsp; CHAOS.Portal JavaScript Client</a>
+          <br>Up
+        </div>
+        <div class="next">
+          <a href="../PHP Portal Client/index.html" title="Next Section: CHAOS.Portal PHP Client">CHAOS.Portal PHP Client &nbsp;&#8594;</a>
+          <br>Next
+        </div>
+      </div>
+    </div></div>  
+  
+
+  <!-- <div id="cse&#45;results"> -->
+  <!--   <gcse:searchresults linkTarget="_top"></gcse:searchresults> -->
+  <!-- </div> -->
+  <!--
+  -->
+
+  <!--<div id="top-right">
+        <div class="user-right">
+          <ul id="header-menu-bar" class="ajs-menu-bar">
+            <li class="normal"><a target="_blank" href="http://groups.google.com/group/mongodb-user">Forums</a></li>
+            <li class="normal"><a target="_blank" href="http://blog.mongodb.org/">Blog</a></li>
+            <li class="normal"><a href="http://www.mongodb.org/downloads">Download</a></li>
+            <li class="normal"><a href="http://docs.mongodb.org/ecosystem/drivers/">Drivers</a></li>
+            <li class="normal"><a href="http://www.10gen.com/events">Events</a></li>
+            <li class="normal last"><a class="last" href="http://docs.mongodb.org/manual/meta/translation">Translations</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="search-db"><gcse:searchbox></gcse:searchbox></div>
+          <div id="etp">
+            <ul>
+            </ul>
+          </div>
+      <div class="footer">
+        <p>
+          &copy; <a href="">Copyright</a> 2013, Malthe Jørgensen, Andreas Røll Larsen 
+          MongoDB&reg;, Mongo&reg;, and the leaf logo are registered trademarks of <a href="http://www.10gen.com/">10gen, Inc.</a>
+        </p>
+      </div>
+
+  --><script type="text/javascript">
+var versions = [
+  { "name": "v5", "branchname": "master", "current": true },
+  { "name": "v4", "branchname": "v4" }
+];
+var pagename = 'JavaScript Portal Client/member functions';
+var stable = 'v';
+
+// Change URL on version change
+function vfnav() {
+    var pn = pagename;
+    if ( pagename=='index' ) {
+        pn = '';
+    }
+
+    var v = $(this).children("option:selected").attr('value');
+
+    var uri = '/' + v + '/' + pn;
+    if ( (v==0) || (v==stable) ) {
+        uri = '/manual/' + pn;
+    }
+    window.location.href = uri;
+}
+
+$(document).ready(function() {
+    // Populate version <select>
+    $("#vn").html(function() {
+        var s = $("<select/>");
+        var o = '<option/>';
+
+        $.each(versions, function(index, version) {
+            // Create an <option> for each version
+            $(o, {value: version.name, text: version.name}).appendTo(s);
+        });
+
+        return(s);
+    });
+
+    // Setup URL change on version <select>
+    $("#vn select").bind('change', vfnav);
+    $('#vn select').val('vv5');
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,402 @@
+
+<!doctype html>
+
+<html lang="">
+
+<head><title>Using metadata and files &mdash; CHAOS API v5</title><!-- <link rel="shortcut icon" href="http://media.mongodb.org/favicon.ico" /> -->
+  <!-- <meta name="robots" content="index" /> -->
+  <!-- <meta name="DC.Source" content="https://github.com/mongodb/CHAOS-API-Documentation/blob/master/source/JavaScript Portal Client/metadata and files.txt"/> -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="release" content="v5"/>
+      <link rel="canonical" href="http://docs.mongodb.org//JavaScript Portal Client/metadata and files" />
+  
+   <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+       <link rel="stylesheet" href="http://cdn.jsdelivr.net/codemirror/3.0/codemirror.css" type="text/css" />
+       <link rel="stylesheet" href="../_static/code-editor.css" type="text/css" />
+       <link rel="stylesheet" href="http://cdn.jsdelivr.net/codemirror/3.0/codemirror.css" type="text/css" />
+       <link rel="stylesheet" href="../_static/code-editor.css" type="text/css" />
+      
+   <script type="text/javascript">
+     var DOCUMENTATION_OPTIONS = {
+         URL_ROOT: '../',
+         VERSION: 'v5',
+         COLLAPSE_INDEX: false,
+         FILE_SUFFIX: '.html',
+         HAS_SOURCE: true,
+     };
+   </script>
+   
+       <script type="text/javascript" src="../_static/jquery.js"></script>
+       <script type="text/javascript" src="../_static/underscore.js"></script>
+       <script type="text/javascript" src="../_static/doctools.js"></script>
+       <script type="text/javascript" src="http://cdn.jsdelivr.net/codemirror/3.0/codemirror.js"></script>
+       <script type="text/javascript" src="http://cdn.jsdelivr.net/codemirror/3.0/mode/javascript/javascript.js"></script>
+       <script type="text/javascript" src="http://cdn.jsdelivr.net/codemirror/3.0/mode/css/css.js"></script>
+       <script type="text/javascript" src="http://cdn.jsdelivr.net/codemirror/3.0/mode/xml/xml.js"></script>
+       <script type="text/javascript" src="http://cdn.jsdelivr.net/codemirror/3.0/mode/htmlmixed/htmlmixed.js"></script>
+       <script type="text/javascript" src="../_static/CHAOS.Portal.Client.PortalClient.js"></script>
+       <script type="text/javascript" src="../_static/code-editor.js"></script>
+       <script type="text/javascript" src="http://cdn.jsdelivr.net/codemirror/3.0/codemirror.js"></script>
+       <script type="text/javascript" src="http://cdn.jsdelivr.net/codemirror/3.0/mode/javascript/javascript.js"></script>
+       <script type="text/javascript" src="http://cdn.jsdelivr.net/codemirror/3.0/mode/css/css.js"></script>
+       <script type="text/javascript" src="http://cdn.jsdelivr.net/codemirror/3.0/mode/xml/xml.js"></script>
+       <script type="text/javascript" src="http://cdn.jsdelivr.net/codemirror/3.0/mode/htmlmixed/htmlmixed.js"></script>
+       <script type="text/javascript" src="../_static/CHAOS.Portal.Client.PortalClient.js"></script>
+       <script type="text/javascript" src="../_static/code-editor.js"></script>
+       <script type="text/javascript" src="../_static/scrollspy.js"></script>
+          <link rel="search" type="application/opensearchdescription+xml" href="http://docs.mongodb.org/osd.xml" title="MongoDB Help"/>
+<link rel="top" title="CHAOS API" href="../index.html" />
+<link rel="up" title="CHAOS.Portal JavaScript Client" href="index.html" />
+<link rel="next" title="Error handling" href="errors.html" />
+<link rel="prev" title="The Basics" href="intro.html" />
+          <script>
+            // (function() {
+            //    var cx = '017213726194841070573:WMX6838984';
+            //    var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
+            //    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+            //    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
+            // })();
+          </script></head>
+<body>
+      <div id="main-column">
+        <!-- Logo -->
+            <div id="logo">
+              <a href="http://chaos-community.org/"><img class="logo"
+                    src="http://chaos-community.org/img/chaoscommunity.png" alt="CHAOS Community Logo"/></a>
+            </div><!-- Menu on left -->
+       <div class="sphinxsidebar">
+         <div class="sphinxsidebarwrapper">
+<h3>
+  <!-- <a href="../index.html">CHAOS API</a> -->
+  CHAOS API <span id="vn">v5</span>
+</h3>
+
+<div class="site-contents"><a href="../index.html">Table of contents</a></div>
+
+
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">CHAOS overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts.html">CHAOS concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../facets.html">Facets</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">CHAOS.Portal JavaScript Client</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">The Basics</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Using metadata and files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#grabbing-a-single-object">Grabbing a single object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#files">Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#metadata">Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html">Error handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="member functions.html">Member functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../PHP Portal Client/index.html">CHAOS.Portal PHP Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Portal/Object.html">Portal.Object</a></li>
+</ul>
+
+
+<div class="site-index"><a href="../genindex.html">Index</a></div>
+
+<form action="../search.html" method="get" class="search">
+  <input type="text" name="q" value="" />
+  <input type="submit" value="search" />
+</form>
+
+<!-- Edit this page on Github -->
+<a class="edit-github" href="https://github.com/malthejorgensen/CHAOS-API-Documentation/blob/master/source/JavaScript Portal Client/metadata and files.rst" target="_blank" title="Edit JavaScript Portal Client/metadata and files.txt on GitHub">
+  Edit this Page
+</a>
+
+<!--
+<strong>Debug:</strong> <br>
+pagename: "JavaScript Portal Client/metadata and files" <br>
+<br>
+-->
+         </div>
+       </div>
+
+        <!-- Main -->
+           <!--<h3>CHAOS.Portal JavaScript Client</h3>--><div class="section" id="using-metadata-and-files">
+<h1>Using metadata and files<a class="headerlink" href="#using-metadata-and-files" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="grabbing-a-single-object">
+<h2>Grabbing a single object<a class="headerlink" href="#grabbing-a-single-object" title="Permalink to this headline">¶</a></h2>
+<p>In many cases it will makes sense to only request a single known object. Objects
+are identified by their GUID, and can be retrieved with
+<tt class="code docutils literal"><span class="pre">PortalClient.Object_GetByObjectGUID()</span></tt></p>
+<pre><code class="language-javascript eval">// Retrieve object
+client.SessionAcquired().Add(function(sender, sessionGUID) {
+  client.Object_GetByObjectGUID(
+    showObject                      // callback
+    , "00000000-0000-0000-0000-00004e040016" // objectGUID
+    , ChaosSettings.accessPointGUID // accessPointGuid
+    , true                          // includeMetadata
+    , true                          // includeFiles
+    , true                          // includeObjectRelations
+    , false                         // includeAccessPoints
+  );
+});
+
+function showObject(serviceResult) {
+  var obj = serviceResult.MCM().Results()[0];
+  alert("Grabbed object (GUID): " + obj.GUID);
+}</code></pre>
+</div>
+<div class="section" id="files">
+<h2>Files<a class="headerlink" href="#files" title="Permalink to this headline">¶</a></h2>
+<p>Files belonging to an object can be of different types &#8211; video, audio, images
+and basically any other kind of file. The files can be found in the Files
+attribute of the objects in <tt class="code docutils literal"><span class="pre">serviceResult.MCM().Results()</span></tt>:</p>
+<pre><code class="language-javascript eval">// Retrieve object
+client.SessionAcquired().Add(function(sender, sessionGUID) {
+  client.Object_GetByObjectGUID(
+    showObject                      // callback
+    , "00000000-0000-0000-0000-00004e040016" // objectGUID
+    , ChaosSettings.accessPointGUID // accessPointGuid
+    , true                          // includeMetadata
+    , true                          // includeFiles
+    , true                          // includeObjectRelations
+    , false                         // includeAccessPoints
+  );
+});
+
+function showObject(serviceResult) {
+  var obj = serviceResult.MCM().Results()[0];
+
+  // Clear results table
+  $('#file-table tbody').html('');
+
+  for (var i = 0; i &lt; obj.Files.length; i++) {
+    var tr = "";
+    tr += "&lt;tr&gt;";
+    tr += "&lt;td&gt;" + obj.Files[i].FormatType + "&lt;/td&gt;";
+    tr += "&lt;td&gt;" + obj.Files[i].Filename + "&lt;/td&gt;";
+    tr += "&lt;td&gt;" + obj.Files[i].URL + "&lt;/td&gt;";
+    if (obj.Files[i].FormatType == "Image") {
+      tr += '&lt;td&gt;&lt;img src="' + obj.Files[i].URL + '"&gt;&lt;/td&gt;';
+    } else {
+      tr += "&lt;td&gt;No representation&lt;/td&gt;";
+    }
+    tr += "&lt;/tr&gt;";
+    $('#file-table tbody').append(tr);
+  }
+}</code></pre>
+<table id="file-table">
+  <thead>
+    <tr>
+      <th>FormatType</th>
+      <th>Filename</th>
+      <th>URL</th>
+      <th>Representation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Some file format</td>
+      <td>example.tiff</td>
+      <td>http://example.org/patd/example.tiff</td>
+      <td>Try to show the file</td>
+    </tr>
+  </tbody>
+</table>
+</section></div>
+<div class="section" id="metadata">
+<h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
+<p>Now, we have an object and possibly some files related to it. But we might still
+have some questions: What&#8217;s the name of the object? What color does it have?
+What length? Texture?  Taste? <br>
+&#8211; and what noise does it make when it&#8217;s out of paper? <br>
+These are questions for the metadata.</p>
+<p>The CHAOS database can be filled with all kinds of objects. What kind of objects
+you can expect to get from your specific database  should be known to you
+already. Or at the latest when you start working with your CHAOS database.</p>
+<p><em>The metadata of an object is a list of XML documents with related XML schemas</em>.
+Again, the structure of these XML document is specific to your specific
+database, and I recommend that you familiarize yourself the structure of these
+documents before you begin doing serious work with CHAOS. In this case we&#8217;re
+just experimenting and getting to know the interface - so let&#8217;s have a look. The
+metadata can be found in the Metadatas attribute of the objects in
+serviceResult.MCM().Results():</p>
+<pre><code class="language-javascript eval">// Retrieve object
+client.SessionAcquired().Add(function(sender, sessionGUID) {
+  client.Object_GetByObjectGUID(
+    showObject                      // callback
+    , "00000000-0000-0000-0000-00004e040016" // objectGUID
+    , ChaosSettings.accessPointGUID // accessPointGuid
+    , true                          // includeMetadata
+    , true                          // includeFiles
+    , true                          // includeObjectRelations
+    , false                         // includeAccessPoints
+  );
+});
+
+function showObject(serviceResult) {
+  var obj = serviceResult.MCM().Results()[0];
+  var metadata = obj.Metadatas;
+
+  var string_result = JSON.stringify(metadata, null, '\t').replace('&lt;', '&lt;').replace('&gt;', '&gt;')
+  $('#metadata-results').data('codeMirror').setValue(string_result);
+}</code></pre>
+<p>Our object&#8217;s metadata:</p>
+<pre id="metadata-results"><code class="language-json">// The result should look something like this
+[
+  {
+    "GUID": "29d669cf-c3e5-4749-beb9-20bb7ac18b05",
+    "EditingUserGUID": "80d15fb4-c1fb-9445-89c6-1a398cbd85e5",
+    "LanguageCode": "da",
+    "MetadataSchemaGUID": "5906a41b-feae-48db-bfb7-714b3e105396",
+    "RevisionID": 1,
+    "MetadataXML": "&lt;DKA xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.danskkulturarv.dk/DKA2.xsd\" xmlns:oa=\"http://www.openarchives.org/OAI/2.0/\" xmlns:ese=\"http://www.europeana.eu/schemas/ese/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:dcterms=\"http://purl.org/dc/terms/\" xsi:schemaLocation=\"http://www.danskkulturarv.dk/DKA2.xsd ../../Base/schemas/DKA2.xsd\"&gt;&lt;Title&gt;Uden titel&lt;/Title&gt;&lt;Abstract /&gt;&lt;Description&gt;&lt;div xmlns=\"http://www.w3.org/1999/xhtml\"&gt;&lt;p&gt;En mand i profil med sideskilning og et mut ansigtsudtryk&lt;/p&gt;&lt;p&gt;Tusch&lt;/p&gt;&lt;p&gt;&lt;strong&gt;&lt;a target=\"_blank\" href=\"http://www.kb.dk/images/billed/2010/okt/billeder/da/\"&gt;\r\n\t\t\tMere fra samme udgivelse&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;&lt;/Description&gt;&lt;Organization&gt;The Royal Library: The National Library of Denmark and Copenhagen University Library&lt;/Organization&gt;&lt;ExternalURL&gt;http://www.kb.dk/images/billed/2010/okt/billeder/object108593/en/&lt;/ExternalURL&gt;&lt;ExternalIdentifier&gt;oai:kb.dk:oai:kb.dk:images:billed:2010:okt:billeder:object108593&lt;/ExternalIdentifier&gt;&lt;Type&gt;IMAGE&lt;/Type&gt;&lt;Contributors /&gt;&lt;Creators&gt;&lt;Creator Role=\"creator\" Name=\"ukendt\" /&gt;&lt;/Creators&gt;&lt;TechnicalComment /&gt;&lt;Location /&gt;&lt;RightsDescription&gt;Copyright © The Royal Library: The National Library of Denmark and Copenhagen University Library&lt;/RightsDescription&gt;&lt;Categories /&gt;&lt;Tags /&gt;&lt;/DKA&gt;",
+    "DateCreated": -2147483648,
+    "FullName": "CHAOS.MCM.Data.DTO.Metadata"
+  },
+  {
+    "GUID": "cde9176a-d4c9-ad4f-b8f0-aaede63764d0",
+    "EditingUserGUID": "80d15fb4-c1fb-9445-89c6-1a398cbd85e5",
+    "LanguageCode": "da",
+    "MetadataSchemaGUID": "00000000-0000-0000-0000-000063c30000",
+    "RevisionID": 1,
+    "MetadataXML": "&lt;DKA&gt;&lt;Title&gt;Uden titel&lt;/Title&gt;&lt;Abstract&gt;En mand i profil med sideskilning og et mut ansigtsudtryk&lt;/Abstract&gt;&lt;Description /&gt;&lt;Organization&gt;Det Kongelige Bibliotek&lt;/Organization&gt;&lt;Type /&gt;&lt;CreatedDate&gt;2010-10-06T00:00:00&lt;/CreatedDate&gt;&lt;FirstPublishedDate&gt;2010-10-06T00:00:00&lt;/FirstPublishedDate&gt;&lt;Identifier&gt;108593&lt;/Identifier&gt;&lt;Contributor /&gt;&lt;Creator&gt;&lt;Person Name=\"ukendt\" Role=\"Creator\" /&gt;&lt;/Creator&gt;&lt;TechnicalComment /&gt;&lt;Location /&gt;&lt;RightsDescription&gt;Billedet er beskyttet af loven om ophavsret&lt;/RightsDescription&gt;&lt;Categories /&gt;&lt;/DKA&gt;",
+    "DateCreated": -2147483648,
+    "FullName": "CHAOS.MCM.Data.DTO.Metadata"
+  }
+]</code></pre>
+<p>Parsing XML with Javascript can be <a class="reference external" href="http://stackoverflow.com/a/8412989/118608">tricky business</a>. I recommend using a library
+such as jQuery. In the following example we are using <a class="reference external" href="http://jquery.com/">jQuery</a> 1.7.1 to parse and
+retrieve data from the XML.</p>
+<pre><code class="language-javascript eval"> client.SessionAcquired().Add(function(sender, sessionGUID) {
+   client.Object_GetByObjectGUID(
+     showObject                      // callback
+     , "00000000-0000-0000-0000-00004e040016" // objectGUID
+     , ChaosSettings.accessPointGUID // accessPointGuid
+     , true                          // includeMetadata
+     , true                          // includeFiles
+     , true                          // includeObjectRelations
+     , false                         // includeAccessPoints
+   );
+ });
+
+ function showObject(serviceResult) {
+   var obj = serviceResult.MCM().Results()[0];
+   var metadata = obj.Metadatas;
+   var xml = metadata[1].MetadataXML;
+
+   var xmlDoc = $.parseXML( xml ); // XML document
+   var $xmlDoc = $( xmlDoc ); // jQuery XML document
+
+
+   var obj_title = $xmlDoc.find("Title").text();
+   var obj_desc = $xmlDoc.find("Abstract").text();
+
+   alert(obj_title + "\n" + obj_desc);
+ }</code></pre>
+<p>The next section will teach you about handling errors when dealing with
+CHAOS.Portal.</p>
+</div>
+</div>
+
+
+
+        <!-- Bottom prev/next -->
+    <div class="nav-buttons">
+      <div class="button-row">
+        <div class="prev">
+          <a href="intro.html" title="Previous Section: The Basics">&#8592; &nbsp; The Basics</a>
+          <br>Previous
+        </div>
+        <div class="up">
+          <a href="index.html" title="Parent Section: CHAOS.Portal JavaScript Client" >&#8593;&nbsp; CHAOS.Portal JavaScript Client</a>
+          <br>Up
+        </div>
+        <div class="next">
+          <a href="errors.html" title="Next Section: Error handling">Error handling &nbsp;&#8594;</a>
+          <br>Next
+        </div>
+      </div>
+    </div></div>  
+  
+
+  <!-- <div id="cse&#45;results"> -->
+  <!--   <gcse:searchresults linkTarget="_top"></gcse:searchresults> -->
+  <!-- </div> -->
+  <!--
+  -->
+
+  <!--<div id="top-right">
+        <div class="user-right">
+          <ul id="header-menu-bar" class="ajs-menu-bar">
+            <li class="normal"><a target="_blank" href="http://groups.google.com/group/mongodb-user">Forums</a></li>
+            <li class="normal"><a target="_blank" href="http://blog.mongodb.org/">Blog</a></li>
+            <li class="normal"><a href="http://www.mongodb.org/downloads">Download</a></li>
+            <li class="normal"><a href="http://docs.mongodb.org/ecosystem/drivers/">Drivers</a></li>
+            <li class="normal"><a href="http://www.10gen.com/events">Events</a></li>
+            <li class="normal last"><a class="last" href="http://docs.mongodb.org/manual/meta/translation">Translations</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="search-db"><gcse:searchbox></gcse:searchbox></div>
+          <div id="etp">
+            <ul>
+            </ul>
+          </div>
+      <div class="footer">
+        <p>
+          &copy; <a href="">Copyright</a> 2013, Malthe Jørgensen, Andreas Røll Larsen 
+          MongoDB&reg;, Mongo&reg;, and the leaf logo are registered trademarks of <a href="http://www.10gen.com/">10gen, Inc.</a>
+        </p>
+      </div>
+
+  --><script type="text/javascript">
+var versions = {
+ "v5": { "branch_name": "master", "directory_name": "current", "current": true },
+ "v4": { "branch_name": "v4", "directory_name": "v4" }
+};
+var pagename = 'JavaScript Portal Client/metadata and files';
+var stable = 'v';
+
+// Change URL on version change
+function vfnav() {
+
+    // If the pagename is "index" don't write anything
+    var pn = pagename;
+    if (pagename=='index') {
+      pn = '';
+    }
+
+    // Get selected version in the version <select>
+    var new_version = $(this).children("option:selected").attr('value');
+    var new_dir = versions[new_version].directory_name;
+    var current_dir = versions['v5'].directory_name;
+
+    var current_url = window.location.href;
+
+    // Replace first occurence of this version's dir with the selected version's
+    // dir in the URL
+    window.location.href = current_url.replace(current_dir, new_dir);
+}
+
+$(document).ready(function() {
+    // Populate version <select>
+    $("#vn").html(function() {
+        var s = $("<select/>");
+        var o = '<option/>';
+
+        for (name in versions) {
+          // Create an <option> for each version
+          var option_text = name;
+          if (versions[name].current) {
+            option_text += ' (current)';
+          }
+          $(o, {value: name, text: option_text}).appendTo(s);
+        }
+
+        return(s);
+    });
+
+    // Setup URL change on version <select>
+    $("#vn select").bind('change', vfnav);
+    $('#vn select').val('v5');
+});
+</script>
+</body>
+</html>

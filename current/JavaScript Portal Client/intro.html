@@ -1,0 +1,412 @@
+
+<!doctype html>
+
+<html lang="">
+
+<head><title>The Basics &mdash; CHAOS API v5</title><!-- <link rel="shortcut icon" href="http://media.mongodb.org/favicon.ico" /> -->
+  <!-- <meta name="robots" content="index" /> -->
+  <!-- <meta name="DC.Source" content="https://github.com/mongodb/CHAOS-API-Documentation/blob/master/source/JavaScript Portal Client/intro.txt"/> -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="release" content="v5"/>
+      <link rel="canonical" href="http://docs.mongodb.org//JavaScript Portal Client/intro" />
+  
+   <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+       <link rel="stylesheet" href="http://cdn.jsdelivr.net/codemirror/3.0/codemirror.css" type="text/css" />
+       <link rel="stylesheet" href="../_static/code-editor.css" type="text/css" />
+       <link rel="stylesheet" href="http://cdn.jsdelivr.net/codemirror/3.0/codemirror.css" type="text/css" />
+       <link rel="stylesheet" href="../_static/code-editor.css" type="text/css" />
+      
+   <script type="text/javascript">
+     var DOCUMENTATION_OPTIONS = {
+         URL_ROOT: '../',
+         VERSION: 'v5',
+         COLLAPSE_INDEX: false,
+         FILE_SUFFIX: '.html',
+         HAS_SOURCE: true,
+     };
+   </script>
+   
+       <script type="text/javascript" src="../_static/jquery.js"></script>
+       <script type="text/javascript" src="../_static/underscore.js"></script>
+       <script type="text/javascript" src="../_static/doctools.js"></script>
+       <script type="text/javascript" src="http://cdn.jsdelivr.net/codemirror/3.0/codemirror.js"></script>
+       <script type="text/javascript" src="http://cdn.jsdelivr.net/codemirror/3.0/mode/javascript/javascript.js"></script>
+       <script type="text/javascript" src="http://cdn.jsdelivr.net/codemirror/3.0/mode/css/css.js"></script>
+       <script type="text/javascript" src="http://cdn.jsdelivr.net/codemirror/3.0/mode/xml/xml.js"></script>
+       <script type="text/javascript" src="http://cdn.jsdelivr.net/codemirror/3.0/mode/htmlmixed/htmlmixed.js"></script>
+       <script type="text/javascript" src="../_static/CHAOS.Portal.Client.PortalClient.js"></script>
+       <script type="text/javascript" src="../_static/code-editor.js"></script>
+       <script type="text/javascript" src="http://cdn.jsdelivr.net/codemirror/3.0/codemirror.js"></script>
+       <script type="text/javascript" src="http://cdn.jsdelivr.net/codemirror/3.0/mode/javascript/javascript.js"></script>
+       <script type="text/javascript" src="http://cdn.jsdelivr.net/codemirror/3.0/mode/css/css.js"></script>
+       <script type="text/javascript" src="http://cdn.jsdelivr.net/codemirror/3.0/mode/xml/xml.js"></script>
+       <script type="text/javascript" src="http://cdn.jsdelivr.net/codemirror/3.0/mode/htmlmixed/htmlmixed.js"></script>
+       <script type="text/javascript" src="../_static/CHAOS.Portal.Client.PortalClient.js"></script>
+       <script type="text/javascript" src="../_static/code-editor.js"></script>
+       <script type="text/javascript" src="../_static/scrollspy.js"></script>
+          <link rel="search" type="application/opensearchdescription+xml" href="http://docs.mongodb.org/osd.xml" title="MongoDB Help"/>
+<link rel="top" title="CHAOS API" href="../index.html" />
+<link rel="up" title="CHAOS.Portal JavaScript Client" href="index.html" />
+<link rel="next" title="Using metadata and files" href="metadata and files.html" />
+<link rel="prev" title="CHAOS.Portal JavaScript Client" href="index.html" />
+          <script>
+            // (function() {
+            //    var cx = '017213726194841070573:WMX6838984';
+            //    var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
+            //    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx;
+            //    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
+            // })();
+          </script></head>
+<body>
+      <div id="main-column">
+        <!-- Logo -->
+            <div id="logo">
+              <a href="http://chaos-community.org/"><img class="logo"
+                    src="http://chaos-community.org/img/chaoscommunity.png" alt="CHAOS Community Logo"/></a>
+            </div><!-- Menu on left -->
+       <div class="sphinxsidebar">
+         <div class="sphinxsidebarwrapper">
+<h3>
+  <!-- <a href="../index.html">CHAOS API</a> -->
+  CHAOS API <span id="vn">v5</span>
+</h3>
+
+<div class="site-contents"><a href="../index.html">Table of contents</a></div>
+
+
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">CHAOS overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts.html">CHAOS concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../facets.html">Facets</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">CHAOS.Portal JavaScript Client</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">The Basics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up">Setting up</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#searching">Searching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="metadata and files.html">Using metadata and files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="errors.html">Error handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="member functions.html">Member functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../PHP Portal Client/index.html">CHAOS.Portal PHP Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Portal/Object.html">Portal.Object</a></li>
+</ul>
+
+
+<div class="site-index"><a href="../genindex.html">Index</a></div>
+
+<form action="../search.html" method="get" class="search">
+  <input type="text" name="q" value="" />
+  <input type="submit" value="search" />
+</form>
+
+<!-- Edit this page on Github -->
+<a class="edit-github" href="https://github.com/malthejorgensen/CHAOS-API-Documentation/blob/master/source/JavaScript Portal Client/intro.rst" target="_blank" title="Edit JavaScript Portal Client/intro.txt on GitHub">
+  Edit this Page
+</a>
+
+<!--
+<strong>Debug:</strong> <br>
+pagename: "JavaScript Portal Client/intro" <br>
+<br>
+-->
+         </div>
+       </div>
+
+        <!-- Main -->
+           <!--<h3>CHAOS.Portal JavaScript Client</h3>--><div class="section" id="the-basics">
+<h1>The Basics<a class="headerlink" href="#the-basics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="setting-up">
+<h2>Setting up<a class="headerlink" href="#setting-up" title="Permalink to this headline">¶</a></h2>
+<p>Import the Javascript CHAOS.Portal Client into your site.</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;CHAOS.Portal.Client.PortalClient.js&quot;</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+</div>
+<p>The first thing we need to do is to instantiate the client.</p>
+<pre id="setup-code"><code class="language-javascript">// Setup settings
+var ChaosSettings = {
+  "servicePath":"http://api.chaos-systems.com/",
+  "clientGUID":"9f62060c-64ff-e14f-a8d5-d85a1e2e21b8",
+  "accessPointGUID":"C4C2B8DA-A980-11E1-814B-02CEA2621172",
+};
+// Instantiate client
+var client = new PortalClient(
+                   ChaosSettings.servicePath,
+                   ChaosSettings.clientGUID
+                 );</code></pre>
+<ul class="simple">
+<li><tt class="code docutils literal"><span class="pre">servicePath</span></tt>
+is the URL at which your CHAOS.Portal is set up.</li>
+<li><tt class="code docutils literal"><span class="pre">clientGUID</span></tt>
+should be unique for each application, any GUID can be used.</li>
+<li><tt class="code docutils literal"><span class="pre">accessPointGUID</span></tt>
+is an ID that authenticates us to use the CHAOS.Portal. This
+should be given to you by your friendly neighbourhood CHAOS.Portal
+administrator.</li>
+</ul>
+<p>Instantiating the <tt class="code docutils literal"><span class="pre">PortalClient</span></tt> this way automatically
+sets up a session. When the session has been set up we are ready to use
+the CHAOS.Portal.</p>
+<p>We can add callbacks to <tt class="code docutils literal"><span class="pre">PortalClient.SessionAcquired()</span></tt> in
+order to do work when the session has been set up:</p>
+<pre><code class="language-javascript eval">client.SessionAcquired().Add(function(sender, sessionGUID) {
+      alert("Session created: " + sessionGUID);
+});</code></pre>
+<p>Now we are ready to get some objects!</p>
+</div>
+<div class="section" id="searching">
+<h2>Searching<a class="headerlink" href="#searching" title="Permalink to this headline">¶</a></h2>
+<p>The easiest way to retrieve some objects from a CHAOS database is to
+search. You can do this with the function
+<tt class="code docutils literal"><span class="pre">PortalClient.Object_GetBySearch()</span></tt></p>
+<pre><code class="language-javascript eval">// Add search schemas
+var fields = [
+  "5906a41b-feae-48db-bfb7-714b3e105396",
+  "00000000-0000-0000-0000-000063c30000",
+  "00000000-0000-0000-0000-000065c30000"
+];
+// Retrieve objects
+client.SessionAcquired().Add(function(sender, sessionGUID) {
+  client.Object_GetBySearch(
+    showObjects                     // callback
+    , "mut"                         // query
+    , fields                        // fields
+    , "da"                          // langCode
+    , null                          // sort
+    , ChaosSettings.accessPointGUID // accessPointGuid
+    , 0                             // pageIndex
+    , 3                             // pageSize
+    , true                          // includeMetadata
+    , true                          // includeFiles
+    , true                          // includeObjectRelations
+    , false                         // includeAccessPoints
+  );
+});
+
+function showObjects(serviceResult) {
+  var count = serviceResult.MCM().Count();
+  var totalcount = serviceResult.MCM().TotalCount();
+  alert("Got " + count + "/" + totalcount + " objects");
+}</code></pre>
+<dl class="docutils">
+<dt><tt class="code docutils literal"><span class="pre">fields</span></tt></dt>
+<dd>are search fields to use in the Solr index. The long GUIDs refers to
+metadata schemas. So what we&#8217;re doing here is searching the object
+metadata for the word &#8216;mut&#8217;.</dd>
+<dt><tt class="code docutils literal"><span class="pre">pageIndex</span></tt></dt>
+<dd>is the starting page of the search results, where the page size is
+determined by <tt class="code docutils literal"><span class="pre">pageSize</span></tt></dd>
+<dt><tt class="code docutils literal"><span class="pre">pageSize</span></tt></dt>
+<dd>is the number of results you want retrieve</dd>
+<dt><tt class="code docutils literal"><span class="pre">includeFiles</span></tt></dt>
+<dd>include files attached to objects in the results.</dd>
+<dt><tt class="code docutils literal"><span class="pre">includeMetadata</span></tt></dt>
+<dd>include metadata attached to objects in the results.</dd>
+<dt><tt class="code docutils literal"><span class="pre">includeObjectRelations</span></tt></dt>
+<dd>include object relations for an object in the results.</dd>
+</dl>
+<p>When the search results has been recieved from the CHAOS.Portal, the
+callback is invoked with <tt class="code docutils literal"><span class="pre">serviceResult</span></tt> as its argument.
+The <tt class="code docutils literal"><span class="pre">serviceResult</span></tt> has a number of fields, of which
+<tt class="code docutils literal"><span class="pre">MCM()</span></tt> is the most important and the one we are going to be
+using.</p>
+<dl class="docutils">
+<dt><tt class="code docutils literal"><span class="pre">serviceResult.MCM().Results()</span></tt></dt>
+<dd>The result of the CHAOS query: A list of objects (URL, metadata
+etc.). An explaination of these objects is found in the next section.</dd>
+<dt><tt class="code docutils literal"><span class="pre">serviceResult.MCM().Count()</span></tt></dt>
+<dd>The number of objects on this page, i.e. the number of  objects available
+to you in the <tt class="code docutils literal"><span class="pre">serviceResult.MCM().Results()</span></tt>.&lt;br&gt;
+If you want all the objects from a query at
+once you will have to increase the <tt class="code docutils literal"><span class="pre">pageSize</span></tt> or go through
+all pages via <tt class="code docutils literal"><span class="pre">pageIndex</span></tt>.</dd>
+<dt><tt class="code docutils literal"><span class="pre">serviceResult.MCM().TotalCount()</span></tt></dt>
+<dd>The number of objects that matched the query</dd>
+</dl>
+<p>Now the resulting objects are quite big, so let&#8217;s only grab one, by
+setting pageSize to 1:</p>
+<pre><code class="language-javascript eval">// Retrieve objects
+client.SessionAcquired().Add(function(sender, sessionGUID) {
+  client.Object_GetBySearch(
+    showObjects                     // callback
+    , "mut"                         // query
+    , "5906a41b-feae-48db-bfb7-714b3e105396" // schemas
+    , "da"                          // langCode
+    , null                          // sort
+    , ChaosSettings.accessPointGUID // accessPointGuid
+    , 0                             // pageIndex
+    , 1                             // pageSize
+    , true                          // includeMetadata
+    , true                          // includeFiles
+    , true                          // includeObjectRelations
+    , false                         // includeAccessPoints
+  );
+});
+
+function showObjects(serviceResult) {
+  var json_result = serviceResult.MCM().Results();
+
+  // The code below is simply for showing you the JSON results
+  var string_result = JSON.stringify(json_result, null, '\t').replace('&lt;', '&amp;lt;').replace('&gt;', '&amp;gt;')
+  $('#search-results').data('codeMirror').setValue(string_result);
+}</code></pre>
+<p>Results:</p>
+<pre id="search-results"><code class="language-json">// The result should look something like this
+[
+  {
+    "GUID": "00000000-0000-0000-0000-00004e040016",
+    "ObjectTypeID": 36,
+    "DateCreated": -2147483648,
+    "Metadatas": [
+      {
+        "GUID": "29d669cf-c3e5-4749-beb9-20bb7ac18b05",
+        "EditingUserGUID": "80d15fb4-c1fb-9445-89c6-1a398cbd85e5",
+        "LanguageCode": "da",
+        "MetadataSchemaGUID": "5906a41b-feae-48db-bfb7-714b3e105396",
+        "RevisionID": 1,
+        "MetadataXML": "&lt;some&gt;&lt;xml&gt;&lt;data&gt;&lt;/data&gt;&lt;/xml&gt;&lt;/some&gt;",
+        "DateCreated": -2147483648,
+        "FullName": "CHAOS.MCM.Data.DTO.Metadata"
+      }
+      //, ... more metadata
+    ],
+    "Files": [
+      {
+        "ID": 506457,
+        "ParentID": null,
+        "Filename": "db_fo_sa_00564.jpg",
+        "OriginalFilename": "db_fo_sa_00564.jpg",
+        "Token": "HTTP Download",
+        "URL": "http://example.org/some/url/to/a/file.jpg",
+        "FormatID": 42,
+        "Format": "KB Source JPEG ",
+        "FormatCategory": "Image Source",
+        "FormatType": "Image",
+        "FullName": "CHAOS.MCM.Data.DTO.FileInfo"
+      }
+      //, ... more files
+    ],
+    "ObjectRelations": [],
+    "FullName": "CHAOS.MCM.Data.DTO.Object"
+  }
+]</code></pre>
+<p>What you can see here is that we get a list of objects. Each object
+has a GUID and an ObjectTypeID. Furthermore we can see that each object
+has a list of files and a list of metadata.</p>
+<p>Try turning off and on <tt class="code docutils literal"><span class="pre">includeFiles</span></tt> and
+<tt class="code docutils literal"><span class="pre">includeMetadata</span></tt> and changing <tt class="code docutils literal"><span class="pre">pageSize</span></tt> and
+<tt class="code docutils literal"><span class="pre">pageIndex</span></tt> in order to
+familiarize yourself with the interface.
+Unfortunately this object has no relations.</p>
+<p>You are now ready to head on to the next section, which will teach you
+how to use files and metadata.</p>
+</div>
+</div>
+
+
+
+        <!-- Bottom prev/next -->
+    <div class="nav-buttons">
+      <div class="button-row">
+        <div class="prev">
+          <a href="index.html" title="Previous Section: CHAOS.Portal JavaScript Client">&#8592; &nbsp; CHAOS.Portal JavaScript Client</a>
+          <br>Previous
+        </div>
+        <div class="up">
+          <a href="index.html" title="Parent Section: CHAOS.Portal JavaScript Client" >&#8593;&nbsp; CHAOS.Portal JavaScript Client</a>
+          <br>Up
+        </div>
+        <div class="next">
+          <a href="metadata and files.html" title="Next Section: Using metadata and files">Using metadata and files &nbsp;&#8594;</a>
+          <br>Next
+        </div>
+      </div>
+    </div></div>  
+  
+
+  <!-- <div id="cse&#45;results"> -->
+  <!--   <gcse:searchresults linkTarget="_top"></gcse:searchresults> -->
+  <!-- </div> -->
+  <!--
+  -->
+
+  <!--<div id="top-right">
+        <div class="user-right">
+          <ul id="header-menu-bar" class="ajs-menu-bar">
+            <li class="normal"><a target="_blank" href="http://groups.google.com/group/mongodb-user">Forums</a></li>
+            <li class="normal"><a target="_blank" href="http://blog.mongodb.org/">Blog</a></li>
+            <li class="normal"><a href="http://www.mongodb.org/downloads">Download</a></li>
+            <li class="normal"><a href="http://docs.mongodb.org/ecosystem/drivers/">Drivers</a></li>
+            <li class="normal"><a href="http://www.10gen.com/events">Events</a></li>
+            <li class="normal last"><a class="last" href="http://docs.mongodb.org/manual/meta/translation">Translations</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="search-db"><gcse:searchbox></gcse:searchbox></div>
+          <div id="etp">
+            <ul>
+            </ul>
+          </div>
+      <div class="footer">
+        <p>
+          &copy; <a href="">Copyright</a> 2013, Malthe Jørgensen, Andreas Røll Larsen 
+          MongoDB&reg;, Mongo&reg;, and the leaf logo are registered trademarks of <a href="http://www.10gen.com/">10gen, Inc.</a>
+        </p>
+      </div>
+
+  --><script type="text/javascript">
+var versions = {
+ "v5": { "branch_name": "master", "directory_name": "current", "current": true },
+ "v4": { "branch_name": "v4", "directory_name": "v4" }
+};
+var pagename = 'JavaScript Portal Client/intro';
+var stable = 'v';
+
+// Change URL on version change
+function vfnav() {
+
+    // If the pagename is "index" don't write anything
+    var pn = pagename;
+    if (pagename=='index') {
+      pn = '';
+    }
+
+    // Get selected version in the version <select>
+    var new_version = $(this).children("option:selected").attr('value');
+    var new_dir = versions[new_version].directory_name;
+    var current_dir = versions['v5'].directory_name;
+
+    var current_url = window.location.href;
+
+    // Replace first occurence of this version's dir with the selected version's
+    // dir in the URL
+    window.location.href = current_url.replace(current_dir, new_dir);
+}
+
+$(document).ready(function() {
+    // Populate version <select>
+    $("#vn").html(function() {
+        var s = $("<select/>");
+        var o = '<option/>';
+
+        for (name in versions) {
+          // Create an <option> for each version
+          var option_text = name;
+          if (versions[name].current) {
+            option_text += ' (current)';
+          }
+          $(o, {value: name, text: option_text}).appendTo(s);
+        }
+
+        return(s);
+    });
+
+    // Setup URL change on version <select>
+    $("#vn select").bind('change', vfnav);
+    $('#vn select').val('v5');
+});
+</script>
+</body>
+</html>
