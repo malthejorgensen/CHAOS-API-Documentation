@@ -71,6 +71,10 @@ div.sphinxsidebar form.search input[name='q'] {
   width: 50px;
 }
 
+div.sphinxsidebar a.edit-github {
+  font-style: italic;
+}
+
 span#vn select {
   width: auto;
 }
