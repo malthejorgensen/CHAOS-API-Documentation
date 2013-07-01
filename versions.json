@@ -1,4 +1,4 @@
-[
-  { "name": "v5", "branchname": "master", "current": true },
-  { "name": "v4", "branchname": "v4" }
-]
+{
+ "v5": { "branch_name": "master", "directory_name": "current", "current": true },
+ "v4": { "branch_name": "v4", "directory_name": "v4" }
+}

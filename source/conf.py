@@ -53,7 +53,11 @@ copyright = u'2013, Malthe Jørgensen, Andreas Røll Larsen'
 # built documents.
 #
 # The short X.Y version.
-version = 'v5'
+if 'CHAOS_DOC_VERSION' in os.environ:
+    version = os.environ['CHAOS_DOC_VERSION']
+else:
+    version = 'v5'
+
 # The full version, including alpha/beta/rc tags.
 release = 'v5' # ??
 
