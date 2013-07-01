@@ -19,21 +19,9 @@ function vfnav() {
 
     var current_url = window.location.href;
 
-    // If we're on the web
-    if (/^https?/.test(current_url)) {
-      var uri = '/' + new_dir + '/' + pn;
-
-      // Don't know what this is
-      if ( (v==0) || (v==stable) ) {
-          uri = '/manual/' + pn;
-      }
-
-      window.location.href = uri;
-    } else {
-      // Not on the web
-      // Replace first occurence of this version in URL
-      window.location.href = current_url.replace(current_dir, new_dir);
-    }
+    // Replace first occurence of this version's dir with the selected version's
+    // dir in the URL
+    window.location.href = current_url.replace(current_dir, new_dir);
 }
 
 $(document).ready(function() {
