@@ -54,6 +54,28 @@ Caveats
  - restructuredText (`.rst`) does not support nested markup ([link](http://docutils.sourceforge.net/FAQ.html#is-nested-inline-markup-possible))
  - To have a non-paragraph linebreak (single instead of double) use |br| ([link](http://docutils.sourceforge.net/FAQ.html#how-to-indicate-a-line-break-or-a-significant-newline))
 
+
+Continuous deployment
+--------------------
+[drone.io] is setup to monitor the Github repository for
+changes. A push or commit to any of the version branches (`master`, `v4` etc.)
+will automatically build the documentation of all versions and put them in
+the `gh-pages` branch. [drone.io] is set to run the following commands:
+
+    git checkout master
+    pip install -r requirements.txt --use-mirrors
+    python create_docs.py --commit
+    git push https://$TOKEN:@github.com/malthejorgensen/CHAOS-API-Documentation.git gh-pages
+
+This of course assumes that the master branch has a `create_docs.py` script and
+a `requirements.txt` file. Furthermore a [Github token login] is set up and the
+token should be put in the `TOKEN` environment variable on [drone.io]:
+
+    TOKEN=b5836fa...
+
+[drone.io]: http://drone.io
+[Github token login]: https://help.github.com/articles/creating-an-oauth-token-for-command-line-use
+
 Credits
 -------
 Inspired by:
