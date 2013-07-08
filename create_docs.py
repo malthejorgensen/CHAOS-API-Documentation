@@ -75,6 +75,7 @@ if args.commit or args.push_gh_pages:
 
 if args.push_gh_pages:
     # Commit new version
-    git.push(['origin', 'gh-pages'])
+    # git.push(['origin', 'gh-pages'])
+    git.push(['https://github.com/malthejorgensen/CHAOS-API-Documentation.git', 'gh-pages'])
 
 # git.checkout('master')
