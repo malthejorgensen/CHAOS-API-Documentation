@@ -8,7 +8,10 @@
   <!-- <meta name="DC.Source" content="https://github.com/mongodb/CHAOS-API-Documentation/blob/master/source/PHP Portal Client/intro.txt"/> -->
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="release" content="v5"/>
-      <link rel="canonical" href="http://docs.mongodb.org//PHP Portal Client/intro" />
+
+  
+
+  
   
    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -119,7 +122,9 @@ pagename: "PHP Portal Client/intro" <br>
 <h1>The Basics<a class="headerlink" href="#the-basics" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="setting-up">
 <h2>Setting up<a class="headerlink" href="#setting-up" title="Permalink to this headline">¶</a></h2>
-<p>The first thing to do is to load the PHP Portal Client into your webpage:</p>
+<p>The first thing to do is to load the PHP Portal Client into your webpage.
+The client is a directory-tree of <tt class="code docutils literal"><span class="pre">.php</span></tt>-files which can be found in the
+<tt class="code docutils literal"><span class="pre">src</span></tt> folder of the <a class="reference external" href="https://github.com/CHAOS-Community/CHAOS.Portal.Client-PHP">project&#8217;s Github repository</a>.</p>
 <pre><code class="language-php">&lt;?php
 set_include_path(get_include_path() . PATH_SEPARATOR . __DIR__ .
                  "/../src"); // &lt;-- Relative path to Portal Client
@@ -131,9 +136,10 @@ spl_autoload_register("CaseSensitiveAutoload");
 
 use CHAOS\Portal\Client\PortalClient;
 ?&gt;</code></pre>
-<p>This is just some code for setting up PHP&#8217;s include path and loading the needed
-files.  All you need to worry about is the <cite>&#8220;/../src&#8221;</cite> which should be the path
-from your current PHP file to the PHP Portal Client src directory.</p>
+<p>The above code sets up the include path so that the client will be automatically
+loaded. Just copy and paste the code into the script where you will be using the
+client. All you need to worry about is the <tt class="code docutils literal"><span class="pre">&quot;/../src&quot;</span></tt> which should be the
+path from your current PHP file to the <tt class="code docutils literal"><span class="pre">src</span></tt> directory of the client.</p>
 <p>Having loaded the client, we can now instantiate it:</p>
 <pre id="setup-code"><code class="language-php">&lt;?php
 $servicePath = "http://api.chaos-systems.com/";
