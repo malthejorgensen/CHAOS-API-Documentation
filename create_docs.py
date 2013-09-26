@@ -28,6 +28,9 @@ os.makedirs('tmp')
 # sphinx.main(['sphinx-build', '-b', 'html', '-a', '-E', 'source', 'tmp/' + builddir])
 # exit()
 
+if args.stash:
+    git.stash()
+
 for name, options in versions.items():
     print 'Generating docs for version ' + name
 
@@ -48,8 +51,6 @@ for name, options in versions.items():
 time_str = datetime.now().strftime('%Y-%m-%d %H:%M:%S %z')
 
 try:
-    if args.stash:
-        git.stash()
     git.checkout('gh-pages')
 
     for dir_name in dir_names:
