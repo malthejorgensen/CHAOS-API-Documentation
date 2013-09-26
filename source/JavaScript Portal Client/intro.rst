@@ -4,7 +4,11 @@ The Basics
 
 Setting up
 ----------
-Import the Javascript CHAOS.Portal Client into your site.
+Download and import the Javascript CHAOS.Portal Client into your site.
+The client is a single :code:`.js`-file which can be found in the :code:`src`
+folder of the `project's Github repository`_.
+
+.. _`project's Github repository`: https://github.com/CHAOS-Community/CHAOS.Portal.Client-JavaScript
 
 .. code-block:: html
 

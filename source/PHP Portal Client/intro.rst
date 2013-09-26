@@ -4,7 +4,11 @@ The Basics
 
 Setting up
 ----------
-The first thing to do is to load the PHP Portal Client into your webpage:
+The first thing to do is to load the PHP Portal Client into your webpage.
+The client is a directory-tree of :code:`.php`-files which can be found in the
+:code:`src` folder of the `project's Github repository`_.
+
+.. _`project's Github repository`: https://github.com/CHAOS-Community/CHAOS.Portal.Client-PHP
 
 .. code-editor:: php
 
