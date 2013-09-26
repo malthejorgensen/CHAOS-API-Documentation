@@ -37,7 +37,7 @@ Having loaded the client, we can now instantiate it:
     <?php
     $servicePath = "http://api.chaos-systems.com/";
     $clientGUID = "B9CBFFDD-3F73-48FC-9D5D-3802FBAD4CBD";
-    $accessPointGUID = "C4C2B8DA-A980-11E1-814B-02CEA2621172";
+    $accessPointGUID = "7A06C4FF-D15A-48D9-A908-088F9796AF28";
 
     $client = new PortalClient($servicePath, $clientGUID);
 

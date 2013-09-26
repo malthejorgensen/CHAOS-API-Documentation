@@ -16,7 +16,7 @@ $(document).ready(function(event) {
                   'var ChaosSettings = {',
                   '  "servicePath":"http://api.chaos-systems.com/",',
                   '  //"clientGUID":"9f62060c-64ff-e14f-a8d5-d85a1e2e21b8",',
-                  '  "accessPointGUID":"C4C2B8DA-A980-11E1-814B-02CEA2621172",',
+                  '  "accessPointGUID":"7A06C4FF-D15A-48D9-A908-088F9796AF28",',
                   '};',
                   '// Instantiate client',
                   'var client = new PortalClient(',
