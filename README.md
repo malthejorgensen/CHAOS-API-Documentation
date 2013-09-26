@@ -1,6 +1,6 @@
 CHAOS API Documentation
 =======================
-The documentation can be viewed at <http://malthejorgensen.github.io/CHAOS-API-Documentation/>.
+The documentation can be viewed at <http://chaos-community.github.io/CHAOS-API-Documentation/>.
 
 Build
 -----
