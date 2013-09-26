@@ -24,9 +24,10 @@ The client is a directory-tree of :code:`.php`-files which can be found in the
     use CHAOS\Portal\Client\PortalClient;
     ?>
 
-This is just some code for setting up PHP's include path and loading the needed
-files.  All you need to worry about is the `"/../src"` which should be the path
-from your current PHP file to the PHP Portal Client src directory.
+The above code sets up the include path so that the client will be automatically
+loaded. Just copy and paste the code into the script where you will be using the
+client. All you need to worry about is the :code:`"/../src"` which should be the
+path from your current PHP file to the :code:`src` directory of the client.
 
 Having loaded the client, we can now instantiate it:
 
