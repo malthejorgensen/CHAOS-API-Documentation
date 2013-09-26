@@ -44,17 +44,14 @@ div.note p {
     position: fixed;
     left: 5%;
     top: 120px;
+    width: 150px;
   }
 }
 
 div.sphinxsidebar {
   /* background-color: white; */
   /* left: 40px; */
-
-  width: 150px;
-
   padding-top: 20px;
-
   font-size: 12px;
 }
 
