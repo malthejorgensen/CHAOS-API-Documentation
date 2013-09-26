@@ -10,7 +10,7 @@ from sh import git
 parser = argparse.ArgumentParser()
 parser.add_argument('--stash', action='store_true', help='Stash before changing to gh-pages')
 parser.add_argument('--commit', action='store_true', help='Whether the auto-generated docs should be committed')
-parser.add_argument('--push-gh-pages', action='store_true', help='Push to Github Pages')
+parser.add_argument('--push-gh-pages', action='store_true', help='Specify a repository on which to create Github Pages')
 args = parser.parse_args()
 
 versions = json.load(open('versions.json'))
@@ -77,6 +77,6 @@ if args.commit or args.push_gh_pages:
 if args.push_gh_pages:
     # Commit new version
     # git.push(['origin', 'gh-pages'])
-    git.push(['https://github.com/malthejorgensen/CHAOS-API-Documentation.git', 'gh-pages'])
+    git.push([args.push_gh_pages, 'gh-pages'])
 
 # git.checkout('master')
