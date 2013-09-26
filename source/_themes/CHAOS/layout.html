@@ -12,13 +12,12 @@
 {%- macro breadcrumb() %}
     <div class="breadcrumb">
       <ul>
-        {%- block rootrellink %}
-        {%- endblock %}
+        {%- block rootrellink %}{%- endblock %}
         {%- for parent in parents %}
           <li><a href="{{ parent.link|e }}">{{ parent.title }}</a><span class="bcpoint"> &gt; </span></li>
           {% if loop.last %}<li>{{title}}</li>{% endif %}
         {%- endfor %}
-        {%- block relbaritems %} {% endblock %}
+        {%- block relbaritems %}{% endblock %}
       </ul>
     </div>
 {%- endmacro %}
@@ -28,11 +27,11 @@
        <div class="sphinxsidebar">
          <div class="sphinxsidebarwrapper">
            {%- if sidebars != None %}
-              {%- for sidebartemplate in sidebars %}
-                  {%- include sidebartemplate %}
-              {%- endfor %}
-            {%- else %}
-              Hallooo
+             {%- for sidebartemplate in sidebars %}
+               {%- include sidebartemplate %}
+             {%- endfor %}
+           {%- else %}
+             <!-- No sidebars defined -->
            {%- endif %}
          </div>
        </div>
@@ -115,11 +114,13 @@
   <meta http-equiv="Content-Type" content="text/html; charset={{ encoding }}" />
   <meta name="release" content="{{release}}"/>
 
+  {# Fix canonical link
   {%- if pagename == 'index' %}
       <link rel="canonical" href="http://docs.mongodb.org/{{theme_project}}/" />
   {%- else %}
       <link rel="canonical" href="http://docs.mongodb.org/{{ theme_project }}/{{pagename}}" />
   {%- endif -%}
+  #}
 
   {{ metatags }}
   {{ css() }}
