@@ -1,15 +1,4 @@
-def setup(app):
-    app.add_node(code_editor_node, html=(visit_code_editor_node, depart_code_editor_node))
-
-    app.add_directive('code-editor', CodeEditorDirective)
-    # app.connect('doctree-resolved', process_code_editor_nodes)
-    # app.connect('env-purge-doc', purge_code_editors)
-
-    # Conflicts with Sphinx's searchtools.js. `searchtools.js` depends on
-    # Sphinx's `doctools.js` to inject jQuery.getQueryParameters() -- line 47
-    # This doens't work with jQuery 1.9.1 or maybe it's some other conflict
-    # app.add_javascript("http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js")
-
+def builder_inited(app):
     app.add_stylesheet("http://cdn.jsdelivr.net/codemirror/3.0/codemirror.css")
     app.add_javascript("http://cdn.jsdelivr.net/codemirror/3.0/codemirror.js")
     app.add_javascript("http://cdn.jsdelivr.net/codemirror/3.0/mode/javascript/javascript.js")
@@ -20,6 +9,23 @@ def setup(app):
     app.add_javascript("CHAOS.Portal.Client.PortalClient.js")
     app.add_javascript("code-editor.js")
     app.add_stylesheet("code-editor.css")
+
+    # app.add_javascript("http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js")
+    # Conflicts with Sphinx's searchtools.js. `searchtools.js` depends on
+    # Sphinx's `doctools.js` to inject jQuery.getQueryParameters() -- line 47
+    # This doesn't work with jQuery 1.9.1 or maybe it's some other conflict
+
+def setup(app):
+    app.add_node(code_editor_node, html=(visit_code_editor_node, depart_code_editor_node))
+
+    app.add_directive('code-editor', CodeEditorDirective)
+    # app.connect('doctree-resolved', process_code_editor_nodes)
+    # app.connect('env-purge-doc', purge_code_editors)
+
+    # This calls `buider_inited()` the first time this extension is
+    # encountered, such that e.g. the Javascript files are only loaded once
+    # into an HTML-page.
+    app.connect('builder-inited', builder_inited)
 
 from docutils.parsers.rst import Directive, directives
 from docutils import nodes
