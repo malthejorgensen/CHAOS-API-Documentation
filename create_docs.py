@@ -10,7 +10,7 @@ from sh import git
 parser = argparse.ArgumentParser()
 parser.add_argument('--stash', action='store_true', help='Stash before changing to gh-pages')
 parser.add_argument('--commit', action='store_true', help='Whether the auto-generated docs should be committed')
-parser.add_argument('--push-gh-pages', action='store_true', help='Specify a repository on which to create Github Pages')
+parser.add_argument('--push-gh-pages', help='Specify a repository on which to create Github Pages')
 args = parser.parse_args()
 
 versions = json.load(open('versions.json'))
@@ -37,6 +37,8 @@ for name, options in versions.items():
     try:
         git.checkout(options['branch_name'])
         print 'Checked out "' + options['branch_name'] + '"'
+        # Print latest commit
+        print git('--no-pager', 'log', '-1')
 
         os.environ['CHAOS_DOC_VERSION'] = name
         sphinx.main(['sphinx-build', '-b', 'html', '-a', '-E', 'source', 'tmp/' + options['directory_name']])
@@ -77,6 +79,7 @@ if args.commit or args.push_gh_pages:
 if args.push_gh_pages:
     # Commit new version
     # git.push(['origin', 'gh-pages'])
+    print 'Pushing to "%s"' % args.push_gh_pages
     git.push([args.push_gh_pages, 'gh-pages'])
 
 # git.checkout('master')
