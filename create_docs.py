@@ -3,9 +3,8 @@ import os
 import argparse
 from datetime import datetime
 from shutil import rmtree, move
-import sphinx
 
-from sh import git
+from sh import git, Command
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--stash', action='store_true', help='Stash before changing to gh-pages')
@@ -27,6 +26,7 @@ os.makedirs('tmp')
 # builddir = 'current'
 # sphinx.main(['sphinx-build', '-b', 'html', '-a', '-E', 'source', 'tmp/' + builddir])
 # exit()
+sphinx_build = Command('sphinx-build')
 
 if args.stash:
     git.stash()
@@ -41,7 +41,7 @@ for name, options in versions.items():
         print git('--no-pager', 'log', '-1')
 
         os.environ['CHAOS_DOC_VERSION'] = name
-        sphinx.main(['sphinx-build', '-b', 'html', '-a', '-E', 'source', 'tmp/' + options['directory_name']])
+        sphinx_build('-b', 'html', '-a', '-E', 'source', 'tmp/' + options['directory_name'])
         del os.environ['CHAOS_DOC_VERSION']
         # sphinx.main(['sphinx-build', '-b', 'html', '-a', '-E', 'source', 'tmp/current'])
         dir_names.append(options['directory_name'])
