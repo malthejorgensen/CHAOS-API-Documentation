@@ -23,9 +23,6 @@ except:
 
 os.makedirs('tmp')
 
-# builddir = 'current'
-# sphinx.main(['sphinx-build', '-b', 'html', '-a', '-E', 'source', 'tmp/' + builddir])
-# exit()
 sphinx_build = Command('sphinx-build')
 
 if args.stash:
@@ -43,7 +40,6 @@ for name, options in versions.items():
         os.environ['CHAOS_DOC_VERSION'] = name
         sphinx_build('-b', 'html', '-a', '-E', 'source', 'tmp/' + options['directory_name'])
         del os.environ['CHAOS_DOC_VERSION']
-        # sphinx.main(['sphinx-build', '-b', 'html', '-a', '-E', 'source', 'tmp/current'])
         dir_names.append(options['directory_name'])
     except:
         raise
@@ -68,8 +64,6 @@ try:
     rmtree('tmp')
 except:
     raise
-    # print 'Could not checkout gh-pages'
-    # exit()
 
 if args.commit or args.push_gh_pages:
     # Commit new version
@@ -78,8 +72,6 @@ if args.commit or args.push_gh_pages:
 
 if args.push_gh_pages:
     # Commit new version
-    # git.push(['origin', 'gh-pages'])
     print 'Pushing to "%s"' % args.push_gh_pages
     git.push([args.push_gh_pages, 'gh-pages'])
 
-# git.checkout('master')
