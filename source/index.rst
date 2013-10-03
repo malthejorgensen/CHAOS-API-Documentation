@@ -23,6 +23,7 @@ CHAOS API documentation
    overview
    concepts
    facets
+   authentication
    JavaScript Portal Client/index
    PHP Portal Client/index
    Portal/Object

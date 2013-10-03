@@ -25,7 +25,7 @@ import sys, os
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.todo', 'sphinxcontrib.phpdomain']
+extensions = ['sphinx.ext.todo', 'sphinxcontrib.phpdomain', 'sphinx.ext.extlinks']
 
 # The extension for code editors is the file code_editor.py in the
 # '_extensions' directory
@@ -273,3 +273,26 @@ rst_prolog = """
 
    <br>
 """
+
+chaos_test_servicepath = 'http://api.danskkulturarv.dk/'
+chaos_test_accesspointguid = '7A06C4FF-D15A-48D9-A908-088F9796AF28'
+
+def make_link(action):
+    return chaos_test_servicepath + action + '?'
+
+def make_link_apg(action):
+    return make_link(action) + 'accessPointGUID=' + chaos_test_accesspointguid + '&'
+
+extlinks = {
+    'chaos_test_servicepath' : (chaos_test_servicepath + '%s', None),
+    'chaos_api_link' : (chaos_test_servicepath + '%s', None),
+    'chaos_api_link_object_get' : (make_link('Object/Get') + '%s', None),
+    'chaos_api_link_object_get_apg' : (make_link_apg('Object/Get')  + '%s', None),
+    'chaos_test_servicepath_with_accesspointguid' : (chaos_test_servicepath + '?accessPointGUID=' + chaos_test_accesspointguid + '%s', None),
+}
+
+rst_epilog = '''
+.. |chaos_test_servicepath| replace:: %s
+
+.. |chaos_test_accesspointguid| replace:: %s
+''' % (chaos_test_servicepath, chaos_test_accesspointguid)
