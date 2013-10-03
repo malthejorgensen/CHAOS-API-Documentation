@@ -26,6 +26,7 @@ CHAOS API documentation
    JavaScript Portal Client/index
    PHP Portal Client/index
    Portal/Object
+   API
 
 
 Indices and tables
