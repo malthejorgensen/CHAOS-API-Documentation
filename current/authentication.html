@@ -3,9 +3,9 @@
 
 <html lang="">
 
-<head><title>CHAOS overview &mdash; CHAOS API v5</title><!-- <link rel="shortcut icon" href="http://media.mongodb.org/favicon.ico" /> -->
+<head><title>Authentication &mdash; CHAOS API v5</title><!-- <link rel="shortcut icon" href="http://media.mongodb.org/favicon.ico" /> -->
   <!-- <meta name="robots" content="index" /> -->
-  <!-- <meta name="DC.Source" content="https://github.com/mongodb/CHAOS-API-Documentation/blob/master/source/overview.txt"/> -->
+  <!-- <meta name="DC.Source" content="https://github.com/mongodb/CHAOS-API-Documentation/blob/master/source/authentication.txt"/> -->
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="release" content="v5"/>
 
@@ -41,8 +41,8 @@
        <script type="text/javascript" src="_static/scrollspy.js"></script>
           <link rel="search" type="application/opensearchdescription+xml" href="http://docs.mongodb.org/osd.xml" title="MongoDB Help"/>
 <link rel="top" title="CHAOS API" href="index.html" />
-<link rel="next" title="CHAOS concepts" href="concepts.html" />
-<link rel="prev" title="CHAOS API documentation" href="index.html" />
+<link rel="next" title="CHAOS.Portal JavaScript Client" href="JavaScript Portal Client/index.html" />
+<link rel="prev" title="CHAOS concepts" href="concepts.html" />
           <script>
             // (function() {
             //    var cx = '017213726194841070573:WMX6838984';
@@ -69,13 +69,13 @@
 
 
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">CHAOS overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#what-is-chaos">What is CHAOS?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#api-versioning">API versioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">CHAOS overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">CHAOS concepts</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#accesspointguid">accessPointGUID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#login">Login</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="concepts.html">CHAOS concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="JavaScript Portal Client/index.html">CHAOS.Portal JavaScript Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PHP Portal Client/index.html">CHAOS.Portal PHP Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Portal/Object.html">Portal.Object</a></li>
@@ -91,45 +91,48 @@
 </form>
 
 <!-- Edit this page on Github -->
-<a class="edit-github" href="https://github.com/malthejorgensen/CHAOS-API-Documentation/blob/master/source/overview.rst" target="_blank" title="Edit overview.txt on GitHub">
+<a class="edit-github" href="https://github.com/malthejorgensen/CHAOS-API-Documentation/blob/master/source/authentication.rst" target="_blank" title="Edit authentication.txt on GitHub">
   Edit this Page
 </a>
 
 <!--
 <strong>Debug:</strong> <br>
-pagename: "overview" <br>
+pagename: "authentication" <br>
 <br>
 -->
          </div>
        </div>
 
         <!-- Main -->
-           <div class="section" id="chaos-overview">
-<h1>CHAOS overview<a class="headerlink" href="#chaos-overview" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="what-is-chaos">
-<h2>What is CHAOS?<a class="headerlink" href="#what-is-chaos" title="Permalink to this headline">¶</a></h2>
-<p>CHAOS is a database for media content. <br>
-CHAOS does not store the media itself but rather references (URLs) to the media
-and metadata (XML) about it.</p>
-<p>CHAOS is usually accessed through its webinterface CHAOS.Portal. There exists
-PHP and Javascript libraries that wrap the CHAOS.Portal API into simple function
-calls on Javascript or PHP objects.</p>
-<a class="reference internal image-reference" href="_images/chaos_org_chart.png"><img alt="Overview of the structure of CHAOS" src="_images/chaos_org_chart.png" style="height: 300px;" /></a>
+           <div class="section" id="authentication">
+<h1>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h1>
+<p>To access objects through CHAOS.Portal you need authentication. Authentication
+can be granted through one of the following methods:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="#authentication-accesspointguid"><em>accessPointGUID</em></a></li>
+<li><a class="reference internal" href="#authentication-login"><em>Login</em></a></li>
+</ul>
+</div></blockquote>
+<div class="section" id="accesspointguid">
+<span id="authentication-accesspointguid"></span><h2>accessPointGUID<a class="headerlink" href="#accesspointguid" title="Permalink to this headline">¶</a></h2>
+<p>accessPointGUID is the general authentication method for anonymous access, and
+in general does not allow editing of the objects in the CHAOS database.</p>
+<p>Each objects has a list of accessPointGUID through which it is accessible.</p>
+<p>You use accessPointGUID by supplying it as an parameter to the service:
+<a class="reference external" href="http://api.danskkulturarv.dk/Object/Get?accessPointGUID=7A06C4FF-D15A-48D9-A908-088F9796AF28&amp;pageSize=5&amp;query=*:*">http://api.danskkulturarv.dk/Object/Get?accessPointGUID=7A06C4FF-D15A-48D9-A908-088F9796AF28&amp;pageSize=5&amp;query=*:*</a></p>
+<p>For testing the API you can use the following accessPointGUID: 7A06C4FF-D15A-48D9-A908-088F9796AF28</p>
 </div>
-<div class="section" id="api-versioning">
-<h2>API versioning<a class="headerlink" href="#api-versioning" title="Permalink to this headline">¶</a></h2>
-<p>The current version of CHAOS (as of March 2013) is v5.
-Tutorials (including this introduction) can be assumed to be written for v5
-unless otherwise noted.
-CHAOS v5 was released in November 2012. The primary change from v4 to v5 is that
-output is now guaranteed to be UTF-8.
-v6 is currently in development.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">For v1-v5 there is no built-in way in CHAOS to obtain version
-information, and you have to know which version you are dealing with beforehand.
-In v6 the API will expose which versions are available.</p>
-</div>
+<div class="section" id="login">
+<span id="authentication-login"></span><h2>Login<a class="headerlink" href="#login" title="Permalink to this headline">¶</a></h2>
+<p>Login is a more powerful authentication method which typically grants more
+permissions and allows for editing objects.</p>
+<p>To use login you first need to create a session</p>
+<p><a class="reference external" href="http://api.danskkulturarv.dk/Session/Create?protocolVersion=4">http://api.danskkulturarv.dk/Session/Create?protocolVersion=4</a></p>
+<p>This call gives you a sessionGUID which you must supply as a parameter to all
+following API calls, e.g. <tt class="code docutils literal"><span class="pre">sessionGUID=...</span></tt></p>
+<p>You can then authenticate the session by logging in:</p>
+<p><a class="reference external" href="http://api.danskkulturarv.dk/EmailPassword/Login?email=test&#64;example.org&amp;password=mysecret&amp;sessionGUID=...">http://api.danskkulturarv.dk/EmailPassword/Login?email=test&#64;example.org&amp;password=mysecret&amp;sessionGUID=...</a></p>
 </div>
 </div>
 
@@ -139,7 +142,7 @@ In v6 the API will expose which versions are available.</p>
     <div class="nav-buttons">
       <div class="button-row">
         <div class="prev">
-          <a href="index.html" title="Previous Section: CHAOS API documentation">&#8592; &nbsp; CHAOS API documentation</a>
+          <a href="concepts.html" title="Previous Section: CHAOS concepts">&#8592; &nbsp; CHAOS concepts</a>
           <br>Previous
         </div>
         
@@ -149,7 +152,7 @@ In v6 the API will expose which versions are available.</p>
           <br>Up
         </div>
         <div class="next">
-          <a href="concepts.html" title="Next Section: CHAOS concepts">CHAOS concepts &nbsp;&#8594;</a>
+          <a href="JavaScript Portal Client/index.html" title="Next Section: CHAOS.Portal JavaScript Client">CHAOS.Portal JavaScript Client &nbsp;&#8594;</a>
           <br>Next
         </div>
       </div>
@@ -191,7 +194,7 @@ var versions = {
  "v5": { "branch_name": "master", "directory_name": "current", "current": true },
  "v4": { "branch_name": "v4", "directory_name": "v4" }
 };
-var pagename = 'overview';
+var pagename = 'authentication';
 var stable = 'v';
 
 // Change URL on version change

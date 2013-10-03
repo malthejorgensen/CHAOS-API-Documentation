@@ -67,6 +67,8 @@ $(document).ready(function(event) {
     // Setup CodeMirror
     if (codeElem.hasClass('language-html')) {
       codeMirror.setOption('mode', 'htmlmixed');
+    } else if (codeElem.hasClass('language-xml')) {
+      codeMirror.setOption('mode', { 'name': 'xml' });
     } else if (codeElem.hasClass('language-json')) {
       codeMirror.setOption('mode', { 'name': 'javascript', 'json': true });
     } else if (codeElem.hasClass('language-javascript')) {
