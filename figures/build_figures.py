@@ -9,6 +9,7 @@ from sh import lualatex, convert
 from shutil import rmtree
 from tempfile import mkdtemp
 import argparse
+import json
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--verbose', action='store_true', help='Print output from Luatex `lualatex` and ImageMagic `convert`.')
@@ -27,14 +28,12 @@ cheetahVarStartToken = ¢
 #end compiler-settings
 """
 
-tex_files = [
-  'chaos_objects.tex',
-  'chaos_org_chart.tex',
-]
+with open('figure_list.json') as f:
+    tex_files = json.load(f)
 
-for tex_filename in tex_files:
+for tex_filename, img_size in tex_files.items():
     filename = tex_filename[:-4]
-    print 'Building figure "%s".' % filename
+    print 'Building figure "%s" (%s).' % (filename, img_size)
     temp_dir = mkdtemp()
     print_verbose('Made temporary directory "%s".' % temp_dir)
     temp_filename = temp_dir + '/' + filename + '.cheetah'
@@ -53,7 +52,7 @@ for tex_filename in tex_files:
             print_verbose(line, newline=False)
         print_verbose("STOPPED lualatex")
         print_verbose("STARTING convert")
-        for line in convert('-trim', '-density', '300x300','-resize', '50%', img_in_filename, img_out_filename, _err_to_out=True, _iter=True):
+        for line in convert('-trim', '-density', '300x300','-resize', img_size, img_in_filename, img_out_filename, _err_to_out=True, _iter=True):
             print_verbose(line, newline=False)
         print_verbose("STOPPED convert")
     rmtree(temp_dir)
