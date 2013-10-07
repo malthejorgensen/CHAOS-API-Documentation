@@ -30,10 +30,6 @@ ObjectRelations  A list of objects related to this object
 ===============  ========================================
 
 
-Also check out:
-:doc:`/Portal/Object`
-
-
 Files
 -----
 A file consists of a filename, a URL and some type specifications. The URL can
