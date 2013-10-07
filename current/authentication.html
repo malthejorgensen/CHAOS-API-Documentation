@@ -116,22 +116,32 @@ can be granted through one of the following methods:</p>
 </div></blockquote>
 <div class="section" id="accesspointguid">
 <span id="authentication-accesspointguid"></span><h2>accessPointGUID<a class="headerlink" href="#accesspointguid" title="Permalink to this headline">¶</a></h2>
-<p>accessPointGUID is the general authentication method for anonymous access, and
-in general does not allow editing of the objects in the CHAOS database.</p>
-<p>Each objects has a list of accessPointGUID through which it is accessible.</p>
-<p>You use accessPointGUID by supplying it as an parameter to the service:
-<a class="reference external" href="http://api.danskkulturarv.dk/Object/Get?accessPointGUID=7A06C4FF-D15A-48D9-A908-088F9796AF28&amp;pageSize=5&amp;query=*:*">http://api.danskkulturarv.dk/Object/Get?accessPointGUID=7A06C4FF-D15A-48D9-A908-088F9796AF28&amp;pageSize=5&amp;query=*:*</a></p>
+<p>accessPointGUID is the general authentication method for anonymous end-user
+access. Because of this it is also more limited than other authentication such
+as <a class="reference internal" href="#authentication-login"><em>Login</em></a>, e.g. accessPointGUID does not give you access to
+browse folders or edit objects.</p>
+<p>Authentication via accessPointGUID happens on a per-object basis: Each object
+has a list of accessPointGUIDs through which it is accessible. If an object is
+accessible via an accessPointGUID it is said to &#8220;published&#8221; on the
+accessPointGUID. The object can be published on an accessPointGUID for a certain
+time period.</p>
+<p>You can authenticate yourself with accessPointGUID by supplying it as an
+parameter to the service:</p>
+<p><a class="reference external" href="http://api.danskkulturarv.dk/Object/Get?accessPointGUID=7A06C4FF-D15A-48D9-A908-088F9796AF28&amp;pageSize=5&amp;query=*:*">http://api.danskkulturarv.dk/Object/Get?accessPointGUID=7A06C4FF-D15A-48D9-A908-088F9796AF28&amp;pageSize=5&amp;query=*:*</a></p>
 <p>For testing the API you can use the following accessPointGUID: 7A06C4FF-D15A-48D9-A908-088F9796AF28</p>
 </div>
 <div class="section" id="login">
 <span id="authentication-login"></span><h2>Login<a class="headerlink" href="#login" title="Permalink to this headline">¶</a></h2>
-<p>Login is a more powerful authentication method which typically grants more
-permissions and allows for editing objects.</p>
+<p>Login is a more powerful authentication method typically used for administration
+because it allows for editing objects and browsing folders.  Authentication via
+login happens on a per-folder basis. That means a user has access to certain
+folders and by logging the user will have access to all objects in those folders.</p>
 <p>To use login you first need to create a session</p>
 <p><a class="reference external" href="http://api.danskkulturarv.dk/Session/Create?protocolVersion=4">http://api.danskkulturarv.dk/Session/Create?protocolVersion=4</a></p>
 <p>This call gives you a sessionGUID which you must supply as a parameter to all
 following API calls, e.g. <tt class="code docutils literal"><span class="pre">sessionGUID=...</span></tt></p>
-<p>You can then authenticate the session by logging in:</p>
+<p>You can then authenticate the session by logging in:
+<a class="reference internal" href="API.html#api-emailpassword-login"><em>EmailPassword/Login</em></a></p>
 <p><a class="reference external" href="http://api.danskkulturarv.dk/EmailPassword/Login?email=test&#64;example.org&amp;password=mysecret&amp;sessionGUID=...">http://api.danskkulturarv.dk/EmailPassword/Login?email=test&#64;example.org&amp;password=mysecret&amp;sessionGUID=...</a></p>
 </div>
 </div>

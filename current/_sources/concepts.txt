@@ -72,10 +72,23 @@ Format           Image JPEG 320x480, Movie AVI 378x210 etc.
 
 Metadata
 --------
-Every metadata XML-document has a related metadata schema. Things such the
-title and description of the object is typically stored in the metadata. This
-means that you can expect to find elements in the XML that contain the name of
-object, a description and so on. 
+The metadata is typically some form of description of the object, but could also
+be data related to the object such as tags or geodata. Every metadata
+XML-document conforms to a specific XML-schema called the :code:`MetadataSchema`
+identified by its GUID. The MetadataSchema can be looked up in the CHAOS database
+and read out similar to getting an object from the database.
+
+Things such the title and description of an object is typically stored in the
+metadata.
+
+An object can have multiple :code:`Metadata` conforming to the same
+:code:`MetadataSchema`. Let's say for example that the schema dictates that the
+:code:`Metadata` is a description and title of the object. What you would
+typically have is then the title and description in multiple languages. The
+:code:`LanguageCode` of the :code:`Metadata` tells you the language of the
+specific entry such that you can grab the appropriate :code:`Metadata` for your users.
+Another case of multiple :code:`Metadata` with the same :code:`MetadataSchemaGUID`
+could be tag metadata where each metadata xml-string is a tag.
 
 ==================  =====================================
           ``Metadata`` properties
@@ -86,7 +99,14 @@ GUID                GUID of the Metadata
 MetadataSchemaGUID  The GUID of the XML schema describing
                     the MetadataXML XML document.
 MetadataXML         The metadata as an XML document
+LanguageCode        Language code indicating the language
+                    of the metadata.
 ==================  =====================================
+
+:code:`LanguageCode` should generally be two-letter `IETF language tags`_
+(the *primary language subtag*).
+
+.. _IETF language tags: http://en.wikipedia.org/wiki/IETF_language_tag
 
 Related objects
 ---------------

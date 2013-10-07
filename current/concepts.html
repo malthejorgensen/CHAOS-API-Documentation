@@ -210,10 +210,21 @@ particular database.</p>
 </div>
 <div class="section" id="metadata">
 <h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
-<p>Every metadata XML-document has a related metadata schema. Things such the
-title and description of the object is typically stored in the metadata. This
-means that you can expect to find elements in the XML that contain the name of
-object, a description and so on.</p>
+<p>The metadata is typically some form of description of the object, but could also
+be data related to the object such as tags or geodata. Every metadata
+XML-document conforms to a specific XML-schema called the <tt class="code docutils literal"><span class="pre">MetadataSchema</span></tt>
+identified by its GUID. The MetadataSchema can be looked up in the CHAOS database
+and read out similar to getting an object from the database.</p>
+<p>Things such the title and description of an object is typically stored in the
+metadata.</p>
+<p>An object can have multiple <tt class="code docutils literal"><span class="pre">Metadata</span></tt> conforming to the same
+<tt class="code docutils literal"><span class="pre">MetadataSchema</span></tt>. Let&#8217;s say for example that the schema dictates that the
+<tt class="code docutils literal"><span class="pre">Metadata</span></tt> is a description and title of the object. What you would
+typically have is then the title and description in multiple languages. The
+<tt class="code docutils literal"><span class="pre">LanguageCode</span></tt> of the <tt class="code docutils literal"><span class="pre">Metadata</span></tt> tells you the language of the
+specific entry such that you can grab the appropriate <tt class="code docutils literal"><span class="pre">Metadata</span></tt> for your users.
+Another case of multiple <tt class="code docutils literal"><span class="pre">Metadata</span></tt> with the same <tt class="code docutils literal"><span class="pre">MetadataSchemaGUID</span></tt>
+could be tag metadata where each metadata xml-string is a tag.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="33%" />
@@ -237,8 +248,14 @@ the MetadataXML XML document.</td>
 <tr class="row-odd"><td>MetadataXML</td>
 <td>The metadata as an XML document</td>
 </tr>
+<tr class="row-even"><td>LanguageCode</td>
+<td>Language code indicating the language
+of the metadata.</td>
+</tr>
 </tbody>
 </table>
+<p><tt class="code docutils literal"><span class="pre">LanguageCode</span></tt> should generally be two-letter <a class="reference external" href="http://en.wikipedia.org/wiki/IETF_language_tag">IETF language tags</a>
+(the <em>primary language subtag</em>).</p>
 </div>
 <div class="section" id="related-objects">
 <h2>Related objects<a class="headerlink" href="#related-objects" title="Permalink to this headline">¶</a></h2>
