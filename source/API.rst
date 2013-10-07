@@ -1,3 +1,5 @@
+.. role:: gbg
+.. role:: rbg
 ===
 API
 ===
@@ -78,3 +80,88 @@ http://api.danskkulturarv.dk/EmailPassword/Login?email=test@example.org&password
        </ModuleResult>
      </ModuleResults>
    </PortalResult>
+
+.. _api-object-setpublishsettings:
+
+Object/SetPublishSettings
+-------------------------
+Publishes/unpublishes an object on an :code:`accessPointGUID` in a given time
+period (or indefinitely). 
+
+You need to be logged in to use this feature.
+
+The :code:`accessPointGUID` must exists in the database in order to publish on
+it. As of 7th October 2013 you cannot create an :code:`accessPointGUID` in the
+database via the API.
+
+**Parameters**
+
+ * *objectGUID* the GUID of the object for which you want to set :code:`accessPointGUID`
+ * *accessPointGUID* the :code:`accessPointGUID` you want to publish on
+ * *startDate* (optional) the start of publishing period
+ * *endDate* (optional) the end of the publishing period
+
+*startDate* and *endDate* should be in the format 
+:code:`DD-MM-YYYY HH:MM:SS` where the first :code:`MM` is month and the seconds
+is minutes.
+e.g. :code:`03-10-2013 14:25:42` is the 3rd of October 2013, twenty-five minutes
+and fourty-two seconds past 2 PM.
+
+If no *startDate* is given the object will is unpublished, i.e. it will not be
+accessible from the given accessPoint. That is the following situations will
+unpublish the object:
+
+
+
+================  ================  ================================
+      Publishing
+--------------------------------------------------------------------
+startDate         endDate           What happens
+================  ================  ================================
+:rbg:`not given`  :rbg:`not given`  Object is unpublished
+:rbg:`not given`  :gbg:`given`      Object is unpublished
+:gbg:`given`      :rbg:`not given`  Object is published indefinitely
+:gbg:`given`      :gbg:`given`      Object is published in given
+                                    time period
+================  ================  ================================
+
+.. raw:: html
+
+   <script>
+     // depends on jQuery and Bootstrap
+     $(document).ready(function() {
+       $('.gbg').parent().css('background-color', '#dff0d8');
+       $('.rbg').parent().css('background-color', '#f2dede');
+     });
+   </script>
+
+If *startDate* is given but no *endDate* is given the object will be published
+until you change the publish period or remove the accessPoint.
+
+
+**Returns**
+
+* On success: :code:`CHAOS.Portal.DTO.Standard.ScalarResult` with value :code:`1`
+* On error: a number of different errors can be given on erroneous dates,
+  accessPointsGUID or objectsGUIDs. If the accessPoint does not exists you will
+  get :code:`CHAOS.Portal.Exception.InsufficientPermissionsException`
+
+:chaos_api_link_object_setpublishsettings_apg:`objectGUID=00000000-0000-0000-0000-000000820016&sessionGUID=9755b31c-c0d4-2a47-9605-487b1401d1fa&startDate=01-10-2013+06:00:00`
+
+.. code-editor:: xml
+
+   <PortalResult Duration="104">
+    <ModuleResults>
+      <ModuleResult Fullname="MCM" Duration="0" Count="1">
+        <Results>
+          <Result FullName="CHAOS.Portal.DTO.Standard.ScalarResult">
+            <Value>1</Value>
+          </Result>
+        </Results>
+      </ModuleResult>
+    </ModuleResults>
+   </PortalResult>
+
+**See also**
+
+* :ref:`Authentication -> accessPointGUID <authentication-accesspointguid>`

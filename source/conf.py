@@ -288,6 +288,7 @@ extlinks = {
     'chaos_api_link' : (chaos_test_servicepath + '%s', None),
     'chaos_api_link_object_get' : (make_link('Object/Get') + '%s', None),
     'chaos_api_link_object_get_apg' : (make_link_apg('Object/Get')  + '%s', None),
+    'chaos_api_link_object_setpublishsettings_apg' : (make_link_apg('Object/SetPublishSettings')  + '%s', None),
     'chaos_test_servicepath_with_accesspointguid' : (chaos_test_servicepath + '?accessPointGUID=' + chaos_test_accesspointguid + '%s', None),
 }
 
