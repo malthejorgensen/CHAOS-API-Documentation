@@ -146,10 +146,7 @@ which becomes
 
 inside the URL.
 
-So the full CHAOS request URL becomes: (*note that you can't copy this directly
-into the address bar as it contains linebreaks, here's a* link__ *though*)
-
-__ http://api.chaos-systems.com/v5/Object/Get?query=(GUID%3A00000000-0000-0000-0000-00004e040016)&accessPointGUID=7A06C4FF-D15A-48D9-A908-088F9796AF28&pageIndex=0&pageSize=1&includeFiles=true
+So the full CHAOS request URL becomes:
 
 .. code-block:: none
 
@@ -160,4 +157,8 @@ __ http://api.chaos-systems.com/v5/Object/Get?query=(GUID%3A00000000-0000-0000-0
         pageSize=1&
         includeFiles=true
 
+*With added linebreaks for readability.* (You can't copy this directly into the
+address bar because of the linebreaks, but here's a link__)
+
+__ http://api.chaos-systems.com/v5/Object/Get?query=(GUID%3A00000000-0000-0000-0000-00004e040016)&accessPointGUID=7A06C4FF-D15A-48D9-A908-088F9796AF28&pageIndex=0&pageSize=1&includeFiles=true
 .. _Lucene query syntax: http://lucene.apache.org/core/3_6_0/queryparsersyntax.html
