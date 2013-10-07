@@ -1,0 +1,77 @@
+\documentclass{standalone}%\documentclass{article}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning, fit,
+                backgrounds, % for \begin{pdfonlayer}{background}
+                calc % for !.5!
+               }
+%% \usetikzlibrary{shapes,positioning,matrix,shapes.multipart,fit,decorations.markings,calc,decorations.pathreplacing}
+
+
+%% \usepackage{xltxtra,fontspec,xunicode}
+\usepackage{fontspec} %,xunicode}
+\defaultfontfeatures{Scale=MatchLowercase}
+%% \setromanfont[Numbers=Uppercase]{Hoefler Text}
+%% \setromanfont[Numbers=Uppercase]{Verdana}
+\setromanfont[Numbers=Uppercase]{Lato}
+\setmonofont[Scale=0.90,Ligatures=NoCommon]{Courier}
+
+\begin{document}
+
+\tikzstyle{layer-text} = [gray!75]
+\begin{tikzpicture}
+  % text depth is to ensure that 'Solr' is aligned in height width 'MySQL'
+  % (the 'y' in MySQL moves the baseline, and so shifts Solr)
+  \node (MySQL) [text depth=0pt,
+                 draw=black!30,
+                 fill=black!20, very thick,
+                 rectangle,
+                 %% rounded corners,
+                 inner sep=5pt,
+                 inner ysep=10pt]
+                {MySQL};
+  \node (Solr) [right=15pt of MySQL,
+                draw=black!30,
+                fill=blue!40, very thick,
+                rectangle,
+                %% rounded corners,
+                inner sep=5pt,
+                inner ysep=10pt]
+               {Solr};
+  \node (CHAOS) [font=\Large]  at ([shift={(20pt, -30pt)}]MySQL) {CHAOS};
+  %% \node (CHAOS) [below=25pt of MySQL, xshift=10pt] {CHAOS};
+  %% \node (Solr) at ([shift={(30pt,0pt)}]MySQL.center) {Solr};
+\begin{pgfonlayer}{background}
+  \node (CHAOSbox) [draw=black, fill=pink, inner sep=5pt, inner ysep=5pt, fit={(Solr) (MySQL) (CHAOS)}] {};
+\end{pgfonlayer}
+  \node (CHAOS-Portal) [below=30pt of CHAOS,
+                        draw=black!30,
+                        fill=green!40, very thick,
+                        rectangle,
+                        inner sep=5pt,
+                        inner ysep=10pt]
+                        {CHAOS.Portal};
+  \draw[<->] (CHAOSbox) -- (CHAOS-Portal);
+  \node (PHP-Client) at ([shift={(30pt,-30pt)}]CHAOS-Portal.south) {PHP Client};
+  \node (Javascript-Client) at ([shift={(-40pt,-30pt)}]CHAOS-Portal.south) [text depth=0pt] {Javascript Client};
+  \draw[<->] (CHAOS-Portal) -- (PHP-Client);
+  \draw[<->] (CHAOS-Portal) -- (Javascript-Client);
+
+  % separators
+  \node (sep1) at ($ (CHAOSbox.south) !.5! (CHAOS-Portal.north) $) {};
+  \draw ($ (sep1) + (-4,0) $) -- ($ (sep1) + (4,0) $);
+  \node (backend-layer) [layer-text] at ($ (CHAOSbox.east) + (2,0) $) {Backend layer};
+
+  \node (sep2) at ($ (CHAOS-Portal.south) + (0,-0.5) $) {};
+  \draw ($ (sep2) + (-4,0) $) -- ($ (sep2) + (4,0) $);
+  \path let \p1 = (CHAOS-Portal), \p2 = (backend-layer.west) in node (service-layer) [layer-text, anchor=west] at (\x2, \y1) {Webservice layer};
+
+  \path let \p1 = (PHP-Client), \p2 = (backend-layer.west) in node (frotend-layer) [layer-text, anchor=west] at (\x2, \y1) {Frontend/client layer};
+
+\end{tikzpicture}
+
+
+
+
+\end{document}
+

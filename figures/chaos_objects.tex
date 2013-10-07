@@ -1,0 +1,81 @@
+\documentclass{standalone}%\documentclass{article}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning, fit,
+                backgrounds, % for \begin{pdfonlayer}{background}
+                matrix, % for \begin{pdfonlayer}{background}
+                calc,
+                decorations.markings % for \draw[label={[above]{The awesome line}}]
+               }
+%% \usetikzlibrary{shapes,positioning,matrix,shapes.multipart,fit,decorations.markings,calc,decorations.pathreplacing}
+
+\usepackage{xltxtra,fontspec,xunicode}
+\defaultfontfeatures{Scale=MatchLowercase}
+% Hoefler Text, Verdana, Lato
+\setromanfont[Numbers=Uppercase]{Lato}
+\setmonofont[Scale=0.90,Ligatures=NoCommon]{Courier}
+
+\definecolor{lightblue}{RGB}{7,198,227}
+
+\begin{document}
+
+%% \tikzstyle{object-title} = [fill=gray!50, right=5pt]
+\tikzstyle{object-title} = [fill=gray!10, draw=black, right=5pt]
+\tikzstyle{relation} = [ultra thick, black!90, rounded corners]
+\tikzstyle{object-style} = [anchor=north west, draw=black, inner sep=5pt,
+                            inner ysep=5pt, text width=60pt,
+                            row sep=-\pgflinewidth,
+                            fill=red!50,
+                            column 1/.style={nodes={rectangle,draw,fill=orange!50}}
+                           ]
+\begin{tikzpicture}[label/.style={postaction={decorate,decoration={markings, mark=at position .9 with \node #1;}}}]
+  % Object object
+  #set ¢object_attrs = ['GUID', 'ObjectTypeID', 'DateCreated', 'ObjectRelations', 'Files', 'Metadatas']
+  \matrix (Object) at (0,1) [matrix of nodes, object-style, text width=70pt] %,minimum width=3em}]
+  {
+  #for ¢i, ¢attr in enumerate(¢object_attrs)
+    %% #if ¢i != 0 then "&" else "%"#
+    ¢attr \\
+  #end for
+  };
+  \node[object-title] at (Object.north west) {Object};
+  \node (Object-top-path) at ([shift={(0pt,10pt)}]Object.north) {};
+  \draw let \p1 = (Object-top-path), \p2 = (Object.east) in node (Object-top-right-path) at ($(\x2 + 10pt, \y1)$) {};
+
+  % File object
+  #set ¢file_attrs = ['ID', 'Filename', 'URL', 'FormatType', 'FormatCategory', 'Format', 'FormatID']
+  \matrix (File) at (4.5,1) [matrix of nodes, object-style, text width=70pt]
+  {
+  #for ¢i, ¢attr in enumerate(¢file_attrs)
+    %% #if ¢i != 0 then "&" else "%"#
+    ¢attr \\
+  #end for
+  };
+  \node[object-title] at (File.north west) {File};
+  \node (File-top-path) at ([shift={(0pt,10pt)}]File.north) {};
+  \node (File-top-middle-path) at ($ (Object-top-path) !.6! (File-top-path) $) {};
+
+  % Metadata object
+  #set ¢metadata_attrs = ['GUID', 'MetadataSchemaGUID', 'MetadataXML', 'DateCreated']
+  \matrix (Metadata) at (4,-4.5) [matrix of nodes, object-style, text width=100pt]
+  {
+  #for ¢i, ¢attr in enumerate(¢metadata_attrs)
+    %% #if ¢i != 0 then "&" else "%"#
+    ¢attr \\
+  #end for
+  };
+  \node[object-title] at (Metadata.north west) {Metadata};
+  \node (Metadata-top-path) at ([shift={(0pt,10pt)}]Metadata.north) {};
+  \draw let \p1 = (Metadata-top-path), \p2 = (File-top-middle-path) in node (Metadata-top-left-path) at ($(\x2, \y1)$) {};
+
+  % Relations
+  \draw [-,relation,label={[above]{0..}}] (Object-4-1.east) -| (Object-top-right-path.center) -| (Object.north);
+  \draw [-,relation,label={[above]{0..}}] (Object-5-1.east) -| (File-top-middle-path.center) -- (File-top-path.center) -- (File.north);
+  \draw [-,relation,label={[above]{0..}}] (Object-6-1.east) -| (Metadata-top-left-path.center) |- (Metadata-top-path.center) -- (Metadata.north);
+  %% \draw [-] (Object-2-1.east) -- (Metadata);
+
+\end{tikzpicture}
+
+
+\end{document}
+
