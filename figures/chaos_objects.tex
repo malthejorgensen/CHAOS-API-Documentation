@@ -56,7 +56,7 @@
   \node (File-top-middle-path) at ($ (Object-top-path) !.6! (File-top-path) $) {};
 
   % Metadata object
-  #set ¢metadata_attrs = ['GUID', 'MetadataSchemaGUID', 'MetadataXML', 'DateCreated']
+  #set ¢metadata_attrs = ['GUID', 'MetadataSchemaGUID', 'MetadataXML', 'LanguageCode', 'DateCreated']
   \matrix (Metadata) at (4,-4.5) [matrix of nodes, object-style, text width=100pt]
   {
   #for ¢i, ¢attr in enumerate(¢metadata_attrs)
