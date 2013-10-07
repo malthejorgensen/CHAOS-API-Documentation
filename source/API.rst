@@ -4,7 +4,7 @@ API
 
 Session/Create
 --------------
-Creates a session, which can be authenticated via the :ref:`emailpassword-login`
+Creates a session, which can be authenticated via the :ref:`api-emailpassword-login`
 method.
 
 **Parameters**
@@ -40,9 +40,9 @@ A :code:`ModuleResult` with a single :code:`Result` with a :code:`SessionGUID`
 **See also**
 
 * :ref:`Authentication -> Login <authentication-login>`
-* :ref:`emailpassword-login`
+* :ref:`api-emailpassword-login`
 
-.. _emailpassword-login:
+.. _api-emailpassword-login:
 
 EmailPassword/Login
 -------------------

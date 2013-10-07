@@ -12,13 +12,20 @@ can be granted through one of the following methods:
 
 accessPointGUID
 ---------------
-accessPointGUID is the general authentication method for anonymous access, and
-in general does not allow editing of the objects in the CHAOS database.
+accessPointGUID is the general authentication method for anonymous end-user
+access. Because of this it is also more limited than other authentication such
+as :ref:`authentication-login`, e.g. accessPointGUID does not give you access to
+browse folders or edit objects.
 
+Authentication via accessPointGUID happens on a per-object basis: Each object
+has a list of accessPointGUIDs through which it is accessible. If an object is
+accessible via an accessPointGUID it is said to "published" on the
+accessPointGUID. The object can be published on an accessPointGUID for a certain
+time period.
 
-Each objects has a list of accessPointGUID through which it is accessible.
+You can authenticate yourself with accessPointGUID by supplying it as an
+parameter to the service:
 
-You use accessPointGUID by supplying it as an parameter to the service:
 :chaos_api_link_object_get_apg:`pageSize=5&query=*:*`
 
 For testing the API you can use the following accessPointGUID: |chaos_test_accesspointguid|
@@ -27,8 +34,10 @@ For testing the API you can use the following accessPointGUID: |chaos_test_acces
 
 Login
 -----
-Login is a more powerful authentication method which typically grants more
-permissions and allows for editing objects.
+Login is a more powerful authentication method typically used for administration
+because it allows for editing objects and browsing folders.  Authentication via
+login happens on a per-folder basis. That means a user has access to certain
+folders and by logging the user will have access to all objects in those folders.
 
 To use login you first need to create a session
 
@@ -38,6 +47,7 @@ This call gives you a sessionGUID which you must supply as a parameter to all
 following API calls, e.g. :code:`sessionGUID=...`
 
 You can then authenticate the session by logging in:
+:ref:`api-emailpassword-login`
 
 :chaos_api_link:`EmailPassword/Login?email=test@example.org&password=mysecret&sessionGUID=...`
 
