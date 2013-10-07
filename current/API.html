@@ -41,7 +41,7 @@
        <script type="text/javascript" src="_static/scrollspy.js"></script>
           <link rel="search" type="application/opensearchdescription+xml" href="http://docs.mongodb.org/osd.xml" title="MongoDB Help"/>
 <link rel="top" title="CHAOS API" href="index.html" />
-<link rel="prev" title="Portal.Object" href="Portal/Object.html" />
+<link rel="prev" title="Member functions" href="PHP Portal Client/member functions.html" />
           <script>
             // (function() {
             //    var cx = '017213726194841070573:WMX6838984';
@@ -73,10 +73,10 @@
 <li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="JavaScript Portal Client/index.html">CHAOS.Portal JavaScript Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PHP Portal Client/index.html">CHAOS.Portal PHP Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Portal/Object.html">Portal.Object</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">API</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#session-create">Session/Create</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#emailpassword-login">EmailPassword/Login</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#object-setpublishsettings">Object/SetPublishSettings</a></li>
 </ul>
 </li>
 </ul>
@@ -174,6 +174,97 @@ and
   &lt;/ModuleResults&gt;
 &lt;/PortalResult&gt;</code></pre>
 </div>
+<div class="section" id="object-setpublishsettings">
+<span id="api-object-setpublishsettings"></span><h2>Object/SetPublishSettings<a class="headerlink" href="#object-setpublishsettings" title="Permalink to this headline">¶</a></h2>
+<p>Publishes/unpublishes an object on an <tt class="code docutils literal"><span class="pre">accessPointGUID</span></tt> in a given time
+period (or indefinitely).</p>
+<p>You need to be logged in to use this feature.</p>
+<p>The <tt class="code docutils literal"><span class="pre">accessPointGUID</span></tt> must exists in the database in order to publish on
+it. As of 7th October 2013 you cannot create an <tt class="code docutils literal"><span class="pre">accessPointGUID</span></tt> in the
+database via the API.</p>
+<p><strong>Parameters</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><em>objectGUID</em> the GUID of the object for which you want to set <tt class="code docutils literal"><span class="pre">accessPointGUID</span></tt></li>
+<li><em>accessPointGUID</em> the <tt class="code docutils literal"><span class="pre">accessPointGUID</span></tt> you want to publish on</li>
+<li><em>startDate</em> (optional) the start of publishing period</li>
+<li><em>endDate</em> (optional) the end of the publishing period</li>
+</ul>
+</div></blockquote>
+<p><em>startDate</em> and <em>endDate</em> should be in the format
+<tt class="code docutils literal"><span class="pre">DD-MM-YYYY</span> <span class="pre">HH:MM:SS</span></tt> where the first <tt class="code docutils literal"><span class="pre">MM</span></tt> is month and the seconds
+is minutes.
+e.g. <tt class="code docutils literal"><span class="pre">03-10-2013</span> <span class="pre">14:25:42</span></tt> is the 3rd of October 2013, twenty-five minutes
+and fourty-two seconds past 2 PM.</p>
+<p>If no <em>startDate</em> is given the object will is unpublished, i.e. it will not be
+accessible from the given accessPoint. That is the following situations will
+unpublish the object:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="3">Publishing</th>
+</tr>
+<tr class="row-even"><th class="head">startDate</th>
+<th class="head">endDate</th>
+<th class="head">What happens</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td><span class="rbg">not given</span></td>
+<td><span class="rbg">not given</span></td>
+<td>Object is unpublished</td>
+</tr>
+<tr class="row-even"><td><span class="rbg">not given</span></td>
+<td><span class="gbg">given</span></td>
+<td>Object is unpublished</td>
+</tr>
+<tr class="row-odd"><td><span class="gbg">given</span></td>
+<td><span class="rbg">not given</span></td>
+<td>Object is published indefinitely</td>
+</tr>
+<tr class="row-even"><td><span class="gbg">given</span></td>
+<td><span class="gbg">given</span></td>
+<td>Object is published in given
+time period</td>
+</tr>
+</tbody>
+</table>
+<script>
+  // depends on jQuery and Bootstrap
+  $(document).ready(function() {
+    $('.gbg').parent().css('background-color', '#dff0d8');
+    $('.rbg').parent().css('background-color', '#f2dede');
+  });
+</script><p>If <em>startDate</em> is given but no <em>endDate</em> is given the object will be published
+until you change the publish period or remove the accessPoint.</p>
+<p><strong>Returns</strong></p>
+<ul class="simple">
+<li>On success: <tt class="code docutils literal"><span class="pre">CHAOS.Portal.DTO.Standard.ScalarResult</span></tt> with value <tt class="code docutils literal"><span class="pre">1</span></tt></li>
+<li>On error: a number of different errors can be given on erroneous dates,
+accessPointsGUID or objectsGUIDs. If the accessPoint does not exists you will
+get <tt class="code docutils literal"><span class="pre">CHAOS.Portal.Exception.InsufficientPermissionsException</span></tt></li>
+</ul>
+<p><a class="reference external" href="http://api.danskkulturarv.dk/Object/SetPublishSettings?accessPointGUID=7A06C4FF-D15A-48D9-A908-088F9796AF28&amp;objectGUID=00000000-0000-0000-0000-000000820016&amp;sessionGUID=9755b31c-c0d4-2a47-9605-487b1401d1fa&amp;startDate=01-10-2013+06:00:00">http://api.danskkulturarv.dk/Object/SetPublishSettings?accessPointGUID=7A06C4FF-D15A-48D9-A908-088F9796AF28&amp;objectGUID=00000000-0000-0000-0000-000000820016&amp;sessionGUID=9755b31c-c0d4-2a47-9605-487b1401d1fa&amp;startDate=01-10-2013+06:00:00</a></p>
+<pre><code class="language-xml">&lt;PortalResult Duration="104"&gt;
+ &lt;ModuleResults&gt;
+   &lt;ModuleResult Fullname="MCM" Duration="0" Count="1"&gt;
+     &lt;Results&gt;
+       &lt;Result FullName="CHAOS.Portal.DTO.Standard.ScalarResult"&gt;
+         &lt;Value&gt;1&lt;/Value&gt;
+       &lt;/Result&gt;
+     &lt;/Results&gt;
+   &lt;/ModuleResult&gt;
+ &lt;/ModuleResults&gt;
+&lt;/PortalResult&gt;</code></pre>
+<p><strong>See also</strong></p>
+<ul class="simple">
+<li><a class="reference internal" href="authentication.html#authentication-accesspointguid"><em>Authentication -&gt; accessPointGUID</em></a></li>
+</ul>
+</div>
 </div>
 
 
@@ -182,7 +273,7 @@ and
     <div class="nav-buttons">
       <div class="button-row">
         <div class="prev">
-          <a href="Portal/Object.html" title="Previous Section: Portal.Object">&#8592; &nbsp; Portal.Object</a>
+          <a href="PHP Portal Client/member functions.html" title="Previous Section: Member functions">&#8592; &nbsp; Member functions</a>
           <br>Previous
         </div>
         
