@@ -76,11 +76,11 @@ This is done with the method `PortalClient::Object()::GetBySearch()`
 .. code-editor:: php
 
    <?php
-   $fields = [
+   $fields = array(
      "5906a41b-feae-48db-bfb7-714b3e105396",
      "00000000-0000-0000-0000-000063c30000",
      "00000000-0000-0000-0000-000065c30000"
-   ];
+   );
 
    $serviceResult = $client->Object()->GetSearchSchemas(
      "test",       // search string
@@ -146,7 +146,7 @@ setting pageSize to 1:
     // Retrieve objects
     $serviceResult = $client->Object()->GetSearchSchemas(
       "test",       // search string
-      ["5906a41b-feae-48db-bfb7-714b3e105396"],      // fields to search
+      array("5906a41b-feae-48db-bfb7-714b3e105396"),      // fields to search
       "da",         // language code
       $accessPointGUID,
       0,            // pageIndex

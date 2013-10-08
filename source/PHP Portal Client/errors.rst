@@ -9,7 +9,7 @@ Let's make a call that will return an error:
     <?php
     $serviceResult = $client->Object()->GetSearchSchemas(
       "*",       // search string
-      ["5906a41b-feae-48db-bfb7-714b3e105396"], // fields/schemas to search
+      array("5906a41b-feae-48db-bfb7-714b3e105396"), // fields/schemas to search
       "da",         // language code
       $accessPointGUID,
       0,            // pageIndex
@@ -49,7 +49,7 @@ Let's have a more thorough look, by adding :code:`MCM()->Exception` and
     <?php
     $serviceResult = $client->Object()->GetSearchSchemas(
       "*",       // search string
-      ["5906a41b-feae-48db-bfb7-714b3e105396"], // fields/schemas to search
+      array("5906a41b-feae-48db-bfb7-714b3e105396"), // fields/schemas to search
       "da",         // language code
       $accessPointGUID,
       0,            // pageIndex
