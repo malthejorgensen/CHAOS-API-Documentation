@@ -47,7 +47,7 @@ This call gives you a sessionGUID which you must supply as a parameter to all
 following API calls, e.g. :code:`sessionGUID=...`
 
 You can then authenticate the session by logging in:
-:ref:`api-emailpassword-login`
+:func:`EmailPassword.Login`
 
 :chaos_api_link:`EmailPassword/Login?email=test@example.org&password=mysecret&sessionGUID=...`
 
