@@ -1,5 +1,3 @@
-.. role:: gbg
-.. role:: rbg
 ===
 API
 ===
@@ -111,10 +109,12 @@ If no *startDate* is given the object will is unpublished, i.e. it will not be
 accessible from the given accessPoint. That is the following situations will
 unpublish the object:
 
+.. role:: gbg
 
+.. role:: rbg
 
 ================  ================  ================================
-      Publishing
+  ``SetPublishSettings`` parameters
 --------------------------------------------------------------------
 startDate         endDate           What happens
 ================  ================  ================================
@@ -130,10 +130,14 @@ startDate         endDate           What happens
    <script>
      // depends on jQuery and Bootstrap
      $(document).ready(function() {
-       $('.gbg').parent().css('background-color', '#dff0d8');
-       $('.rbg').parent().css('background-color', '#f2dede');
+       $('.gbg').parent().addClass('gbg');
+       $('.rbg').parent().addClass('rbg');
      });
    </script>
+   <style>
+     td.gbg { text-align: center; background-color: #F2DEDE; }
+     td.rbg { text-align: center; background-color: #DFF0D8; }
+   </style>
 
 If *startDate* is given but no *endDate* is given the object will be published
 until you change the publish period or remove the accessPoint.
