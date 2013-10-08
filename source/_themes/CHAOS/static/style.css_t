@@ -252,7 +252,21 @@ dl.class {
 }
 
 dl.function {
-  background-color: rgba(102, 102, 166, 0.2);
+  /* background-color: rgba(102, 102, 166, 0.2); */
+}
+
+dl.function dt {
+  font-size: 40px;
+  font-weight: 100;
+  line-height: 1;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+dl.function dt tt {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+dl.function dt big {
+  display: none;
 }
 
 /**** BEGIN copy from chaos-community.org ****/

@@ -49,6 +49,11 @@
      };
    </script>
    {% set script_files = script_files + ["_static/scrollspy.js"] %}
+   {% set script_files = script_files + ["_static/base.js"] %}
+   {# This is a hack in that the script should really just be added to the
+      documentation `conf.py` file - NOT to the theme
+      (See https://bitbucket.org/birkenfeld/sphinx/issue/964/make-it-possible-to-add-script_files-from
+   #}
    {%- for scriptfile in script_files %}
        <script type="text/javascript" src="{{ pathto(scriptfile, 1) }}"></script>
    {%- endfor %}
