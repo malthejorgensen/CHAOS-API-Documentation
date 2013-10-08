@@ -1,6 +1,7 @@
 ==========
 The Basics
 ==========
+The PHP client has been tested with PHP 5.3 and 5.4.
 
 Setting up
 ----------
