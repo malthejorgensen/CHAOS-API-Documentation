@@ -96,6 +96,7 @@ database via the API.
 
  * *objectGUID* the GUID of the object for which you want to set :code:`accessPointGUID`
  * *accessPointGUID* the :code:`accessPointGUID` you want to publish on
+ * *sessionGUID* the GUID of an authorized session
  * *startDate* (optional) the start of publishing period
  * *endDate* (optional) the end of the publishing period
 
