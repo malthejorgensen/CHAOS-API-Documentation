@@ -38,6 +38,11 @@ div.note p {
   border-radius: 8px;
 }
 
+/* See also sections */
+div.seealso p.admonition-title {
+  font-weight: bold;
+}
+
 /* Navigation */
 @media (min-width: 1100px) {
   div.sphinxsidebar {
