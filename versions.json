@@ -1,4 +1,5 @@
 {
- "v5": { "branch_name": "master", "directory_name": "current", "current": true },
- "v4": { "branch_name": "v4", "directory_name": "v4" }
+ "v6": { "branch_name": "v6", "directory_name": "v6" },
+ "v5": { "branch_name": "v5", "directory_name": "v5" },
+ "v4": { "branch_name": "master", "directory_name": "current", "current": true }
 }
