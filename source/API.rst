@@ -9,6 +9,38 @@
 API
 ===
 
+The HTTP API for CHAOS is called **Portal**. 
+
+Requests to the API have the following URL-structure:
+
+.. code::
+
+    <SERVICE_PATH>/<PROTOCOL_VERSION>/<EXTENSION>/<ACTION>?<ARGUMENTS>
+
+for example 
+
+.. code::
+
+    http://api.chaos-systems.com/v4/Object/Get?pageSize=8
+
+Has a
+
+ * ``ServicePath`` that is :code:`http://api.chaos-systems.com`
+ * ``ProtocolVersion`` that is :code:`v4`
+ * ``Extension`` that is :code:`Object`
+ * ``Action`` that is :code:`Get` with one ``Argument``: :code:`pageSize` with a value of
+   :code:`8`.
+
+Each ``Action`` in CHAOS is a request for the CHAOS service to return, change or
+create 
+
+``Arguments`` to an ``Action`` should be passed via the query string as fields and
+values, i.e. :code:`field1=value1&field2=value2...`
+
+This page documents the ``Actions`` you can use in CHAOS. Each section has a
+heading of the form :code:`Extension/Action` which you can simply copy into your
+URL.
+
 .. module:: Session
 
 .. function:: Create
