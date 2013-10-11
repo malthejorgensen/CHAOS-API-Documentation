@@ -84,19 +84,20 @@ search. You can do this with the function
     ];
     // Retrieve objects
     client.SessionAcquired().Add(function(sender, sessionGUID) {
-      client.Object_GetBySearch(
-        showObjects                     // callback
-        , "mut"                         // query
-        , fields                        // fields
-        , "da"                          // langCode
-        , null                          // sort
-        , ChaosSettings.accessPointGUID // accessPointGuid
-        , 0                             // pageIndex
-        , 3                             // pageSize
-        , true                          // includeMetadata
-        , true                          // includeFiles
-        , true                          // includeObjectRelations
-        , false                         // includeAccessPoints
+      client.Object_GetBySearch(showObjects, // callback
+        {
+          query: "mut"
+        , schemas: fields
+        , langCode: "da"
+        , sort: null
+        , accessPointGUID: ChaosSettings.accessPointGUID
+        , pageIndex: 0
+        , pageSize: 3
+        , includeMetadata: true
+        , includeFiles: true
+        , includeObjectRelations: true
+        , includeAccessPoints: false
+        }
       );
     });
 
@@ -110,18 +111,18 @@ search. You can do this with the function
 :code:`fields`
   are search fields to use in the Solr index. The long GUIDs refers to
   metadata schemas. So what we're doing here is searching the object
-  metadata for the word 'mut'.  
+  metadata for the word 'mut'.
 :code:`pageIndex`
   is the starting page of the search results, where the page size is
   determined by :code:`pageSize`
 :code:`pageSize`
-  is the number of results you want retrieve  
+  is the number of results you want retrieve
 :code:`includeFiles`
-  include files attached to objects in the results.  
+  include files attached to objects in the results.
 :code:`includeMetadata`
-  include metadata attached to objects in the results.  
+  include metadata attached to objects in the results.
 :code:`includeObjectRelations`
-  include object relations for an object in the results.  
+  include object relations for an object in the results.
 
 When the search results has been recieved from the CHAOS.Portal, the
 callback is invoked with :code:`serviceResult` as its argument.
@@ -131,15 +132,15 @@ using.
 
 :code:`serviceResult.MCM().Results()`
   The result of the CHAOS query: A list of objects (URL, metadata
-  etc.). An explaination of these objects is found in the next section.  
+  etc.). An explaination of these objects is found in the next section.
 :code:`serviceResult.MCM().Count()`
   The number of objects on this page, i.e. the number of  objects available
   to you in the :code:`serviceResult.MCM().Results()`.<br>
   If you want all the objects from a query at
   once you will have to increase the :code:`pageSize` or go through
-  all pages via :code:`pageIndex`.  
+  all pages via :code:`pageIndex`.
 :code:`serviceResult.MCM().TotalCount()`
-  The number of objects that matched the query  
+  The number of objects that matched the query
 
 Now the resulting objects are quite big, so let's only grab one, by
 setting pageSize to 1:
@@ -149,19 +150,20 @@ setting pageSize to 1:
 
     // Retrieve objects
     client.SessionAcquired().Add(function(sender, sessionGUID) {
-      client.Object_GetBySearch(
-        showObjects                     // callback
-        , "mut"                         // query
-        , "5906a41b-feae-48db-bfb7-714b3e105396" // schemas
-        , "da"                          // langCode
-        , null                          // sort
-        , ChaosSettings.accessPointGUID // accessPointGuid
-        , 0                             // pageIndex
-        , 1                             // pageSize
-        , true                          // includeMetadata
-        , true                          // includeFiles
-        , true                          // includeObjectRelations
-        , false                         // includeAccessPoints
+      client.Object_GetBySearch(showObjects, // callback
+        {
+          query: "mut"
+        , schemas: "5906a41b-feae-48db-bfb7-714b3e105396"
+        , langCode: "da"
+        , sort: null
+        , accessPointGUID: ChaosSettings.accessPointGUID
+        , pageIndex: 0
+        , pageSize: 1
+        , includeMetadata: true
+        , includeFiles: true
+        , includeObjectRelations: true
+        , includeAccessPoints: false
+        }
       );
     });
 
@@ -233,4 +235,3 @@ Unfortunately this object has no relations.
 
 You are now ready to head on to the next section, which will teach you
 how to use files and metadata.
-

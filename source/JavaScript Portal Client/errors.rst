@@ -8,15 +8,16 @@ Let's make a call that will return an error:
    :eval:
 
    client.SessionAcquired().Add(function(sender, sessionGUID) {
-     client.Object_GetBySearch(
-       showObjects                     // callback
-       , "*"                         // query
-       , "5906a41b-feae-48db-bfb7-714b3e105396" // schemas
-       , "da"                          // langCode
-       , null                          // sort
-       , ChaosSettings.accessPointGUID // accessPointGuid
-       , 0                             // pageIndex
-       , 3                             // pageSize
+     client.Object_GetBySearch(showObjects, // callback
+       {
+         query: "*"
+       , schemas: "5906a41b-feae-48db-bfb7-714b3e105396"
+       , langCode: "da"
+       , sort: null
+       , accessPointGUID: ChaosSettings.accessPointGUID
+       , pageIndex: 0
+       , pageSize: 3
+       }
      );
    });
 
@@ -49,18 +50,19 @@ Let's have a more thorough look, by adding :code:`MCM().Exception` and
    :eval:
 
    client.SessionAcquired().Add(function(sender, sessionGUID) {
-     client.Object_GetBySearch(
-       showObjects                     // callback
-       , "*"                         // query
-       , "5906a41b-feae-48db-bfb7-714b3e105396" // schemas
-       , "da"                          // langCode
-       , null                          // sort
-       , ChaosSettings.accessPointGUID // accessPointGuid
-       , 0                             // pageIndex
-       , 3                             // pageSize
+     client.Object_GetBySearch(showObjects, // callback
+       {
+         query: "*"
+       , schemas: "5906a41b-feae-48db-bfb7-714b3e105396"
+       , langCode: "da"
+       , sort: null
+       , accessPointGUID: ChaosSettings.accessPointGUID
+       , pageIndex: 0
+       , pageSize: 3
+       }
      );
    });
-   
+
    function showObjects(serviceResult) {
      if (serviceResult.WasSuccess() && serviceResult.MCM().WasSuccess()) {
        var count = serviceResult.MCM().Count();

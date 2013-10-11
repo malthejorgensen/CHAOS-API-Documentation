@@ -13,14 +13,16 @@ are identified by their GUID, and can be retrieved with
 
     // Retrieve object
     client.SessionAcquired().Add(function(sender, sessionGUID) {
-      client.Object_GetByObjectGUID(
-        showObject                      // callback
-        , "00000000-0000-0000-0000-00004e040016" // objectGUID
-        , ChaosSettings.accessPointGUID // accessPointGuid
-        , true                          // includeMetadata
-        , true                          // includeFiles
-        , true                          // includeObjectRelations
-        , false                         // includeAccessPoints
+      client.Object_GetByObjectGUID(showObject, // callback
+        {
+          objectGUID: "00000000-0000-0000-0000-00004e040016"
+        , accessPointGUID: ChaosSettings.accessPointGUID
+        , includeMetadata: true
+        , includeFiles: true
+        , includeObjectRelations: true
+        , includeAccessPoints: false
+        , pageSize: 1
+        }
       );
     });
 
@@ -33,21 +35,23 @@ Files
 -----
 Files belonging to an object can be of different types -- video, audio, images
 and basically any other kind of file. The files can be found in the Files
-attribute of the objects in :code:`serviceResult.MCM().Results()`: 
+attribute of the objects in :code:`serviceResult.MCM().Results()`:
 
 .. code-editor:: javascript
     :eval:
 
     // Retrieve object
     client.SessionAcquired().Add(function(sender, sessionGUID) {
-      client.Object_GetByObjectGUID(
-        showObject                      // callback
-        , "00000000-0000-0000-0000-00004e040016" // objectGUID
-        , ChaosSettings.accessPointGUID // accessPointGuid
-        , true                          // includeMetadata
-        , true                          // includeFiles
-        , true                          // includeObjectRelations
-        , false                         // includeAccessPoints
+      client.Object_GetByObjectGUID(showObject, // callback
+        {
+          objectGUID: "00000000-0000-0000-0000-00004e040016"
+        , accessPointGUID: ChaosSettings.accessPointGUID
+        , includeMetadata: true
+        , includeFiles: true
+        , includeObjectRelations: true
+        , includeAccessPoints: false
+        , pageSize: 1
+        }
       );
     });
 
@@ -120,14 +124,16 @@ serviceResult.MCM().Results():
 
    // Retrieve object
    client.SessionAcquired().Add(function(sender, sessionGUID) {
-     client.Object_GetByObjectGUID(
-       showObject                      // callback
-       , "00000000-0000-0000-0000-00004e040016" // objectGUID
-       , ChaosSettings.accessPointGUID // accessPointGuid
-       , true                          // includeMetadata
-       , true                          // includeFiles
-       , true                          // includeObjectRelations
-       , false                         // includeAccessPoints
+     client.Object_GetByObjectGUID(showObject, // callback
+       {
+         objectGUID: "00000000-0000-0000-0000-00004e040016"
+       , accessPointGUID: ChaosSettings.accessPointGUID
+       , includeMetadata: true
+       , includeFiles: true
+       , includeObjectRelations: true
+       , includeAccessPoints: false
+       , pageSize: 1
+       }
      );
    });
 
@@ -182,14 +188,16 @@ retrieve data from the XML.
    :eval:
 
     client.SessionAcquired().Add(function(sender, sessionGUID) {
-      client.Object_GetByObjectGUID(
-        showObject                      // callback
-        , "00000000-0000-0000-0000-00004e040016" // objectGUID
-        , ChaosSettings.accessPointGUID // accessPointGuid
-        , true                          // includeMetadata
-        , true                          // includeFiles
-        , true                          // includeObjectRelations
-        , false                         // includeAccessPoints
+      client.Object_GetByObjectGUID(showObject, // callback
+        {
+          objectGUID: "00000000-0000-0000-0000-00004e040016"
+        , accessPointGUID: ChaosSettings.accessPointGUID
+        , includeMetadata: true
+        , includeFiles: true
+        , includeObjectRelations: true
+        , includeAccessPoints: false
+        , pageSize: 1
+        }
       );
     });
 
